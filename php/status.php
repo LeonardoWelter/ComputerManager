@@ -1,10 +1,11 @@
 <?php
 
-function mostrarToastr($erro) {
+function mostrarToastr($erro)
+{
 
 	switch ($erro) {
 		case 'sucessoLogin':
-			$retorno = '<script>toastr["success"]("Login realizado com sucesso", "Sucesso")</script>';
+			$retorno = '<script>toastr["success"]("Login realizado", "Sucesso")</script>';
 			$_SESSION['status'] = null;
 			break;
 		case 'falhaLoginIncorreto':
@@ -16,7 +17,7 @@ function mostrarToastr($erro) {
 			$_SESSION['status'] = null;
 			break;
 		case 'sucessoRemoverComputador':
-			$retorno = '<script>toastr["success"]("Computador removido com sucesso", "Sucesso")</script>';
+			$retorno = '<script>toastr["success"]("Computador removido", "Sucesso")</script>';
 			$_SESSION['status'] = null;
 			break;
 		case 'falhaRemoverSemId':
@@ -29,6 +30,42 @@ function mostrarToastr($erro) {
 			break;
 		case 'falhaNecessarioLogin':
 			$retorno = '<script>toastr["error"]("É preciso fazer login para acessar a aplicação", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'sucessoAtualizarComputador':
+			$retorno = '<script>toastr["success"]("Computador atualizado", "Sucesso")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioSemDados':
+			$retorno = '<script>toastr["error"]("Favor preencher todos os campos", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioIncompleto':
+			$retorno = '<script>toastr["error"]("Favor completar o formulário de cadastro", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioEmail':
+			$retorno = '<script>toastr["error"]("Email inválido (nome@email.com)", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioInvalido':
+			$retorno = '<script>toastr["error"]("Usuário inválido (Somente carácteres alfanúmericos)", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioSenhaCurta':
+			$retorno = '<script>toastr["error"]("Senha deve conter entre 5 e 20 caracteres", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioExistente':
+			$retorno = '<script>toastr["error"]("Usuário já existente", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaCriarUsuarioSQL':
+			$retorno = '<script>toastr["error"]("Entre em contato com o suporte", "Erro de SQL")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'sucessoCriarUsuario':
+			$retorno = '<script>toastr["success"]("Usuário cadastrado", "Sucesso")</script>';
 			$_SESSION['status'] = null;
 			break;
 		default:

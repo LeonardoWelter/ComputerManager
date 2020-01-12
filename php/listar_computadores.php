@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)) {
+	session_start();
+}
 function pdo_connect_mysql()
 {
 	$DATABASE_HOST = 'localhost';

@@ -1,5 +1,6 @@
 <?php
 require_once "valida_login.php";
+require_once 'status.php';
 ?>
 
 <html>
@@ -20,6 +21,11 @@ require_once "valida_login.php";
 <?php
 require_once 'navbar.php';
 ?>
+<?php
+if(isset($_SESSION['status'])) {
+	echo mostrarToastr($_SESSION['status']);
+}
+?>
 
 <div class="container">
     <div class="row">
@@ -39,7 +45,7 @@ require_once 'navbar.php';
                         <?php
                     }
                     ?>
-                    <form action="novo_usuario.php" method="post">
+                    <form action="criar_usuario.php" method="post">
                         <div class="form-group">
                             <label for="cadastroNome"><i class="fas fa-id-card mr-1"></i></i>Nome</label>
                             <input id="cadastroNome" name="nome" type="text" class="form-control"

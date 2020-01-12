@@ -2,6 +2,10 @@
 require_once "valida_login.php";
 require_once 'listar_computadores.php';
 require_once 'status.php';
+
+if(!isset($_SESSION)) {
+	session_start();
+}
 ?>
 
 
@@ -24,7 +28,6 @@ require_once 'status.php';
 require_once 'navbar.php';
 ?>
 <?php
-var_dump($_SESSION['status']);
 if(isset($_SESSION['status'])) {
     echo mostrarToastr($_SESSION['status']);
 }

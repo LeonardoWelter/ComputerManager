@@ -1,5 +1,7 @@
 <?php
-
+if(!isset($_SESSION)) {
+	session_start();
+}
 function pdo_connect_mysql()
 {
 	$DATABASE_HOST = 'localhost';
@@ -40,7 +42,6 @@ if (!empty($_POST)) {
 	// Output message
 	//$msg = 'Created Successfully!';
 	$_SESSION['status'] = 'sucessoAdicionarComputador';
-	var_dump($_SESSION);
-	//header('Location: computadores.php');
+	header('Location: computadores.php');
 	exit();
 }

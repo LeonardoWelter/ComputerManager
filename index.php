@@ -15,6 +15,7 @@
 -->
 <?php
     require_once 'php/status.php';
+var_dump($_SESSION);
 ?>
 <?php
     if(!isset($_SESSION)) {

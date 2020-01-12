@@ -1,5 +1,7 @@
 <?php
-
+if(!isset($_SESSION)) {
+	session_start();
+}
 function pdo_connect_mysql()
 {
 	$DATABASE_HOST = 'localhost';
@@ -37,7 +39,9 @@ if (isset($_GET['id'])) {
 
 		$msg = 'Updated Successfully!';
 
+		$_SESSION['status'] = 'sucessoAtualizarComputador';
 		header('Location: computadores.php');
+		exit();
 	}
 	// Get the contact from the contacts table
 	$stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
