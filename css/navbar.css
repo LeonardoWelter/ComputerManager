@@ -1,0 +1,23 @@
+.navbar-light .navbar-toggler {
+    border-color: rgba(255,255,255,0.1) ;
+}
+
+.divisor {
+    width: 1px;
+    background: grey;
+    margin: 12px 15px;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    #nav1 {
+        text-align: right;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #nav1 {
+        text-align: right;
+    }
+}
