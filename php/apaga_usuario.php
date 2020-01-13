@@ -1,6 +1,6 @@
 <?php
 require_once "valida_login.php";
-require_once 'apagar_computador.php';
+require_once 'apagar_usuario.php';
 ?>
 
 
@@ -14,7 +14,7 @@ require_once 'apagar_computador.php';
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/apaga_computador.css">
+	<link rel="stylesheet" href="../css/apaga_usuario.css">
 </head>
 
 <body>
@@ -25,12 +25,13 @@ require_once 'status.php';
 ?>
 
 <div class="content delete">
-	<h2>Remover computador ID: <?= $device['id']?></h2>
-		<p>Tem certeza que deseja remover o computador ID: <?= $device['id']?>?</p>
+	<h2>Remover usuário ID: <?=$user['id']?></h2>
+	<p>Quer mesmo remover o usuário ID:<?=$user['id']?>?</p>
 		<div class="yesno">
-			<a href="apagar_computador.php?id=<?=$device['id']?>&confirm=yes">Sim</a>
-			<a href="apagar_computador.php?id=<?=$device['id']?>&confirm=no">Não</a>
+			<a href="apagar_usuario.php?id=<?=$user['id']?>&confirm=yes">Sim</a>
+			<a href="apagar_usuario.php?id=<?=$user['id']?>&confirm=no">Não</a>
 		</div>
+
 </div>
 </body>
 </html>

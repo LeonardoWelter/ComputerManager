@@ -12,7 +12,10 @@ function pdo_connect_mysql()
 		return new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME . ';charset=utf8', $DATABASE_USER, $DATABASE_PASS);
 	} catch (PDOException $exception) {
 		// If there is an error with the connection, stop the script and display the error.
-		die ('Failed to connect to database!');
+		//die ('Failed to connect to database!');
+		$_SESSION['status'] = 'falhaErroCriticoSQL';
+		header('Location: menu.php');
+		exit();
 	}
 }
 

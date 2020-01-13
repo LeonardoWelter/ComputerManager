@@ -34,8 +34,8 @@ if(isset($_SESSION['status'])) {
 ?>
 
 <div class="content read">
-    <h2>Read Contacts</h2>
-    <a href="novo_computador.php" class="create-contact">Create Contact</a>
+    <h2>Computadores</h2>
+    <a href="novo_computador.php" class="create-contact">Adicionar computador</a>
     <table>
         <thead>
         <tr>
@@ -67,14 +67,6 @@ if(isset($_SESSION['status'])) {
 		<?php endforeach; ?>
         </tbody>
     </table>
-    <div class="pagination">
-		<?php if ($page > 1): ?>
-            <a href="read.php?page=<?=$page-1?>"><i class="fas fa-angle-double-left fa-sm"></i></a>
-		<?php endif; ?>
-		<?php if ($page*$records_per_page < $num_devices): ?>
-            <a href="read.php?page=<?=$page+1?>"><i class="fas fa-angle-double-right fa-sm"></i></a>
-		<?php endif; ?>
-    </div>
 </div>
 </body>
 </html>

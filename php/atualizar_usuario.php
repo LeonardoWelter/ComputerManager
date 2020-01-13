@@ -26,39 +26,33 @@ if (isset($_GET['id'])) {
 	if (!empty($_POST)) {
 		// This part is similar to the create.php, but instead we update a record and not insert
 		$id = isset($_POST['id']) ? $_POST['id'] : NULL;
-		$patrimonial = isset($_POST['patrimonial']) ? $_POST['patrimonial'] : '';
-		$marca = isset($_POST['marca']) ? $_POST['marca'] : '';
-		$modelo = isset($_POST['modelo']) ? $_POST['modelo'] : '';
-		$cpu = isset($_POST['cpu']) ? $_POST['cpu'] : '';
-		$ram = isset($_POST['ram']) ? $_POST['ram'] : '';
-		$hdd = isset($_POST['hdd']) ? $_POST['hdd'] : '';
-		$fonte = isset($_POST['fonte']) ? $_POST['fonte'] : '';
-		$mac = isset($_POST['mac']) ? $_POST['mac'] : '0000:0000:0000:0000';
 		$nome = isset($_POST['nome']) ? $_POST['nome'] : '';
-		$os = isset($_POST['os']) ? $_POST['os'] : '';
+		$usuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+		$email = isset($_POST['email']) ? $_POST['email'] : '';
+		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 		// Update the record
-		$stmt = $pdo->prepare('UPDATE devices SET patrimonial = ?, marca = ?, modelo = ?, cpu = ?, ram = ?, hdd = ?, fonte = ?, mac = ?, nome = ?, os = ? WHERE id = ?');
-		$stmt->execute([$patrimonial, $marca, $modelo, $cpu, $ram, $hdd, $fonte, $mac, $nome, $os, $_GET['id']]);
+		$stmt = $pdo->prepare('UPDATE users SET nome = ?, usuario = ?, email = ?, senha = ? WHERE id = ?');
+		$stmt->execute([$nome, $usuario, $email, $senha, $_GET['id']]);
 
 		//$msg = 'Updated Successfully!';
 
 		$_SESSION['status'] = 'sucessoAtualizarComputador';
-		header('Location: computadores.php');
+		header('Location: usuarios.php');
 		exit();
 	}
 	// Get the contact from the contacts table
-	$stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
+	$stmt = $pdo->prepare('SELECT * FROM users WHERE id = ?');
 	$stmt->execute([$_GET['id']]);
-	$device = $stmt->fetch(PDO::FETCH_ASSOC);
-	if (!$device) {
+	$user = $stmt->fetch(PDO::FETCH_ASSOC);
+	if (!$user) {
 		$_SESSION['status'] = 'falhaAtualizarIdErrado';
-		header('Location: computadores.php');
+		header('Location: usuarios.php');
 		exit();
 		//die ('Contact doesn\'t exist with that ID!');
 	}
 } else {
 	//die ('No ID specified!');
 	$_SESSION['status'] = 'falhaAtualizarSemId';
-	header('Location: computadores.php');
+	header('Location: usuarios.php');
 	exit();
 }

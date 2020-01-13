@@ -11,7 +11,10 @@ $DATABASE_NAME = 'ComputerManager';
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
     // If there is an error with the connection, stop the script and display the error.
-    die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+    //die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+	$_SESSION['status'] = 'falhaErroCriticoSQL';
+	header('Location: menu.php');
+	exit();
 }
 
 // Now we check if the data was submitted, isset() function will check if the data exists.
@@ -54,7 +57,7 @@ if (strlen($_POST['senha']) > 20 || strlen($_POST['senha']) < 5) {
 
 // We need to check if the account with that username exists.
 if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
-    // Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
+    // Bind parameters (s = string, i = int, b = blob, etc), header the password using the PHP password_hash function.
     $stmt->bind_param('s', $_POST['usuario']);
     $stmt->execute();
     $stmt->store_result();
@@ -68,7 +71,7 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
     } else {
         // Username doesnt exists, insert new account
         if ($stmt = $con->prepare('INSERT INTO users (usuario, senha, nome, email) VALUES (?, ?, ?, ?)')) {
-            // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
+            // We do not want to expose passwords in our database, so header the password and use password_verify when a user logs in.
             $password = password_hash($_POST['senha'], PASSWORD_DEFAULT);
             $stmt->bind_param('ssss', $_POST['usuario'], $password, $_POST['nome'], $_POST['email']);
             $stmt->execute();

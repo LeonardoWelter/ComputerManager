@@ -1,6 +1,7 @@
 <?php
 require_once "valida_login.php";
 require_once 'criar_computador.php';
+require_once 'status.php';
 ?>
 
 
@@ -8,13 +9,13 @@ require_once 'criar_computador.php';
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Computer Manager</title>
+	<title>Cadastrar computador - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/computadores.css">
+	<link rel="stylesheet" href="../css/novo_computador.css">
 </head>
 
 <body>
@@ -60,9 +61,6 @@ require_once 'navbar.php';
 
         <input type="submit" value="Criar">
     </form>
-    <?php if ($msg): ?>
-    <p><?=$msg?></p>
-    <?php endif; ?>
 </div>
 </body>
 </html>

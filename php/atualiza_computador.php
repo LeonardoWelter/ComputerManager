@@ -8,13 +8,13 @@ require_once 'atualizar_computador.php';
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Computer Manager</title>
+    <title>Atualizar computador - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/computadores.css">
+    <link rel="stylesheet" href="../css/atualiza_computador.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@ require_once 'navbar.php';
 ?>
 
 <div class="content update">
-    <h2>Update Contact #<?= $device['id'] ?></h2>
+    <h2>Atualizar computador ID: <?= $device['id'] ?></h2>
     <form action="atualizar_computador.php?id=<?= $device['id'] ?>" method="post">
         <label for="id">ID</label>
         <input type="text" name="id" placeholder="0" value="<?= $device['id'] ?>" id="id" disabled>

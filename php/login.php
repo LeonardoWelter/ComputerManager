@@ -11,14 +11,19 @@ $DATABASE_NAME = 'ComputerManager';
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 if (mysqli_connect_errno()) {
     // If there is an error with the connection, stop the script and display the error.
-    die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+    //die ('Failed to connect to MySQL: ' . mysqli_connect_error());
+	$_SESSION['status'] = 'falhaErroCriticoSQL';
+	header('Location: menu.php');
+	exit();
 }
 
 // Now we check if the data from the login form was submitted, isset() will check if the data exists.
 if (!isset($_POST['email'], $_POST['senha'])) {
     // Could not get the data that should have been sent.
-	header('Location: ../index.php');
-    die ('Please fill both the username and password field!');
+	$_SESSION['status'] = 'falhaLoginSemDados';
+	header('Location: menu.php');
+	exit();
+    //die ('Please fill both the username and password field!');
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.

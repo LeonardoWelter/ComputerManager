@@ -7,7 +7,7 @@ require_once 'status.php';
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Computer Manager</title>
+    <title>Cadastrar usuário - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';
@@ -36,15 +36,6 @@ if(isset($_SESSION['status'])) {
                     Cadastrar novo usuário
                 </div>
                 <div class="card-body">
-                    <?php
-                    if (isset($_GET['login']) && $_GET['login'] == 'semlogin') {
-                        ?>
-                        <div class="text-danger text-center mb-2">
-                            É necessário realizar login antes de acessar a aplicação!
-                        </div>
-                        <?php
-                    }
-                    ?>
                     <form action="criar_usuario.php" method="post">
                         <div class="form-group">
                             <label for="cadastroNome"><i class="fas fa-id-card mr-1"></i></i>Nome</label>
@@ -73,31 +64,11 @@ if(isset($_SESSION['status'])) {
                                 <option value="2">Usuário</option>
                             </select>
                         </div>
-                        <?php
-                        if (isset($_GET['login']) && $_GET['login'] == 'erro') {
-                            ?>
-                            <div class="text-danger text-center">
-                                Usuário ou senha inválidos.
-                            </div>
-                            <script>falhaLogin();</script>
-                            <?php
-                        }
-                        ?>
                         <button class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
 </body>
 </html>

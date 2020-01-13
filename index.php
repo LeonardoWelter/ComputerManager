@@ -12,10 +12,12 @@
     TODO Página individual do Computador
     TODO Registro de Manutenção
     TODO Histórico de Manutenção do Computador
+
+    TODO Padronização da estilização da interface
+    OK Adicionar exit(); após todos os headers
 -->
 <?php
     require_once 'php/status.php';
-var_dump($_SESSION);
 ?>
 <?php
     if(!isset($_SESSION)) {
@@ -30,7 +32,7 @@ var_dump($_SESSION);
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Computer Manager</title>
+    <title>Login - Computer Manager</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -60,9 +62,8 @@ if(isset($_SESSION['status'])) {
 ?>
 
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-        <!--        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Computer Manager">-->
-        LogoAqui |
+    <a class="navbar-brand" href="menu.php">
+        <img src="img/icons8-gestor-de-networking-64.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Computer Manager">
         Computer Manager
     </a>
 </nav>

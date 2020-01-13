@@ -4,6 +4,10 @@ function mostrarToastr($erro)
 {
 
 	switch ($erro) {
+		case 'falhaErroCriticoSQL':
+			$retorno = '<script>toastr["error"]("Contate o suporte imediatamente", "Erro de SQL")</script>';
+			$_SESSION['status'] = null;
+			break;
 		case 'sucessoLogin':
 			$retorno = '<script>toastr["success"]("Login realizado", "Sucesso")</script>';
 			$_SESSION['status'] = null;
@@ -68,6 +72,18 @@ function mostrarToastr($erro)
 			$retorno = '<script>toastr["success"]("Usuário cadastrado", "Sucesso")</script>';
 			$_SESSION['status'] = null;
 			break;
+		case 'falhaLoginSemDados':
+			$retorno = '<script>toastr["error"]("Favor preencher ambos os campos", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaAtualizarIdErrado':
+			$retorno = '<script>toastr["error"]("O ID selecionado não existe", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaAtualizarSemId':
+			$retorno = '<script>toastr["error"]("Nenhum ID especificado", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
 		default:
 			$retorno = '<script>toastr["error"]("Erro desconhecido, tente novamente", "Erro")</script>';
 			$_SESSION['status'] = null;
@@ -76,3 +92,11 @@ function mostrarToastr($erro)
 
 	return $retorno;
 }
+/*
+ *
+ *
+ *
+ *
+ */
+
+
