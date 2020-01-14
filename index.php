@@ -8,10 +8,10 @@
     OK Remoção de computadores
     OK Listagem de Computadores
     TODO Pesquisa de Computadores
-    TODO Manutenção de Computadores
-    TODO Página individual do Computador
-    TODO Registro de Manutenção
-    TODO Histórico de Manutenção do Computador
+    OK Manutenção de Computadores
+    OK Página individual do Computador
+    OK Registro de Manutenção
+    OK Histórico de Manutenção do Computador
 
     TODO Padronização da estilização da interface
     OK Adicionar exit(); após todos os headers
@@ -77,15 +77,6 @@ if(isset($_SESSION['status'])) {
                     Login
                 </div>
                 <div class="card-body">
-                    <?php
-                    if (isset($_GET['login']) && $_GET['login'] == 'semlogin') {
-                        ?>
-                        <div class="text-danger text-center mb-2">
-                            É necessário realizar login antes de acessar a aplicação!
-                        </div>
-                        <?php
-                    }
-                    ?>
                     <form action="php/login.php" method="post">
                         <div class="form-group">
                             <label for="loginEmail"><i class="fas fa-user mr-1"></i>E-mail</label>
@@ -96,16 +87,6 @@ if(isset($_SESSION['status'])) {
                             <input id="loginSenha" name="senha" type="password" class="form-control"
                                                                    placeholder="Senha">
                         </div>
-                        <?php
-                        if (isset($_GET['login']) && $_GET['login'] == 'erro') {
-                            ?>
-                            <div class="text-danger text-center">
-                                Usuário ou senha inválidos.
-                            </div>
-                            <script>falhaLogin();</script>
-                            <?php
-                        }
-                        ?>
                         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                     </form>
                 </div>

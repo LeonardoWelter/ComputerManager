@@ -30,7 +30,7 @@ require_once 'navbar.php';
 		<input type="text" name="id" placeholder="0" value="auto" id="id" disabled>
 
         <label for="patrimonial">Patrimonial</label>
-        <input type="text" name="patrimonial" placeholder="000001" id="patrimonial">
+        <input type="number" name="patrimonial" placeholder="000001" id="patrimonial">
 
         <label for="marca">Marca</label>
 		<input type="text" name="marca" placeholder="Lenovo" id="marca">

@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="nav1">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="computadores.php" class="nav-link">Computadores</a></li>
-            <li class="nav-item"><a href="manutencao.php" class="nav-link">Manutenções</a></li>
+            <li class="nav-item"><a href="manutencoes.php" class="nav-link">Manutenções</a></li>
             <li class="nav-item"><a href="usuarios.php" class="nav-link">Usuários</a></li>
             <li class="nav-item"><a href="cadastro.php" class="nav-link">Cadastro</a></li>
             <li class="nav-item divisor"></li>

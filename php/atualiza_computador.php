@@ -22,7 +22,6 @@ require_once 'atualizar_computador.php';
 <?php
 require_once 'navbar.php';
 ?>
-
 <div class="content update">
     <h2>Atualizar computador ID: <?= $device['id'] ?></h2>
     <form action="atualizar_computador.php?id=<?= $device['id'] ?>" method="post">
@@ -62,9 +61,6 @@ require_once 'navbar.php';
 
         <input type="submit" value="Atualizar">
     </form>
-	<?php if ($msg): ?>
-        <p><?= $msg ?></p>
-	<?php endif; ?>
 </div>
 </body>
 </html>

@@ -53,7 +53,5 @@ if(isset($_SESSION['status'])) {
             </div>
         </div>
     </div>
-
-
 </body>
 </html>

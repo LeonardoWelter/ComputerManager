@@ -1,0 +1,49 @@
+-- auto-generated definition
+create table devices
+(
+    id          int auto_increment
+        primary key,
+    patrimonial varchar(255) not null,
+    marca       varchar(255) not null,
+    modelo      varchar(255) not null,
+    cpu         varchar(255) not null,
+    ram         varchar(255) not null,
+    hdd         varchar(255) not null,
+    fonte       varchar(255) not null,
+    mac         varchar(255) not null,
+    nome        varchar(255) null,
+    os          varchar(255) null,
+    constraint devices_patrimonial_uindex
+        unique (patrimonial)
+);
+
+-- auto-generated definition
+create table users
+(
+    id      int auto_increment
+        primary key,
+    usuario varchar(50)  not null,
+    senha   varchar(255) not null,
+    nome    varchar(100) not null,
+    email   varchar(100) not null,
+    constraint users_email_uindex
+        unique (email)
+)
+    charset = utf8;
+
+
+create table maintenance
+(
+    id          int auto_increment
+        primary key,
+    device_id   int          not null,
+    tipo        varchar(255) null,
+    subtipo     varchar(255) null,
+    descricao   varchar(255) null,
+    comentarios varchar(255) null,
+    constraint maintenance_devices_id_fk
+        foreign key (device_id) references devices (id)
+);
+
+
+1	test	$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa	Teste	test@test.com

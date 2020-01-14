@@ -84,6 +84,14 @@ function mostrarToastr($erro)
 			$retorno = '<script>toastr["error"]("Nenhum ID especificado", "Erro")</script>';
 			$_SESSION['status'] = null;
 			break;
+		case 'falhaMostrarIdErrado':
+			$retorno = '<script>toastr["error"]("O ID selecionado não existe1", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
+		case 'falhaMostrarIdErrado2':
+			$retorno = '<script>toastr["error"]("O ID selecionado não existe2", "Erro")</script>';
+			$_SESSION['status'] = null;
+			break;
 		default:
 			$retorno = '<script>toastr["error"]("Erro desconhecido, tente novamente", "Erro")</script>';
 			$_SESSION['status'] = null;

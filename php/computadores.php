@@ -60,6 +60,7 @@ if(isset($_SESSION['status'])) {
                 <td><?=$device['nome']?></td>
                 <td><?=$device['os']?></td>
                 <td class="actions">
+                    <a href="computador.php?id=<?=$device['id']?>" class="edit"><i class="fas fa-search"></i></a>
                     <a href="atualiza_computador.php?id=<?=$device['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
                     <a href="apaga_computador.php?id=<?=$device['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
