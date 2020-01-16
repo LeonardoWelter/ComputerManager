@@ -8,6 +8,9 @@
     OK Remoção de computadores
     OK Listagem de Computadores
     TODO Pesquisa de Computadores
+    TODO Paginação de tabelas
+    TODO Unificação dos códigos de persistência
+    TODO Limpeza do código
     OK Manutenção de Computadores
     OK Página individual do Computador
     OK Registro de Manutenção
