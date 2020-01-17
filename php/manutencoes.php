@@ -33,10 +33,13 @@ if(isset($_SESSION['status'])) {
 }
 ?>
 
-<div class="content read">
-	<h2>Manutenções</h2>
-	<a href="novo_manutencao.php" class="create-contact">Adicionar manutenção</a>
-	<table class="table table-striped table-bordered">
+<div class="container">
+	<h2 class="mt-3">Manutenções</h2>
+	<div class="btn-group d-flex float-right mt-3 mb-2">
+		<a href="novo_manutencao.php" class="btn btn-sm btn-outline-primary">Adicionar manutenção</a>
+	</div>
+    <hr>
+	<table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
 			<td>ID</td>
@@ -55,10 +58,10 @@ if(isset($_SESSION['status'])) {
 				<td><?=$maintenance['tipo']?></td>
 				<td><?=$maintenance['subtipo']?></td>
 				<td><?=$maintenance['descricao']?></td>
-				<td class="actions">
-					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="edit"><i class="fas fa-search"></i></a>
-					<a href="atualiza_manutencao.php?id=<?=$maintenance['id']?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-					<a href="apaga_manutencao.php?id=<?=$maintenance['id']?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+				<td class="text-right">
+					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
+					<a href="atualiza_manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+					<a href="apaga_manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

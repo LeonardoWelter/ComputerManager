@@ -7,15 +7,15 @@ require_once 'status.php';
 
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Cadastrar computador - Computer Manager</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastrar computador - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/novo_computador.css">
+    <link rel="stylesheet" href="../css/novo_computador.css">
 </head>
 
 <body>
@@ -23,43 +23,55 @@ require_once 'status.php';
 <?php
 require_once 'navbar.php';
 ?>
-<div class="content update">
-	<h2>Create Contact</h2>
+<div class="container">
+    <h2 class="mt-3 mb-2">Novo computador</h2>
+    <hr>
     <form action="criar_computador.php" method="post">
-        <label for="id">ID</label>
-		<input type="text" name="id" placeholder="0" value="auto" id="id" disabled>
-
-        <label for="patrimonial">Patrimonial</label>
-        <input type="number" name="patrimonial" placeholder="000001" id="patrimonial">
-
-        <label for="marca">Marca</label>
-		<input type="text" name="marca" placeholder="Lenovo" id="marca">
-
-        <label for="modelo">Modelo</label>
-        <input type="text" name="modelo" placeholder="M92p" id="modelo">
-
-        <label for="cpu">CPU</label>
-        <input type="text" name="cpu" placeholder="i7 3700" id="cpu">
-
-		<label for="ram">RAM</label>
-		<input type="text" name="ram" placeholder="16GB DDR3 1333MHz" id="ram">
-
-		<label for="hdd">HDD</label>
-		<input type="text" name="hdd" placeholder="1TB 7200RPM" id="hdd">
-
-		<label for="fonte">Fonte</label>
-		<input type="text" name="fonte" placeholder="400W" id="fonte">
-
-		<label for="mac">MAC</label>
-		<input type="text" name="mac" placeholder="0000:0000:0000:0000" id="mac">
-
-		<label for="nome">Nome</label>
-		<input type="text" name="nome" placeholder="PC-REI-18872" id="nome">
-
-		<label for="os">OS</label>
-		<input type="text" name="os" placeholder="Windows 10" id="os">
-
-        <input type="submit" value="Criar">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input class="form-control" type="text" name="id" placeholder="0" value="auto" id="id" disabled>
+        </div>
+        <div class="form-group">
+            <label for="patrimonial">Patrimonial</label>
+            <input class="form-control" type="number" name="patrimonial" placeholder="000001" id="patrimonial">
+        </div>
+        <div class="form-group">
+            <label for="marca">Marca</label>
+            <input class="form-control" type="text" name="marca" placeholder="Lenovo" id="marca">
+        </div>
+        <div class="form-group">
+            <label for="modelo">Modelo</label>
+            <input class="form-control" type="text" name="modelo" placeholder="M92p" id="modelo">
+        </div>
+        <div class="form-group">
+            <label for="cpu">CPU</label>
+            <input class="form-control" type="text" name="cpu" placeholder="i7 3700" id="cpu">
+        </div>
+        <div class="form-group">
+            <label for="ram">RAM</label>
+            <input class="form-control" type="text" name="ram" placeholder="16GB DDR3 1333MHz" id="ram">
+        </div>
+        <div class="form-group">
+            <label for="hdd">HDD</label>
+            <input class="form-control" type="text" name="hdd" placeholder="1TB 7200RPM" id="hdd">
+        </div>
+        <div class="form-group">
+            <label for="fonte">Fonte</label>
+            <input class="form-control" type="text" name="fonte" placeholder="400W" id="fonte">
+        </div>
+        <div class="form-group">
+            <label for="mac">MAC</label>
+            <input class="form-control" type="text" name="mac" placeholder="0000:0000:0000:0000" id="mac">
+        </div>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input class="form-control" type="text" name="nome" placeholder="PC-REI-18872" id="nome">
+        </div>
+        <div class="form-group">
+            <label for="os">OS</label>
+            <input class="form-control" type="text" name="os" placeholder="Windows 10" id="os">
+        </div>
+        <input class="btn btn-block btn-primary" type="submit" value="Criar">
     </form>
 </div>
 </body>

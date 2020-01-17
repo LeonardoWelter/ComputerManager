@@ -22,44 +22,56 @@ require_once 'atualizar_computador.php';
 <?php
 require_once 'navbar.php';
 ?>
-<div class="content update">
-    <h2>Atualizar computador ID: <?= $device['id'] ?></h2>
+<div class="container">
+    <h2 class="mt-3 mb-2">Atualizar computador ID: <?= $device['id'] ?></h2>
+    <hr>
     <form action="atualizar_computador.php?id=<?= $device['id'] ?>" method="post">
-        <label for="id">ID</label>
-        <input type="text" name="id" placeholder="0" value="<?= $device['id'] ?>" id="id" disabled>
-
-        <label for="patrimonial">Patrimonial</label>
-        <input type="text" name="patrimonial" placeholder="000001" id="patrimonial"
-               value="<?= $device['patrimonial'] ?>">
-
-        <label for="marca">Marca</label>
-        <input type="text" name="marca" placeholder="Lenovo" id="marca" value="<?= $device['marca'] ?>">
-
-        <label for="modelo">Modelo</label>
-        <input type="text" name="modelo" placeholder="M92p" id="modelo" value="<?= $device['modelo'] ?>">
-
-        <label for="cpu">CPU</label>
-        <input type="text" name="cpu" placeholder="i7 3700" id="cpu" value="<?= $device['cpu'] ?>">
-
-        <label for="ram">RAM</label>
-        <input type="text" name="ram" placeholder="16GB DDR3 1333MHz" id="ram" value="<?= $device['ram'] ?>">
-
-        <label for="hdd">HDD</label>
-        <input type="text" name="hdd" placeholder="1TB 7200RPM" id="hdd" value="<?= $device['hdd'] ?>">
-
-        <label for="fonte">Fonte</label>
-        <input type="text" name="fonte" placeholder="400W" id="fonte" value="<?= $device['fonte'] ?>">
-
-        <label for="mac">MAC</label>
-        <input type="text" name="mac" placeholder="0000:0000:0000:0000" id="mac" value="<?= $device['mac'] ?>">
-
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" placeholder="PC-REI-18872" id="nome" value="<?= $device['nome'] ?>">
-
-        <label for="os">OS</label>
-        <input type="text" name="os" placeholder="Windows 10" id="os" value="<?= $device['os'] ?>">
-
-        <input type="submit" value="Atualizar">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input class="form-control" type="text" name="id" placeholder="0" value="<?= $device['id'] ?>" id="id" disabled>
+        </div>
+        <div class="form-group">
+            <label for="patrimonial">Patrimonial</label>
+            <input class="form-control" type="text" name="patrimonial" placeholder="000001" id="patrimonial"
+                   value="<?= $device['patrimonial'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="marca">Marca</label>
+            <input class="form-control" type="text" name="marca" placeholder="Lenovo" id="marca" value="<?= $device['marca'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="modelo">Modelo</label>
+            <input class="form-control" type="text" name="modelo" placeholder="M92p" id="modelo" value="<?= $device['modelo'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="cpu">CPU</label>
+            <input class="form-control" type="text" name="cpu" placeholder="i7 3700" id="cpu" value="<?= $device['cpu'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="ram">RAM</label>
+            <input class="form-control" type="text" name="ram" placeholder="16GB DDR3 1333MHz" id="ram" value="<?= $device['ram'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="hdd">HDD</label>
+            <input class="form-control" type="text" name="hdd" placeholder="1TB 7200RPM" id="hdd" value="<?= $device['hdd'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="fonte">Fonte</label>
+            <input class="form-control" type="text" name="fonte" placeholder="400W" id="fonte" value="<?= $device['fonte'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="mac">MAC</label>
+            <input class="form-control" type="text" name="mac" placeholder="0000:0000:0000:0000" id="mac" value="<?= $device['mac'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input class="form-control" type="text" name="nome" placeholder="PC-REI-18872" id="nome" value="<?= $device['nome'] ?>">
+        </div>
+        <div class="form-group">
+            <label for="os">OS</label>
+            <input class="form-control" type="text" name="os" placeholder="Windows 10" id="os" value="<?= $device['os'] ?>">
+        </div>
+        <input class="btn btn-block btn-primary" type="submit" value="Atualizar">
     </form>
 </div>
 </body>
