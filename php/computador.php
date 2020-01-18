@@ -1,7 +1,7 @@
 <?php
-require_once "valida_login.php";
-require_once 'mostrar_computador.php';
-require_once 'listar_manutencao.php';
+require_once "validaLogin.php";
+require_once 'mostrarComputador.php';
+require_once 'listarManutencao.php';
 require_once 'status.php';
 
 if (!isset($_SESSION)) {
@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 }
 ?>
 
-<html>
+<html lang="pt">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,16 +28,44 @@ if (!isset($_SESSION)) {
 <?php
 require_once 'navbar.php';
 ?>
-<div class="container">
-	<?php
-	if (isset($_SESSION['status'])) {
-		echo mostrarToastr($_SESSION['status']);
-	}
+
+<?php
+if (isset($_SESSION['status'])) {
+	echo mostrarToastr($_SESSION['status']);
+}
+?>
+<?php
+if (isset($_GET['apaga'])) {
 	?>
+    <!-- Modal apagar -->
+    <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalExcluirLabel">Remover manutenção</h5>
+                </div>
+                <div class="modal-body">
+                    Remover a manutenção ID: <?= $_GET['apaga']; ?>?
+                </div>
+                <div class="modal-footer">
+                    <a href="computador.php?id=<?= $_GET['id'] ?>" class="btn btn-secondary">Cancelar</a>
+                    <a href="apagarManutencao.php?id=<?= $_GET['apaga'] ?>&confirm=yes"
+                       class="btn btn-danger">Remover</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	<?php
+	echo "<script>$('#modalExcluir').modal({backdrop: 'static', keyboard: false, show: true})</script>";
+}
+?>
+<div class="container">
+
 
     <div class="container">
         <div class="btn-group d-flex float-right">
-            <a href="atualiza_computador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
+            <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
             <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
             <a href="#" class="btn btn-sm btn-outline-primary">Ligar</a>
         </div>
@@ -47,54 +75,58 @@ require_once 'navbar.php';
             <table class="table table-striped table-bordered tabela">
                 <caption>Informações do computador de ID: <?= $device['id'] ?></caption>
                 <thead class="thead text-center">
-                <th colspan="2">Computador ID: <?= $device['id'] ?></th>
+                <tr>
+                    <th colspan="2">Computador ID: <?= $device['id'] ?></th>
+                </tr>
                 </thead>
                 <tr>
-                    <td scope="col" class="font-weight-bold">ID</td>
-                    <td scope="row"><?= $device['id'] ?></td>
+                    <td class="font-weight-bold">ID</td>
+                    <td><?= $device['id'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold">Nome</td>
-                    <td scope="row"><?= $device['nome'] ?></td>
+                    <td class="font-weight-bold">Nome</td>
+                    <td><?= $device['nome'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold">Patrimonial</td>
-                    <td scope="row"><?= $device['patrimonial'] ?></td>
+                    <td class="font-weight-bold">Patrimonial</td>
+                    <td><?= $device['patrimonial'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold">Marca</td>
-                    <td scope="row"><?= $device['marca'] ?></td>
+                    <td class="font-weight-bold">Marca</td>
+                    <td><?= $device['marca'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold">Modelo</td>
-                    <td scope="row"><?= $device['modelo'] ?></td>
+                    <td class="font-weight-bold">Modelo</td>
+                    <td><?= $device['modelo'] ?></td>
                 </tr>
-                <thead class="thead text-center">
-                <th colspan="2">Especificações</th>
+                <thead class="thead text-center font-weight-bold">
+                <tr>
+                    <th colspan="2">Especificações</th>
+                </tr>
                 </thead>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fas fa-microchip"></i> CPU</td>
-                    <td scope="row"><?= $device['cpu'] ?></td>
+                    <td class="font-weight-bold"><i class="fas fa-microchip"></i> CPU</td>
+                    <td><?= $device['cpu'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fas fa-memory"></i> RAM</td>
-                    <td scope="row"><?= $device['ram'] ?></td>
+                    <td class="font-weight-bold"><i class="fas fa-memory"></i> RAM</td>
+                    <td><?= $device['ram'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fas fa-hdd"></i> HDD</td>
-                    <td scope="row"><?= $device['hdd'] ?></td>
+                    <td class="font-weight-bold"><i class="fas fa-hdd"></i> HDD</td>
+                    <td><?= $device['hdd'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fas fa-plug"></i> Fonte</td>
-                    <td scope="row"><?= $device['fonte'] ?></td>
+                    <td class="font-weight-bold"><i class="fas fa-plug"></i> Fonte</td>
+                    <td><?= $device['fonte'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fas fa-ethernet"></i> MAC</td>
-                    <td scope="row"><?= $device['mac'] ?></td>
+                    <td class="font-weight-bold"><i class="fas fa-ethernet"></i> MAC</td>
+                    <td><?= $device['mac'] ?></td>
                 </tr>
                 <tr>
-                    <td scope="col" class="font-weight-bold"><i class="fab fa-windows icone"></i> OS</td>
-                    <td scope="row"><?= $device['os'] ?></td>
+                    <td class="font-weight-bold"><i class="fab fa-windows icone"></i> OS</td>
+                    <td><?= $device['os'] ?></td>
                 </tr>
             </table>
         </div>
@@ -121,9 +153,10 @@ require_once 'navbar.php';
                     <td class="text-right">
                         <a href="manutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-search"></i></a>
-                        <a href="atualiza_manutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
+                        <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-pen"></i></a>
-                        <a href="apaga_manutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-danger btn-sm"><i
+                        <a href="computador.php?id=<?= $_GET['id'] ?>&apaga=<?= $maintenance['id'] ?>"
+                           class="btn btn-danger btn-sm"><i
                                     class="fas fa-trash"></i></a>
                     </td>
                 </tr>

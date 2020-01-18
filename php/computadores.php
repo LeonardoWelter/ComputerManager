@@ -1,6 +1,6 @@
 <?php
-require_once "valida_login.php";
-require_once 'listar_computadores.php';
+require_once "validaLogin.php";
+require_once 'listarComputadores.php';
 require_once 'status.php';
 
 if (!isset($_SESSION)) {
@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 ?>
 
 
-<html>
+<html lang="pt">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,10 +33,35 @@ if (isset($_SESSION['status'])) {
 }
 ?>
 
+<?php
+if (isset($_GET['apaga'])) {
+    ?>
+<!-- Modal apagar -->
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalExcluirLabel">Remover manutenção</h5>
+            </div>
+            <div class="modal-body">
+                Remover o computador ID: <?= $_GET['apaga']; ?>?
+            </div>
+            <div class="modal-footer">
+                <a href="manutencoes.php" class="btn btn-secondary" >Cancelar</a>
+                <a href="apagarComputador.php?id=<?= $_GET['apaga']?>&confirm=yes" class="btn btn-danger">Remover</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+	echo "<script>$('#modalExcluir').modal({backdrop: 'static', keyboard: false, show: true})</script>";
+}
+?>
+
 <div class="container">
     <h2 class="mt-3">Computadores</h2>
     <div class="btn-group d-flex float-right mt-3 mb-2">
-        <a href="novo_computador.php" class="btn btn-sm btn-outline-primary">Adicionar computador</a>
+        <a href="novoComputador.php" class="btn btn-sm btn-outline-primary">Adicionar computador</a>
     </div>
     <hr>
     <table class="table table-striped table-bordered table-responsive-sm">
@@ -65,9 +90,9 @@ if (isset($_SESSION['status'])) {
                 <td class="text-right">
                     <a href="computador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-primary"><i
                                 class="fas fa-search"></i></a>
-                    <a href="atualiza_computador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-primary"><i
+                    <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-primary"><i
                                 class="fas fa-pen"></i></a>
-                    <a href="apaga_computador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-danger"><i
+                    <a href="computadores.php?apaga=<?= $device['id'] ?>" class="btn btn-sm btn-danger"><i
                                 class="fas fa-trash"></i></a>
                 </td>
             </tr>

@@ -1,9 +1,9 @@
 <?php
-require_once "valida_login.php";
+require_once "validaLogin.php";
 require_once 'status.php';
 ?>
 
-<html>
+<html lang="pt">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@ require_once 'status.php';
 require_once 'navbar.php';
 ?>
 <?php
-if(isset($_SESSION['status'])) {
+if (isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
@@ -36,29 +36,30 @@ if(isset($_SESSION['status'])) {
                     Cadastrar novo usuário
                 </div>
                 <div class="card-body">
-                    <form action="criar_usuario.php" method="post">
+                    <form action="criarUsuario.php" method="post">
                         <div class="form-group">
-                            <label for="cadastroNome"><i class="fas fa-id-card mr-1"></i></i>Nome</label>
+                            <label for="cadastroNome"><i class="fas fa-id-card mr-1"></i>Nome</label>
                             <input id="cadastroNome" name="nome" type="text" class="form-control"
-                                   placeholder="Nome">
+                                   placeholder="Nome" required>
                         </div>
                         <div class="form-group">
                             <label for="cadastroUsuario"><i class="fas fa-user mr-1"></i>Usuário</label>
                             <input id="cadastroUsuario" name="usuario" type="text" class="form-control"
-                                   placeholder="Usuário">
+                                   placeholder="Usuário" required>
                         </div>
                         <div class="form-group">
-                            <label for="cadastroEmail"><i class="fas fa-envelope mr-1"></i></i>E-mail</label>
-                            <input id="cadastroEmail" name="email" type="email" class="form-control" placeholder="E-mail">
+                            <label for="cadastroEmail"><i class="fas fa-envelope mr-1"></i>E-mail</label>
+                            <input id="cadastroEmail" name="email" type="email" class="form-control"
+                                   placeholder="E-mail" required>
                         </div>
                         <div class="form-group">
                             <label for="cadastroSenha"><i class="fas fa-lock mr-1"></i>Senha</label>
                             <input id="cadastroSenha" name="senha" type="password" class="form-control"
-                                   placeholder="Senha">
+                                   placeholder="Senha" required>
                         </div>
                         <div class="form-group">
-                            <label for="cadastroGrupo"><i class="fas fa-users mr-1"></i></i>Grupo</label>
-                            <select id="cadastroGrupo" name="grupo" class="custom-select">
+                            <label for="cadastroGrupo"><i class="fas fa-users mr-1"></i>Grupo</label>
+                            <select id="cadastroGrupo" name="grupo" class="custom-select" required>
                                 <option value="" selected disabled>Selecione o grupo</option>
                                 <option value="1">Administrador</option>
                                 <option value="2">Usuário</option>

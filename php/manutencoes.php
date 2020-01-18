@@ -1,6 +1,6 @@
 <?php
-require_once "valida_login.php";
-require_once 'listar_manutencao.php';
+require_once "validaLogin.php";
+require_once 'listarManutencao.php';
 require_once 'status.php';
 
 if(!isset($_SESSION)) {
@@ -9,7 +9,7 @@ if(!isset($_SESSION)) {
 ?>
 
 
-<html>
+<html lang="pt">
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,11 +32,35 @@ if(isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
+<?php
+if (isset($_GET['apaga'])) {
+	?>
+    <!-- Modal apagar -->
+    <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalExcluirLabel">Remover manutenção</h5>
+                </div>
+                <div class="modal-body">
+                    Remover a manutenção ID: <?= $_GET['apaga']; ?>?
+                </div>
+                <div class="modal-footer">
+                    <a href="computadores.php" class="btn btn-secondary" >Cancelar</a>
+                    <a href="apagarManutencao.php?id=<?= $_GET['apaga']?>&confirm=yes" class="btn btn-danger">Remover</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	<?php
+	echo "<script>$('#modalExcluir').modal({backdrop: 'static', keyboard: false, show: true})</script>";
+}
+?>
 
 <div class="container">
 	<h2 class="mt-3">Manutenções</h2>
 	<div class="btn-group d-flex float-right mt-3 mb-2">
-		<a href="novo_manutencao.php" class="btn btn-sm btn-outline-primary">Adicionar manutenção</a>
+		<a href="novoManutencao.php" class="btn btn-sm btn-outline-primary">Adicionar manutenção</a>
 	</div>
     <hr>
 	<table class="table table-striped table-bordered table-responsive-sm">
@@ -60,8 +84,8 @@ if(isset($_SESSION['status'])) {
 				<td><?=$maintenance['descricao']?></td>
 				<td class="text-right">
 					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
-					<a href="atualiza_manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
-					<a href="apaga_manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+					<a href="atualizaManutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+					<a href="manutencoes.php?apaga=<?=$maintenance['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

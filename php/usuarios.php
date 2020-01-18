@@ -1,6 +1,6 @@
 <?php
-require_once "valida_login.php";
-require_once 'listar_usuarios.php';
+require_once "validaLogin.php";
+require_once 'listarUsuarios.php';
 require_once 'status.php';
 
 if(!isset($_SESSION)) {
@@ -9,7 +9,7 @@ if(!isset($_SESSION)) {
 ?>
 
 
-<html>
+<html lang="pt">
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +30,30 @@ require_once 'navbar.php';
 <?php
 if(isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
+}
+?>
+<?php
+if (isset($_GET['apaga'])) {
+	?>
+    <!-- Modal apagar -->
+    <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalExcluirLabel">Remover usuário</h5>
+                </div>
+                <div class="modal-body">
+                    Remover o usuário ID: <?= $_GET['apaga']; ?>?
+                </div>
+                <div class="modal-footer">
+                    <a href="computadores.php" class="btn btn-secondary" >Cancelar</a>
+                    <a href="apagarUsuario.php?id=<?= $_GET['apaga']?>&confirm=yes" class="btn btn-danger">Remover</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	<?php
+	echo "<script>$('#modalExcluir').modal({backdrop: 'static', keyboard: false, show: true})</script>";
 }
 ?>
 
@@ -57,8 +81,8 @@ if(isset($_SESSION['status'])) {
 				<td><?=$user['usuario']?></td>
 				<td><?=$user['email']?></td>
 				<td class="text-right">
-					<a href="atualiza_usuario.php?id=<?=$user['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
-					<a href="apaga_usuario.php?id=<?=$user['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+					<a href="atualizaUsuario.php?id=<?=$user['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+					<a href="usuarios.php?apaga=<?=$user['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
