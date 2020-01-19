@@ -20,6 +20,8 @@ if(!isset($_SESSION)) {
 	?>
 
 	<link rel="stylesheet" href="../css/usuarios.css">
+    <link rel="stylesheet" href="../css/tabelas.css">
+
 </head>
 
 <body>
@@ -66,11 +68,11 @@ if (isset($_GET['apaga'])) {
 	<table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
-			<td>ID</td>
-			<td>Nome</td>
-			<td>Usuário</td>
-			<td>Email</td>
-			<td>Ações</td>
+			<th><a href="usuarios.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="usuarios.php?coluna=nome&ordem=<?php echo $cre_dec; ?>">Nome<i class="fas fa-sort<?php echo $coluna == 'nome' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="usuarios.php?coluna=usuario&ordem=<?php echo $cre_dec; ?>">Usuário<i class="fas fa-sort<?php echo $coluna == 'usuario' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="usuarios.php?coluna=email&ordem=<?php echo $cre_dec; ?>">Email<i class="fas fa-sort<?php echo $coluna == 'email' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th>Ações</th>
 		</tr>
 		</thead>
 		<tbody>

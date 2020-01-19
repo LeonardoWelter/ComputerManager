@@ -1,7 +1,6 @@
 <?php
 require_once "validaLogin.php";
 require_once 'mostrarComputador.php';
-require_once 'listarManutencao.php';
 require_once 'status.php';
 
 if (!isset($_SESSION)) {
@@ -20,6 +19,7 @@ if (!isset($_SESSION)) {
 	?>
 
     <link rel="stylesheet" href="../css/computador.css">
+    <link rel="stylesheet" href="../css/tabelas.css">
 
 </head>
 
@@ -134,19 +134,17 @@ if (isset($_GET['apaga'])) {
         <table class="table table-striped table-bordered table-responsive-sm">
             <thead>
             <tr>
-                <td>ID</td>
-                <td>Computador</td>
-                <td>Tipo</td>
-                <td>Subtipo</td>
-                <td>Descrição</td>
-                <td>Ações</td>
+                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=descricao&ordem=<?php echo $cre_dec; ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=tipo&ordem=<?php echo $cre_dec; ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=subtipo&ordem=<?php echo $cre_dec; ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th>Ações</th>
             </tr>
             </thead>
             <tbody>
 			<?php foreach ($maintenances as $maintenance): ?>
                 <tr>
                     <td><?= $maintenance['id'] ?></td>
-                    <td><?= $maintenance['device_id'] ?></td>
                     <td><?= $maintenance['tipo'] ?></td>
                     <td><?= $maintenance['subtipo'] ?></td>
                     <td><?= $maintenance['descricao'] ?></td>

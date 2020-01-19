@@ -19,14 +19,27 @@ function pdo_connect_mysql()
 	}
 }
 
+//Sort
+$colunas = array('id','computador','descricao','tipo','subtipo');
+$coluna = isset($_GET['coluna']) && in_array($_GET['coluna'], $colunas) ? $_GET['coluna'] : $colunas[0];
+$ordem = isset($_GET['ordem']) && strtolower($_GET['ordem']) == 'desc' ? 'DESC' : 'ASC';
+$cima_baixo = str_replace(array('ASC','DESC'), array('up','down'), $ordem);
+$cre_dec = $ordem == 'ASC' ? 'desc' : 'asc';
+
 $pdo = pdo_connect_mysql();
-$msg = '';
 // Check if the contact id exists, for example update.php?id=1 will get the contact with the id of 1
 if (isset($_GET['id'])) {
 	// Get the contact from the contacts table
 	$stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
 	$stmt->execute([$_GET['id']]);
 	$device = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	// Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
+	$stmt2 = $pdo->prepare('SELECT * FROM maintenance WHERE device_id = ? ORDER BY ' .  $coluna . ' ' . $ordem);
+	$stmt2->execute([$_GET['id']]);
+	// Fetch the records so we can display them in our template.
+	$maintenances = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 	if (!$device) {
 		$_SESSION['status'] = 'falhaMostrarIdErrado';
 		header('Location: computadores.php');

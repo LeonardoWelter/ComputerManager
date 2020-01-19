@@ -21,23 +21,20 @@ if(!isset($pdo)) {
 	}
 }
 
+//Sort
+$colunas = array('id','computador','descricao','tipo','subtipo');
+$coluna = isset($_GET['coluna']) && in_array($_GET['coluna'], $colunas) ? $_GET['coluna'] : $colunas[0];
+$ordem = isset($_GET['ordem']) && strtolower($_GET['ordem']) == 'desc' ? 'DESC' : 'ASC';
+$cima_baixo = str_replace(array('ASC','DESC'), array('up','down'), $ordem);
+$cre_dec = $ordem == 'ASC' ? 'desc' : 'asc';
+
 // Connect to MySQL database
 if(!isset($pdo)) {
 	$pdo = pdo_connect_mysql();
 }
 
-// Get the page via GET request (URL param: page), if non exists default the page to 1
-$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
-// Number of records to show on each page
-$records_per_page = 100;
-
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM maintenance ORDER BY id LIMIT :current_page, :record_per_page');
-$stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
-$stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
+$stmt = $pdo->prepare('SELECT * FROM maintenance ORDER BY ' .  $coluna . ' ' . $ordem);
 $stmt->execute();
 // Fetch the records so we can display them in our template.
 $maintenances = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Get the total number of contacts, this is so we can determine whether there should be a next and previous button
-$num_devices = $pdo->query('SELECT COUNT(*) FROM maintenance')->fetchColumn();

@@ -19,7 +19,7 @@ if(!isset($_SESSION)) {
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/computadores.css">
+	<link rel="stylesheet" href="../css/tabelas.css">
 </head>
 
 <body>
@@ -66,12 +66,12 @@ if (isset($_GET['apaga'])) {
 	<table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
-			<td>ID</td>
-			<td>Computador</td>
-			<td>Descrição</td>
-			<td>Tipo</td>
-			<td>Subtipo</td>
-			<td>Ações</td>
+			<th><a href="manutencoes.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="manutencoes.php?coluna=device_id&ordem=<?php echo $cre_dec; ?>">Computador<i class="fas fa-sort<?php echo $coluna == 'device_id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="manutencoes.php?coluna=descricao&ordem=<?php echo $cre_dec; ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="manutencoes.php?coluna=tipo&ordem=<?php echo $cre_dec; ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="manutencoes.php?coluna=subtipo&ordem=<?php echo $cre_dec; ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th>Ações</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -79,9 +79,9 @@ if (isset($_GET['apaga'])) {
 			<tr>
 				<td><?=$maintenance['id']?></td>
 				<td><?=$maintenance['device_id']?></td>
+				<td><?=$maintenance['descricao']?></td>
 				<td><?=$maintenance['tipo']?></td>
 				<td><?=$maintenance['subtipo']?></td>
-				<td><?=$maintenance['descricao']?></td>
 				<td class="text-right">
 					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
 					<a href="atualizaManutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
