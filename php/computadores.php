@@ -67,14 +67,14 @@ if (isset($_GET['apaga'])) {
     <table class="table table-striped table-bordered table-responsive-sm">
         <thead>
         <tr>
-            <td>ID</td>
-            <td>Patrimonial</td>
-            <td>Marca</td>
-            <td>Modelo</td>
-            <td>CPU</td>
-            <td>Nome</td>
-            <td>OS</td>
-            <td>Ações</td>
+            <th><a href="computadores.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=patrimonial&ordem=<?php echo $cre_dec; ?>">Patrimonial<i class="fas fa-sort<?php echo $coluna == 'patrimonial' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=marca&ordem=<?php echo $cre_dec; ?>">Marca<i class="fas fa-sort<?php echo $coluna == 'marca' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=modelo&ordem=<?php echo $cre_dec; ?>">Modelo<i class="fas fa-sort<?php echo $coluna == 'modelo' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=cpu&ordem=<?php echo $cre_dec; ?>">CPU<i class="fas fa-sort<?php echo $coluna == 'cpu' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=nome&ordem=<?php echo $cre_dec; ?>">Nome<i class="fas fa-sort<?php echo $coluna == 'nome' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th><a href="computadores.php?coluna=os&ordem=<?php echo $cre_dec; ?>">OS<i class="fas fa-sort<?php echo $coluna == 'os' ? '-' . $cima_baixo : ''; ?>"</a></th>
+            <th>Ações</th>
         </tr>
         </thead>
         <tbody>
