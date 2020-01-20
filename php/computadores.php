@@ -72,7 +72,8 @@ if (isset($_GET['apaga'])) {
     <table class="table table-striped table-bordered table-responsive-sm">
         <thead>
         <tr>
-            <th><a href="computadores.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+<!--            <a href="computadores.php?coluna=id&ordem=--><?php //echo $cre_dec; ?><!--">-->
+            <th><a href="<?= adicionaParametroURL($urlAtual, 'coluna', 'id', 'ordem', $cre_dec, null)?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
             <th><a href="computadores.php?coluna=patrimonial&ordem=<?php echo $cre_dec; ?>">Patrimonial<i class="fas fa-sort<?php echo $coluna == 'patrimonial' ? '-' . $cima_baixo : ''; ?>"</i></a></th>
             <th><a href="computadores.php?coluna=marca&ordem=<?php echo $cre_dec; ?>">Marca<i class="fas fa-sort<?php echo $coluna == 'marca' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
             <th><a href="computadores.php?coluna=modelo&ordem=<?php echo $cre_dec; ?>">Modelo<i class="fas fa-sort<?php echo $coluna == 'modelo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
@@ -105,14 +106,17 @@ if (isset($_GET['apaga'])) {
         </tbody>
     </table>
 </div>
-<a href="<?php echo strval(adicionaParametroURL($urlAtual,'busca', 'ronaldo')); ?>"
-    class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
-</body>
+<form action="manipuladorUrl.php" method="post">
+    <input name="url" type="text" value="<?= $urlAtual ?>" style="display:none">
+    <input name="redir" type="text" value="true" style="display:none">
+    <input name="valorBusca" type="text">
+    <input type="submit" value="Enviar">
+</form>
+
 </html>
 
 <?php
     var_dump($_GET);
-    echo adicionaParametroURL($urlAtual,"busca", "ronaldo");
     echo '<br>';
     echo $urlAtual;
 ?>
