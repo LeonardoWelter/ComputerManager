@@ -2,10 +2,13 @@
 require_once "validaLogin.php";
 require_once 'listarComputadores.php';
 require_once 'status.php';
+require_once 'manipuladorUrl.php';
 
 if (!isset($_SESSION)) {
 	session_start();
 }
+
+$urlAtual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 
 
@@ -102,5 +105,14 @@ if (isset($_GET['apaga'])) {
         </tbody>
     </table>
 </div>
+<a href="<?php echo strval(adicionaParametroURL($urlAtual,'busca', 'ronaldo')); ?>"
+    class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
 </body>
 </html>
+
+<?php
+    var_dump($_GET);
+    echo adicionaParametroURL($urlAtual,"busca", "ronaldo");
+    echo '<br>';
+    echo $urlAtual;
+?>
