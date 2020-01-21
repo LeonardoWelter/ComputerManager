@@ -62,5 +62,6 @@ require_once 'navbar.php';
         <input class="btn btn-block btn-primary" type="submit" value="Criar">
     </form>
 </div>
+<?php require_once 'rodape.php' ?>
 </body>
 </html>

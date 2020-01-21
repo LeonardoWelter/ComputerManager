@@ -149,4 +149,6 @@ $urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_UR
             </tbody>
         </table>
     </div>
+    <?php require_once 'rodape.php' ?>
+    </body>
 </html>

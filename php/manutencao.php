@@ -73,5 +73,7 @@ require_once 'navbar.php';
             </table>
         </div>
     </div>
+</div>
+<?php require_once 'rodape.php' ?>
 </body>
 </html>

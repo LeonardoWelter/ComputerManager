@@ -45,6 +45,7 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/rodape.css">
 
     <script src="https://kit.fontawesome.com/a98ff00b7e.js" crossorigin="anonymous"></script>
 
@@ -96,6 +97,8 @@ if(isset($_SESSION['status'])) {
             </div>
         </div>
     </div>
+</div>
+<?php require_once 'php/rodape.php' ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

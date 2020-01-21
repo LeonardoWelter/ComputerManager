@@ -107,5 +107,6 @@ if (isset($_GET['apaga'])) {
 		</tbody>
 	</table>
 </div>
+<?php require_once 'rodape.php' ?>
 </body>
 </html>
