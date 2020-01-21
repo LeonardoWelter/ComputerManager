@@ -2,10 +2,13 @@
 require_once "validaLogin.php";
 require_once 'listarUsuarios.php';
 require_once 'status.php';
+require_once 'manipuladorUrl.php';
 
 if(!isset($_SESSION)) {
 	session_start();
 }
+
+$urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_URI]";
 ?>
 
 
@@ -60,18 +63,30 @@ if (isset($_GET['apaga'])) {
 ?>
 
 <div class="container">
-    <h2 class="mt-3">Usuários</h2>
-    <div class="btn-group d-flex float-right mt-3 mb-2">
+    <h2 class="mt-3 linha">Usuários</h2>
+    <div class="btn-group d-flex float-right mt-1">
+        <form action="manipuladorUrl.php" method="post">
+            <div class="input-group">
+                <input class="form-control d-none" name="url" type="text" value="<?= $urlAtual ?>">
+                <input class="form-control d-none" name="redir" type="text" value="true">
+                <input class="form-control" id="buscar" name="valorBusca" type="text" value="<?= isset($_GET['busca']) ? $_GET['busca'] : null; ?>"
+                       placeholder="Pesquisar">
+                <span class="input-group-append">
+                    <input class="btn btn-sm btn-outline-primary" type="submit" value="Pesquisar">
+                    </span>
+            </div>
+        </form>
+    </div>
+    <div class="btn-group d-flex float-right mt-1 mr-2">
         <a href="cadastro.php" class="btn btn-sm btn-outline-primary">Cadastrar usuário</a>
     </div>
-	<hr>
 	<table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
-			<th><a href="usuarios.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="usuarios.php?coluna=nome&ordem=<?php echo $cre_dec; ?>">Nome<i class="fas fa-sort<?php echo $coluna == 'nome' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="usuarios.php?coluna=usuario&ordem=<?php echo $cre_dec; ?>">Usuário<i class="fas fa-sort<?php echo $coluna == 'usuario' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="usuarios.php?coluna=email&ordem=<?php echo $cre_dec; ?>">Email<i class="fas fa-sort<?php echo $coluna == 'email' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'id', 'ordem' => $cre_dec), null) ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'nome', 'ordem' => $cre_dec), null) ?>">Nome<i class="fas fa-sort<?php echo $coluna == 'nome' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'usuario', 'ordem' => $cre_dec), null) ?>">Usuário<i class="fas fa-sort<?php echo $coluna == 'usuario' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'email', 'ordem' => $cre_dec), null) ?>">Email<i class="fas fa-sort<?php echo $coluna == 'email' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th>Ações</th>
 		</tr>
 		</thead>

@@ -26,12 +26,22 @@ $ordem = isset($_GET['ordem']) && strtolower($_GET['ordem']) == 'desc' ? 'DESC' 
 $cima_baixo = str_replace(array('ASC','DESC'), array('up','down'), $ordem);
 $cre_dec = $ordem == 'ASC' ? 'desc' : 'asc';
 
+$busca = isset($_GET['busca']) ? '%'.trim($_GET['busca']).'%' : null;
+
 // Connect to MySQL database
 $pdo = pdo_connect_mysql();
 
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
-$stmt = $pdo->query('SELECT * FROM devices ORDER BY ' .  $coluna . ' ' . $ordem);
+if(!isset($_GET['busca'])) {
+    $stmt = $pdo->prepare('SELECT * FROM devices ORDER BY ' . $coluna . ' ' . $ordem);
+    $stmt->execute();
+} else {
+    $stmt = $pdo->prepare('SELECT * FROM devices WHERE 
+                                    id LIKE ? OR patrimonial LIKE ? OR marca LIKE ? OR modelo LIKE ? OR cpu LIKE ? OR nome LIKE ? OR os LIKE ? 
+                                    ORDER BY ' . $coluna . ' ' . $ordem);
+    $stmt->execute([$busca, $busca, $busca, $busca, $busca, $busca, $busca]);
+}
 //$stmt = $pdo->prepare('SELECT * FROM devices ORDER BY id ');
-$stmt->execute();
+
 // Fetch the records so we can display them in our template.
 $devices = $stmt->fetchAll(PDO::FETCH_ASSOC);

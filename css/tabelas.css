@@ -21,3 +21,22 @@ th a:active {
     text-decoration: none !important;
     color: #212529 !important;
 }
+
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.input-group {
+    width: 200px;
+    height: 32px;
+}
+
+.input-group input {
+    height: 32px;
+}
+
+.linha {
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}

@@ -7,7 +7,7 @@
     OK Edição de computadores existentes
     OK Remoção de computadores
     OK Listagem de Computadores
-    TODO Pesquisa de Computadores
+    OK Pesquisa de Computadores
     TODO Paginação de tabelas
     TODO Unificação dos códigos de persistência
     TODO Limpeza do código
@@ -16,7 +16,7 @@
     OK Registro de Manutenção
     OK Histórico de Manutenção do Computador
 
-    TODO Padronização da estilização da interface
+    TODO Padronização da estilização da interface - falta as telas de criação de computador / manutenção
     OK Adicionar exit(); após todos os headers
 -->
 <?php
