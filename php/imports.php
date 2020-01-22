@@ -25,7 +25,7 @@
 	<!-- Imports locais -->
 	<script src="../js/scripts.js"></script>
 	<link rel="stylesheet" href="../css/navbar.css">
-	<link rel="stylesheet" href="../css/rodape.css">'
-
+	<link rel="stylesheet" href="../css/rodape.css">
+	<link rel="stylesheet" href="../css/estilo.css">'
 
 ?>

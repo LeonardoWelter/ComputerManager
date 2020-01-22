@@ -49,3 +49,15 @@ if (!isset($_GET['busca'])) {
 
 // Fetch the records so we can display them in our template.
 $maintenances = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+function selecionaComputador($id) {
+
+    global $pdo;
+
+    $stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
+    $stmt->execute([$id]);
+
+    $computador = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $computador;
+}

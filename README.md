@@ -63,4 +63,6 @@ Manutenções:
   - Device_ID (FK);
   - Tipo;
   - Descrição;
-  - Comentários
+  - Comentários;
+  - Criador;
+  - Data;

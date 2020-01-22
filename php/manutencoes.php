@@ -3,6 +3,7 @@ require_once "validaLogin.php";
 require_once 'listarManutencao.php';
 require_once 'status.php';
 require_once 'manipuladorUrl.php';
+require_once 'conversor.php';
 
 if(!isset($_SESSION)) {
 	session_start();
@@ -86,17 +87,20 @@ if (isset($_GET['apaga'])) {
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'descricao', 'ordem' => $cre_dec), null) ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'tipo', 'ordem' => $cre_dec), null) ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'subtipo', 'ordem' => $cre_dec), null) ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th>Ações</th>
+            <th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'data', 'ordem' => $cre_dec), null) ?>">Data<i class="fas fa-sort<?php echo $coluna == 'data' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+
+            <th>Ações</th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php foreach ($maintenances as $maintenance): ?>
 			<tr>
 				<td><?=$maintenance['id']?></td>
-				<td><?=$maintenance['device_id']?></td>
+				<td><?=converteComputadorLista($maintenance['device_id'])?></td>
 				<td><?=$maintenance['descricao']?></td>
-				<td><?=$maintenance['tipo']?></td>
-				<td><?=$maintenance['subtipo']?></td>
+				<td><?=converteTipo($maintenance['tipo'])?></td>
+				<td><?=converteSubTipo($maintenance['tipo'])?></td>
+                <td><?=$maintenance['data']?></td>
 				<td class="text-right">
 					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
 					<a href="atualizaManutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>

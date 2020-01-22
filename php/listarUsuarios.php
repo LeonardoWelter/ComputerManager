@@ -30,7 +30,7 @@ $busca = isset($_GET['busca']) ? '%'.trim($_GET['busca']).'%' : null;
 
 
 // Connect to MySQL database
-$pdo = pdo_connect_mysql();
+    $pdo = pdo_connect_mysql();
 
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
 if(!isset($_GET['busca'])) {

@@ -17,6 +17,7 @@
     OK Histórico de Manutenção do Computador
 
     TODO Padronização da estilização da interface - falta as telas de criação de computador / manutenção
+    TODO Alterar as Foreign Keys
     OK Adicionar exit(); após todos os headers
 -->
 <?php

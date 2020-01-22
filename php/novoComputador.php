@@ -24,8 +24,7 @@ require_once 'status.php';
 require_once 'navbar.php';
 ?>
 <div class="container">
-    <h2 class="mt-3 mb-2">Novo computador</h2>
-    <hr>
+    <h2 class="mt-3 linha">Novo computador</h2>
     <form action="criarComputador.php" method="post">
         <div class="form-group">
             <label for="id">ID</label>

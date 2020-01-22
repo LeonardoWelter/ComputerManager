@@ -23,8 +23,7 @@ require_once 'atualizarComputador.php';
 require_once 'navbar.php';
 ?>
 <div class="container">
-    <h2 class="mt-3 mb-2">Atualizar computador ID: <?= $device['id'] ?></h2>
-    <hr>
+    <h2 class="mt-3 linha">Atualizar computador ID: <?= $device['id'] ?></h2>
     <form action="atualizarComputador.php?id=<?= $device['id'] ?>" method="post">
         <div class="form-group">
             <label for="id">ID</label>

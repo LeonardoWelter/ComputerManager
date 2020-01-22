@@ -21,7 +21,7 @@ function pdo_connect_mysql()
 
 // Connect to MySQL database
 $pdo = pdo_connect_mysql();
-$msg = '';
+date_default_timezone_set('America/Sao_Paulo');
 
 if (!empty($_POST)) {
 	// Post data not empty insert a new record
@@ -33,9 +33,11 @@ if (!empty($_POST)) {
 	$subtipo = isset($_POST['subtipo']) ? $_POST['subtipo'] : '';
 	$descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
 	$comentarios = isset($_POST['comentarios']) ? $_POST['comentarios'] : '';
+	$data = date('d/m/Y');
+	$criador = $_SESSION['id'];
 	// Insert new record into the contacts table
-	$stmt = $pdo->prepare('INSERT INTO maintenance VALUES (?, ?, ?, ?, ?, ?)');
-	$stmt->execute([$id, $device_id, $tipo, $subtipo, $descricao, $comentarios]);
+	$stmt = $pdo->prepare('INSERT INTO maintenance (id, device_id, tipo, subtipo, descricao, comentarios, data, criador) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+	$stmt->execute([$id, $device_id, $tipo, $subtipo, $descricao, $comentarios, $data, $criador]);
 
 	// Output message
 	//$msg = 'Created Successfully!';

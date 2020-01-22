@@ -64,13 +64,13 @@ if (isset($_GET['apaga'])) {
 
 
     <div class="container">
-        <div class="btn-group d-flex float-right">
+        <h2 class="mt-3 linha"><?= $device['nome'] ?></h2>
+        <div class="btn-group d-flex float-right mt-1">
             <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
             <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
             <a href="#" class="btn btn-sm btn-outline-primary">Ligar</a>
         </div>
-        <h2 class="mt-3 mb-2"><?= $device['nome'] ?></h2>
-        <hr>
+
         <div class="table-responsive">
             <table class="table table-striped table-bordered tabela">
                 <caption>Informações do computador de ID: <?= $device['id'] ?></caption>

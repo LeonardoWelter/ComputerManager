@@ -35,8 +35,3 @@ th a:active {
 .input-group input {
     height: 32px;
 }
-
-.linha {
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-}
