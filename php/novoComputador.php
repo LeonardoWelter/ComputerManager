@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'criarComputador.php';
 require_once 'status.php';
 ?>
@@ -15,7 +15,7 @@ require_once 'status.php';
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/novo_computador.css">
+    <link rel="stylesheet" href="../css/novoComputador.css">
 </head>
 
 <body>

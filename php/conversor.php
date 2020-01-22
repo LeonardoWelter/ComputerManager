@@ -1,9 +1,9 @@
 <?php
 
-function converteUsuario($id) {
+function converteUsuario($usuario) {
     require_once 'mostrarManutencao.php';
 
-    $arrayUsuario = selecionaUsuario($id);
+    $arrayUsuario = selecionaUsuario($usuario);
 
     return $arrayUsuario['nome'];
 }
@@ -11,10 +11,10 @@ function converteUsuario($id) {
 function converteTipo($tipo) {
 
     switch ($tipo) {
-        case 1:
+        case 'hardware':
             $retorno = 'Hardware';
             break;
-        case 2:
+        case 'software':
             $retorno = 'Software';
             break;
         default:
@@ -28,11 +28,11 @@ function converteTipo($tipo) {
 function converteSubTipo($subtipo) {
 
     switch ($subtipo) {
-        case 1:
+        case 'instalacao':
             $retorno = 'Instalação';
             break;
-        case 2:
-            $retorno = 'Atualização';
+        case 'substituicao':
+            $retorno = 'Substituição';
             break;
         default:
             $retorno = 'Desconhecido';
@@ -42,18 +42,18 @@ function converteSubTipo($subtipo) {
     return $retorno;
 }
 
-function converteComputadorLista($id_computador) {
-    require_once 'listarManutencao.php';
+function converteComputadorLista($pat_computador) {
+    require_once 'listarManutencoes.php';
 
-    $arrayComputador = selecionaComputador($id_computador);
+    $arrayComputador = selecionaComputador($pat_computador);
 
     return $arrayComputador['nome'];
 }
 
-function converteComputador($id_computador) {
+function converteComputador($pat_computador) {
     require_once 'mostrarManutencao.php';
 
-    $arrayComputador = selecionaComputador($id_computador);
+    $arrayComputador = selecionaComputador($pat_computador);
 
     return $arrayComputador['nome'];
 }

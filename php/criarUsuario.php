@@ -70,10 +70,10 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
 		exit();
     } else {
         // Username doesnt exists, insert new account
-        if ($stmt = $con->prepare('INSERT INTO users (usuario, senha, nome, email) VALUES (?, ?, ?, ?)')) {
+        if ($stmt = $con->prepare('INSERT INTO users (usuario, senha, nome, email, grupo) VALUES (?, ?, ?, ?, ?)')) {
             // We do not want to expose passwords in our database, so header the password and use password_verify when a user logs in.
             $password = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-            $stmt->bind_param('ssss', $_POST['usuario'], $password, $_POST['nome'], $_POST['email']);
+            $stmt->bind_param('sssss', $_POST['usuario'], $password, $_POST['nome'], $_POST['email'], $_POST['grupo']);
             $stmt->execute();
 
             //echo 'You have successfully registered, you can now login!';

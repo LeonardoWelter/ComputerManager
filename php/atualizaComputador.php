@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'atualizarComputador.php';
 ?>
 
@@ -14,7 +14,7 @@ require_once 'atualizarComputador.php';
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/atualiza_computador.css">
+    <link rel="stylesheet" href="../css/atualizaComputador.css">
 </head>
 
 <body>

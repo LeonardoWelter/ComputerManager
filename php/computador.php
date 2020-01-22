@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'mostrarComputador.php';
 require_once 'status.php';
 

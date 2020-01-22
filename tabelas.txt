@@ -1,54 +1,5 @@
-create schema ComputerManager collate latin1_swedish_ci;
-
-create table devices
-(
-	id int auto_increment
-		primary key,
-	patrimonial varchar(255) not null,
-	marca varchar(255) not null,
-	modelo varchar(255) null,
-	cpu varchar(255) not null,
-	ram varchar(255) not null,
-	hdd varchar(255) not null,
-	fonte varchar(255) not null,
-	mac varchar(255) not null,
-	nome varchar(255) not null,
-	os varchar(255) not null
-);
-
-create table users
-(
-	id int auto_increment
-		primary key,
-	nome varchar(255) not null,
-	usuario varchar(255) not null,
-	email varchar(255) not null,
-	senha varchar(255) not null,
-	grupo varchar(10) not null
-);
-
-create table maintenance
-(
-	id int auto_increment
-		primary key,
-	device_id int not null,
-	tipo varchar(255) null,
-	subtipo varchar(255) null,
-	descricao varchar(255) null,
-	comentarios varchar(255) null,
-	data varchar(10) null,
-	criador int null,
-	constraint criador_id_fk
-		foreign key (criador) references users (id),
-	constraint maintenance_devices_id_fk
-		foreign key (device_id) references devices (id)
-);
-
 1	test	$2y$10$SfhYIDtn.iOuCW7zfoFLuuZHX6lja4lF4XA4JqNmpiH/.P3zB8JCa	Teste	test@test.com
 
-
-////////////////////////////////////
-
 create schema ComputerManager collate latin1_swedish_ci;
 
 create table devices
@@ -57,7 +8,7 @@ create table devices
 		primary key,
 	patrimonial varchar(255) not null,
 	marca varchar(255) not null,
-	modelo varchar(255) null,
+	modelo varchar(255) not null,
 	cpu varchar(255) not null,
 	ram varchar(255) not null,
 	hdd varchar(255) not null,
@@ -73,11 +24,13 @@ create table users
 (
 	id int auto_increment
 		primary key,
-	nome varchar(255) not null,
 	usuario varchar(255) not null,
-	email varchar(255) null,
 	senha varchar(255) not null,
-	grupo varchar(10) null,
+	nome varchar(255) not null,
+	email varchar(255) not null,
+	grupo varchar(10) not null,
+	constraint users_email_uindex
+		unique (email),
 	constraint users_usuario_uindex
 		unique (usuario)
 );
@@ -87,18 +40,15 @@ create table maintenance
 	id int auto_increment
 		primary key,
 	device_pat varchar(255) not null,
-	tipo varchar(255) null,
-	subtipo varchar(255) null,
-	descricao varchar(255) null,
-	comentarios varchar(255) null,
-	data varchar(10) null,
+	tipo varchar(255) not null,
+	subtipo varchar(255) not null,
+	descricao varchar(255) not null,
+	comentarios varchar(255) not null,
+	data varchar(10) not null,
 	criador varchar(255) not null,
-	constraint maintenance_device_pat_fk
+	constraint maintenance_d_p_fk
 		foreign key (device_pat) references devices (patrimonial),
-	constraint maintenance_user_usuario_fk
+	constraint maintenance_u_u_fk
 		foreign key (criador) references users (usuario)
 );
-
-
-
 

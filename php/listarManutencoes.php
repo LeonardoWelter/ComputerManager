@@ -42,7 +42,7 @@ if (!isset($_GET['busca'])) {
     $stmt->execute();
 } else {
     $stmt = $pdo->prepare('SELECT * FROM maintenance WHERE 
-                                    id LIKE ? OR device_id LIKE ? OR tipo LIKE ? OR subtipo LIKE ? OR descricao LIKE ? OR comentarios LIKE ?
+                                    id LIKE ? OR device_pat LIKE ? OR tipo LIKE ? OR subtipo LIKE ? OR descricao LIKE ? OR comentarios LIKE ?
                                     ORDER BY ' . $coluna . ' ' . $ordem);
     $stmt->execute([$busca, $busca, $busca, $busca, $busca, $busca,]);
 }
@@ -50,12 +50,12 @@ if (!isset($_GET['busca'])) {
 // Fetch the records so we can display them in our template.
 $maintenances = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-function selecionaComputador($id) {
+function selecionaComputador($patrimonial) {
 
     global $pdo;
 
-    $stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
-    $stmt->execute([$id]);
+    $stmt = $pdo->prepare('SELECT * FROM devices WHERE patrimonial = ?');
+    $stmt->execute([$patrimonial]);
 
     $computador = $stmt->fetch(PDO::FETCH_ASSOC);
 

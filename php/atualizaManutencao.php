@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'atualizarManutencao.php';
 ?>
 
@@ -39,9 +39,9 @@ require_once 'navbar.php';
 								   placeholder="id" value="<?= $maintenance['id'] ?>" disabled>
 						</div>
 						<div class="form-group">
-							<label for="cadastroNome">ID Computador</label>
-							<input id="cadastroNome" name="device_id" type="text" class="form-control"
-								   placeholder="ID do Computador" value="<?= $maintenance['device_id'] ?>" required>
+							<label for="cadastroNome">Patrimônio</label>
+							<input id="cadastroNome" name="device_pat" type="text" class="form-control"
+								   placeholder="ID do Computador" value="<?= $maintenance['device_pat'] ?>" required>
 						</div>
 						<div class="form-group">
 							<label for="cadastroTipo">Tipo</label>

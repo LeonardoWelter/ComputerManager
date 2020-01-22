@@ -38,9 +38,9 @@ $stmt = $pdo->prepare('SELECT * FROM users ORDER BY ' .  $coluna . ' ' . $ordem)
 $stmt->execute();
 } else {
     $stmt = $pdo->prepare('SELECT * FROM users WHERE 
-                                    id LIKE ? OR nome LIKE ? OR usuario LIKE ? OR email LIKE ?
+                                    id LIKE ? OR nome LIKE ? OR usuario LIKE ? OR email LIKE ? OR grupo LIKE ?
                                     ORDER BY ' . $coluna . ' ' . $ordem);
-    $stmt->execute([$busca, $busca, $busca, $busca]);
+    $stmt->execute([$busca, $busca, $busca, $busca, $busca]);
 }
 // Fetch the records so we can display them in our template.
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

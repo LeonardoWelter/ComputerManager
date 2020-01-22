@@ -27,7 +27,7 @@ if (!isset($_POST['email'], $_POST['senha'])) {
 }
 
 // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
-if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE email = ?')) {
+if ($stmt = $con->prepare('SELECT id, senha, usuario, grupo FROM users WHERE email = ?')) {
     // Bind parameters (s = string, i = int, b = blob, etc), in our case the username is a string so we use "s"
     $stmt->bind_param('s', $_POST['email']);
     $stmt->execute();
@@ -35,7 +35,7 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE email = ?')) {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $senha);
+        $stmt->bind_result($id, $senha, $usuario, $grupo);
         $stmt->fetch();
         // Account exists, now we verify the password.
         // Note: remember to use password_hash in your registration file to store the hashed passwords.
@@ -46,6 +46,8 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE email = ?')) {
             $_SESSION['autenticado'] = TRUE;
             $_SESSION['nome'] = $_POST['email'];
             $_SESSION['id'] = $id;
+            $_SESSION['usuario'] = $usuario;
+            $_SESSION['grupo'] = $grupo;
             $_SESSION['status'] = 'sucessoLogin';
             header('Location: menu.php');
             exit();
@@ -65,3 +67,4 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE email = ?')) {
     $stmt->close();
 }
 
+$con->close();

@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'atualizarUsuario.php';
 ?>
 
@@ -61,9 +61,28 @@ require_once 'navbar.php';
 						<div class="form-group">
 							<label for="cadastroGrupo"><i class="fas fa-users mr-1"></i>Grupo</label>
 							<select id="cadastroGrupo" name="grupo" class="custom-select" required>
-								<option value="" selected disabled>Selecione o grupo</option>
-								<option value="1">Administrador</option>
-								<option value="2">Usuário</option>
+                                <?php
+									switch ($user['grupo']) {
+										case 'admin':
+											echo '<option value="" disabled>Selecione o grupo</option>
+												  <option value="admin" selected>Administrador</option>
+								 				  <option value="user">Usuário</option>';
+											break;
+										case 'user':
+											echo '<option value="" disabled>Selecione o grupo</option>
+												  <option value="admin">Administrador</option>
+								 				  <option value="user" selected>Usuário</option>';
+											break;
+										default:
+											echo '<option value="" selected disabled>Selecione o grupo</option>
+												  <option value="admin">Administrador</option>
+								 				  <option value="user">Usuário</option>';
+											break;
+									}
+								?>
+<!--								<option value="" disabled>Selecione o grupo</option>-->
+<!--								<option value="admin">Administrador</option>-->
+<!--								<option value="user">Usuário</option>-->
 							</select>
 						</div>
 						<button class="btn btn-lg btn-info btn-block" type="submit">Atualizar</button>

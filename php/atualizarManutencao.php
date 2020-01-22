@@ -26,14 +26,14 @@ if (isset($_GET['id'])) {
 	if (!empty($_POST)) {
 		// This part is similar to the create.php, but instead we update a record and not insert
 		$id = isset($_POST['id']) ? $_POST['id'] : NULL;
-		$device_id = isset($_POST['device_id']) ? $_POST['device_id'] : '';
+		$device_pat = isset($_POST['device_pat']) ? $_POST['device_pat'] : '';
 		$tipo = isset($_POST['tipo']) ? $_POST['tipo'] : '';
 		$subtipo = isset($_POST['subtipo']) ? $_POST['subtipo'] : '';
 		$descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
 		$comentarios = isset($_POST['comentarios']) ? $_POST['comentarios'] : '';
 		// Update the record
-		$stmt = $pdo->prepare('UPDATE maintenance SET device_id = ?, tipo = ?, subtipo = ?, descricao = ?, comentarios = ? WHERE id = ?');
-		$stmt->execute([$device_id, $tipo, $subtipo, $descricao, $comentarios, $_GET['id']]);
+		$stmt = $pdo->prepare('UPDATE maintenance SET device_pat = ?, tipo = ?, subtipo = ?, descricao = ?, comentarios = ? WHERE id = ?');
+		$stmt->execute([$device_pat, $tipo, $subtipo, $descricao, $comentarios, $_GET['id']]);
 
 		//$msg = 'Updated Successfully!';
 

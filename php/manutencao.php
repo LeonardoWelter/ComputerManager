@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'mostrarManutencao.php';
 require_once 'status.php';
 require_once 'conversor.php';
@@ -44,7 +44,9 @@ require_once 'navbar.php';
             <table class="table table-striped table-bordered tabela">
                 <caption>Informações do computador de ID: <?= $maintenance['id'] ?></caption>
                 <thead class="thead text-center">
-                <th colspan="2">Computador ID: <?= $maintenance['id'] ?></th>
+                <tr>
+                    <th colspan="2">Computador ID: <?= $maintenance['id'] ?></th>
+                </tr>
                 </thead>
                 <tr>
                     <td class="font-weight-bold">ID</td>
@@ -52,7 +54,7 @@ require_once 'navbar.php';
                 </tr>
                 <tr>
                     <td class="font-weight-bold">Computador</td>
-                    <td><?= converteComputador($maintenance['device_id']) ?></td>
+                    <td><?= converteComputador($maintenance['device_pat']) ?></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">Tipo</td>

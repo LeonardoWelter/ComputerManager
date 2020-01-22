@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'listarUsuarios.php';
 require_once 'status.php';
 require_once 'manipuladorUrl.php';
@@ -87,7 +87,8 @@ if (isset($_GET['apaga'])) {
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'nome', 'ordem' => $cre_dec), null) ?>">Nome<i class="fas fa-sort<?php echo $coluna == 'nome' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'usuario', 'ordem' => $cre_dec), null) ?>">Usuário<i class="fas fa-sort<?php echo $coluna == 'usuario' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'email', 'ordem' => $cre_dec), null) ?>">Email<i class="fas fa-sort<?php echo $coluna == 'email' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th>Ações</th>
+            <th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'grupo', 'ordem' => $cre_dec), null) ?>">Grupo<i class="fas fa-sort<?php echo $coluna == 'grupo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+            <th>Ações</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -97,7 +98,8 @@ if (isset($_GET['apaga'])) {
 				<td><?=$user['nome']?></td>
 				<td><?=$user['usuario']?></td>
 				<td><?=$user['email']?></td>
-				<td class="text-right">
+                <td><?=$user['grupo']?></td>
+                <td class="text-right">
 					<a href="atualizaUsuario.php?id=<?=$user['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
 					<a href="usuarios.php?apaga=<?=$user['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
 				</td>

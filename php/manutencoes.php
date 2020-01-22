@@ -1,6 +1,6 @@
 <?php
-require_once "validaLogin.php";
-require_once 'listarManutencao.php';
+require_once 'validaLogin.php';
+require_once 'listarManutencoes.php';
 require_once 'status.php';
 require_once 'manipuladorUrl.php';
 require_once 'conversor.php';
@@ -83,7 +83,7 @@ if (isset($_GET['apaga'])) {
 		<thead>
 		<tr>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'id', 'ordem' => $cre_dec), null) ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'device_id', 'ordem' => $cre_dec), null) ?>">Computador<i class="fas fa-sort<?php echo $coluna == 'device_id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'device_pat', 'ordem' => $cre_dec), null) ?>">Computador<i class="fas fa-sort<?php echo $coluna == 'device_pat' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'descricao', 'ordem' => $cre_dec), null) ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'tipo', 'ordem' => $cre_dec), null) ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
 			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'subtipo', 'ordem' => $cre_dec), null) ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
@@ -96,10 +96,10 @@ if (isset($_GET['apaga'])) {
 		<?php foreach ($maintenances as $maintenance): ?>
 			<tr>
 				<td><?=$maintenance['id']?></td>
-				<td><?=converteComputadorLista($maintenance['device_id'])?></td>
+				<td><?=converteComputadorLista($maintenance['device_pat'])?></td>
 				<td><?=$maintenance['descricao']?></td>
 				<td><?=converteTipo($maintenance['tipo'])?></td>
-				<td><?=converteSubTipo($maintenance['tipo'])?></td>
+				<td><?=converteSubTipo($maintenance['subtipo'])?></td>
                 <td><?=$maintenance['data']?></td>
 				<td class="text-right">
 					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>

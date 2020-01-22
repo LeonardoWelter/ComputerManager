@@ -40,24 +40,24 @@ if (isset($_GET['id'])) {
 	exit();
 }
 
-function selecionaUsuario($id) {
+function selecionaUsuario($usuario_param) {
 
     global $pdo;
 
-    $stmt = $pdo->prepare('SELECT * FROM users WHERE id = ?');
-    $stmt->execute([$id]);
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE usuario = ?');
+    $stmt->execute([$usuario_param]);
 
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $usuario;
 }
 
-function selecionaComputador($id) {
+function selecionaComputador($pat) {
 
     global $pdo;
 
-    $stmt = $pdo->prepare('SELECT * FROM devices WHERE id = ?');
-    $stmt->execute([$id]);
+    $stmt = $pdo->prepare('SELECT * FROM devices WHERE patrimonial = ?');
+    $stmt->execute([$pat]);
 
     $computador = $stmt->fetch(PDO::FETCH_ASSOC);
 

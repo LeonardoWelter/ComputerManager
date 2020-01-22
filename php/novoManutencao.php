@@ -1,5 +1,5 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'criarComputador.php';
 require_once 'status.php';
 ?>
@@ -15,7 +15,7 @@ require_once 'status.php';
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/novo_computador.css">
+    <link rel="stylesheet" href="../css/novoComputador.css">
 </head>
 
 <body>
@@ -31,23 +31,23 @@ require_once 'navbar.php';
             <input class="form-control" type="text" name="id" placeholder="0" value="auto" id="id" disabled>
         </div>
         <div class="form-group">
-            <label for="device_id">Computador ID</label>
-            <input class="form-control" type="number" name="device_id" placeholder="23" id="device_id" required>
+            <label for="device_pat">Patrimônio</label>
+            <input class="form-control" type="number" name="device_pat" placeholder="23" id="device_pat" required>
         </div>
         <div class="form-group">
             <label for="cadastroTipo"><i class="fas fa-users mr-1"></i>Tipo</label>
             <select id="cadastroTipo" name="tipo" class="custom-select" required>
                 <option value="" selected disabled>Selecione o Tipo</option>
-                <option value="1">Tipo 1</option>
-                <option value="2">Tipo 2</option>
+                <option value="hardware">Hardware</option>
+                <option value="software">Software</option>
             </select>
         </div>
         <div class="form-group">
             <label for="cadastroSubTipo"><i class="fas fa-users mr-1"></i>Subtipo</label>
             <select id="cadastroSubTipo" name="subtipo" class="custom-select" required>
                 <option value="" selected disabled>Selecione o Subtipo</option>
-                <option value="1">Subtipo 1</option>
-                <option value="2">Subtipo 2</option>
+                <option value="instalacao">Instalação</option>
+                <option value="substituicao">Substituição</option>
             </select>
         </div>
         <div class="form-group">
