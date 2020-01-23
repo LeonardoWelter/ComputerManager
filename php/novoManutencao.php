@@ -16,6 +16,7 @@ require_once 'status.php';
 	?>
 
     <link rel="stylesheet" href="../css/novoComputador.css">
+    <script src="../js/scripts.js"></script>
 </head>
 
 <body>
@@ -36,18 +37,21 @@ require_once 'navbar.php';
         </div>
         <div class="form-group">
             <label for="cadastroTipo"><i class="fas fa-users mr-1"></i>Tipo</label>
-            <select id="cadastroTipo" name="tipo" class="custom-select" required>
+            <select id="cadastroTipo" name="tipo" class="custom-select" required onchange="gerarOptions()">
                 <option value="" selected disabled>Selecione o Tipo</option>
                 <option value="hardware">Hardware</option>
                 <option value="software">Software</option>
+                <option value="rede">Rede</option>
+                <option value="outro">Outro</option>
             </select>
         </div>
         <div class="form-group">
             <label for="cadastroSubTipo"><i class="fas fa-users mr-1"></i>Subtipo</label>
             <select id="cadastroSubTipo" name="subtipo" class="custom-select" required>
                 <option value="" selected disabled>Selecione o Subtipo</option>
-                <option value="instalacao">Instalação</option>
-                <option value="substituicao">Substituição</option>
+<!--                <option value="instalacao">Instalação</option>-->
+<!--                <option value="substituicao">Substituição</option>-->
+
             </select>
         </div>
         <div class="form-group">
