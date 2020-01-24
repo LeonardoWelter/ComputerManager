@@ -37,15 +37,17 @@ require_once 'navbar.php';
     <div class="container">
         <h2 class="mt-3 linha"><?= $maintenance['descricao'] ?></h2>
         <div class="btn-group d-flex float-right mt-1">
+			<?php if ($_SESSION['grupo'] != 'user') { ?>
             <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
+            <?php } ?>
             <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-bordered tabela">
-                <caption>Informações do computador de ID: <?= $maintenance['id'] ?></caption>
+                <caption>Informações da manutenção de ID: <?= $maintenance['id'] ?></caption>
                 <thead class="thead text-center">
                 <tr>
-                    <th colspan="2">Computador ID: <?= $maintenance['id'] ?></th>
+                    <th colspan="2">Manutenção ID: <?= $maintenance['id'] ?></th>
                 </tr>
                 </thead>
                 <tr>

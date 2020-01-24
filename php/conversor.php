@@ -57,3 +57,43 @@ function converteComputador($pat_computador) {
 
     return $arrayComputador['nome'];
 }
+
+function switchManutencao($tipo) {
+	switch ($tipo) {
+		case 'hardware':
+			echo '<option value="" disabled>Selecione o Tipo</option>';
+			echo '<option value="hardware" selected>Hardware</option>';
+			echo '<option value="software">Software</option>';
+			echo '<option value="rede">Rede</option>';
+			echo '<option value="outro">Outro</option>';
+			break;
+		case 'software':
+			echo '<option value="" disabled>Selecione o Tipo</option>';
+			echo '<option value="hardware">Hardware</option>';
+			echo '<option value="software" selected>Software</option>';
+			echo '<option value="rede">Rede</option>';
+			echo '<option value="outro">Outro</option>';
+			break;
+		case 'rede':
+			echo '<option value="" disabled>Selecione o Tipo</option>';
+			echo '<option value="hardware">Hardware</option>';
+			echo '<option value="software">Software</option>';
+			echo '<option value="rede" selected>Rede</option>';
+			echo '<option value="outro">Outro</option>';
+			break;
+		case 'outro':
+			echo '<option value="" disabled>Selecione o Tipo</option>';
+            echo '<option value="hardware">Hardware</option>';
+            echo '<option value="software">Software</option>';
+            echo '<option value="rede">Rede</option>';
+            echo '<option value="outro" selected>Outro</option>';
+			break;
+		default:
+			echo '<option value="" selected disabled>Selecione o Tipo</option>';
+			echo '<option value="hardware">Hardware</option>';
+			echo '<option value="software">Software</option>';
+			echo '<option value="rede">Rede</option>';
+			echo '<option value="outro">Outro</option>';
+			break;
+	}
+}

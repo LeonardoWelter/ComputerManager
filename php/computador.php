@@ -66,9 +66,11 @@ if (isset($_GET['apaga'])) {
     <div class="container">
         <h2 class="mt-3 linha"><?= $device['nome'] ?></h2>
         <div class="btn-group d-flex float-right mt-1">
+            <a href="computadores.php" class="btn btn-sm btn-outline-primary">Computadores</a>
+            <?php if ($_SESSION['grupo'] != 'user') { ?>
             <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
-            <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
             <a href="#" class="btn btn-sm btn-outline-primary">Ligar</a>
+            <?php } ?>
         </div>
 
         <div class="table-responsive">
@@ -151,11 +153,15 @@ if (isset($_GET['apaga'])) {
                     <td class="text-right">
                         <a href="manutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-search"></i></a>
+						<?php if ($_SESSION['grupo'] != 'user') { ?>
                         <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-pen"></i></a>
+                        <?php } ?>
+                        <?php if($_SESSION['grupo'] == 'admin') {?>
                         <a href="computador.php?id=<?= $_GET['id'] ?>&apaga=<?= $maintenance['id'] ?>"
                            class="btn btn-danger btn-sm"><i
                                     class="fas fa-trash"></i></a>
+                        <?php }?>
                     </td>
                 </tr>
 			<?php endforeach; ?>

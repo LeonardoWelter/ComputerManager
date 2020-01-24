@@ -1,20 +1,20 @@
 const subtiposHW = Array();
 const subtiposSW = Array();
 
-subtiposHW['remocao'] = 'Remoção';
-subtiposHW['adicao'] = 'Adição';
-subtiposHW['substituicao'] = 'Substituição';
+subtiposHW['remoção'] = 'Remoção';
+subtiposHW['adição'] = 'Adição';
+subtiposHW['substituição'] = 'Substituição';
 //subtiposHW[''] = '';
 
-subtiposSW['instalacao'] = 'Instalação';
-subtiposSW['atualizacao'] = 'Atualização';
-subtiposSW['desinstalacao'] = 'Desinstalação';
-subtiposSW['imageacao'] = 'Imageação';
-subtiposSW['configuracao'] = 'Configuração';
+subtiposSW['instalação'] = 'Instalação';
+subtiposSW['atualização'] = 'Atualização';
+subtiposSW['desinstalação'] = 'Desinstalação';
+subtiposSW['imageação'] = 'Imageação';
+subtiposSW['configuração'] = 'Configuração';
 //subtiposSW[''] = '';
 
-console.log(subtiposHW);
-console.log(subtiposSW);
+//console.log(subtiposHW);
+//console.log(subtiposSW);
 
 function gerarOptions() {
 
@@ -51,6 +51,12 @@ function removerOptions(id) {
     for(i = select.options.length - 1 ; i >= 0; i-- ) {
         select.remove(i);
     }
+
+}
+
+function arrumaMenu() {
+    document.getElementById('menuComputadores').className = 'col-6 d-flex justify-content-center text-center';
+    document.getElementById('menuManutencoes').className = 'col-6 d-flex justify-content-center text-center';
 
 }
 

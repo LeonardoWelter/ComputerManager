@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION)) {
-	session_start();
-}
+require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
+
 // Change this to your connection info.
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'CM_User';

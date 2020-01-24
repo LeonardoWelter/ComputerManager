@@ -1,5 +1,6 @@
 <?php
 require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
 require_once 'listarUsuarios.php';
 require_once 'status.php';
 require_once 'manipuladorUrl.php';

@@ -1,5 +1,6 @@
 <?php
 require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
 require_once 'atualizarUsuario.php';
 ?>
 
@@ -8,7 +9,7 @@ require_once 'atualizarUsuario.php';
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Atualizar computador - Computer Manager</title>
+	<title>Atualizar usuário - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';

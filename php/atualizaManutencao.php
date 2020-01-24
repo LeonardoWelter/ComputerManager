@@ -1,6 +1,8 @@
 <?php
 require_once 'validaLogin.php';
+require_once 'acessoModerador.php';
 require_once 'atualizarManutencao.php';
+require_once 'conversor.php';
 ?>
 
 
@@ -45,18 +47,19 @@ require_once 'navbar.php';
 						</div>
 						<div class="form-group">
 							<label for="cadastroTipo">Tipo</label>
-							<select id="cadastroTipo" name="tipo" class="custom-select" required>
-								<option value="" selected disabled>Selecione o Tipo</option>
-								<option value="1">Tipo 1</option>
-								<option value="2">Tipo 2</option>
-							</select>
+							    <select id="cadastroTipo" name="tipo" class="custom-select" required onchange="gerarOptions()">
+<!--                                    <option value="" selected disabled>Selecione o Tipo</option>-->
+<!--                                    <option value="hardware">Hardware</option>-->
+<!--                                    <option value="software">Software</option>-->
+<!--                                    <option value="rede">Rede</option>-->
+<!--                                    <option value="outro">Outro</option>-->
+                                    <?php switchManutencao($maintenance['tipo']); ?>
+                                </select>
 						</div>
 						<div class="form-group">
 							<label for="cadastroSubTipo">Subtipo</label>
 							<select id="cadastroSubTipo" name="subtipo" class="custom-select" required>
 								<option value="" selected disabled>Selecione o Subtipo</option>
-								<option value="1">Subtipo 1</option>
-								<option value="2">Subtipo 2</option>
 							</select>
 						</div>
 						<div class="form-group">

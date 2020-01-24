@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION)) {
-	session_start();
-}
+require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
+
 function pdo_connect_mysql()
 {
 	$DATABASE_HOST = 'localhost';

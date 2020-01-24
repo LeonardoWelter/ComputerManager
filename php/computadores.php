@@ -81,9 +81,11 @@ $urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_UR
                 </div>
             </form>
         </div>
+		<?php if ($_SESSION['grupo'] != 'user') { ?>
         <div class="btn-group d-flex float-right mt-1 mr-2">
             <a href="novoComputador.php" class="btn btn-sm btn-outline-primary">Adicionar computador</a>
         </div>
+        <?php } ?>
 
         <table class="table table-striped table-bordered table-responsive-sm">
             <thead>
@@ -139,10 +141,14 @@ $urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_UR
                     <td class="text-right">
                         <a href="computador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-primary"><i
                                     class="fas fa-search"></i></a>
+						<?php if ($_SESSION['grupo'] != 'user') { ?>
                         <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-primary"><i
                                     class="fas fa-pen"></i></a>
+                        <?php } ?>
+						<?php if($_SESSION['grupo'] == 'admin') {?>
                         <a href="computadores.php?apaga=<?= $device['id'] ?>" class="btn btn-sm btn-danger"><i
                                     class="fas fa-trash"></i></a>
+                        <?php } ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

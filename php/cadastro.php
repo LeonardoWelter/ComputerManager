@@ -1,5 +1,6 @@
 <?php
 require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
 require_once 'status.php';
 ?>
 
@@ -62,6 +63,7 @@ if (isset($_SESSION['status'])) {
                             <select id="cadastroGrupo" name="grupo" class="custom-select" required>
                                 <option value="" selected disabled>Selecione o grupo</option>
                                 <option value="admin">Administrador</option>
+                                <option value="moderador">Moderador</option>
                                 <option value="user">Usuário</option>
                             </select>
                         </div>

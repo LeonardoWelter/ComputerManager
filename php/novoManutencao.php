@@ -1,5 +1,6 @@
 <?php
 require_once 'validaLogin.php';
+require_once 'acessoModerador.php';
 require_once 'criarComputador.php';
 require_once 'status.php';
 ?>
