@@ -23,7 +23,6 @@ $urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_UR
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/usuarios.css">
     <link rel="stylesheet" href="../css/tabelas.css">
 
 </head>

@@ -15,7 +15,6 @@ require_once 'atualizarUsuario.php';
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>

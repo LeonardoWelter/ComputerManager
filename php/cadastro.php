@@ -14,7 +14,6 @@ require_once 'status.php';
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>
@@ -30,7 +29,6 @@ if (isset($_SESSION['status'])) {
 
 <div class="container">
     <div class="row">
-
         <div class="card-login">
             <div class="card">
                 <div class="card-header text-center">

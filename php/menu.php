@@ -1,8 +1,6 @@
 <?php
 require_once 'validaLogin.php';
 require_once 'status.php';
-
-print_r($_SESSION);
 ?>
 
 <html lang="pt">
