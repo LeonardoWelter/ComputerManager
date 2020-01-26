@@ -31,7 +31,7 @@ require_once 'navbar.php';
                 </div>
                 <div class="card-body">
                     <form action="atualizarComputador.php?id=<?= $device['id'] ?>" method="post">
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="id">ID</label>
                             <input class="form-control" type="text" name="id" placeholder="0"
                                    value="<?= $device['id'] ?>" id="id"
@@ -39,7 +39,7 @@ require_once 'navbar.php';
                         </div>
                         <div class="form-group">
                             <label for="patrimonial">Patrimonial</label>
-                            <input class="form-control" type="text" name="patrimonial" placeholder="000001"
+                            <input class="form-control" type="number" name="patrimonial" placeholder="000001"
                                    id="patrimonial"
                                    value="<?= $device['patrimonial'] ?>" required>
                         </div>
@@ -96,6 +96,6 @@ require_once 'navbar.php';
         </div>
     </div>
 </div>
-<?php require_once 'rodape.php' ?>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

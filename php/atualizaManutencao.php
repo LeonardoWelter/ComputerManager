@@ -42,7 +42,7 @@ require_once 'navbar.php';
                         <div class="form-group">
                             <label for="cadastroNome">Patrimônio</label>
                             <input id="cadastroNome" name="device_pat" type="text" class="form-control"
-                                   placeholder="ID do Computador" value="<?= $maintenance['device_pat'] ?>" required>
+                                   placeholder="000000" value="<?= $maintenance['device_pat'] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="cadastroTipo">Tipo</label>
@@ -70,13 +70,13 @@ require_once 'navbar.php';
                                       placeholder="Comentários da manutenção"
                                       required><?= $maintenance['comentarios'] ?></textarea>
                         </div>
-                        <button class="btn btn-lg btn-info btn-block" type="submit">Atualizar</button>
+                        <button class="btn btn-primary btn-block" type="submit">Atualizar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php require_once 'rodape.php' ?>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

@@ -65,13 +65,13 @@ if (isset($_SESSION['status'])) {
                                 <option value="user">Usuário</option>
                             </select>
                         </div>
-                        <button class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
+                        <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php require_once 'rodape.php' ?>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

@@ -78,7 +78,7 @@ if (isset($_GET['apaga'])) {
         </form>
     </div>
     <div class="btn-group d-flex float-right mt-1 mr-2">
-        <a href="cadastro.php" class="btn btn-sm btn-outline-primary">Cadastrar usuário</a>
+        <a href="novoUsuario.php" class="btn btn-sm btn-outline-primary">Cadastrar usuário</a>
     </div>
 	<table class="table table-striped table-bordered table-responsive-sm">
 		<thead>

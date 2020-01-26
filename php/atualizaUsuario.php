@@ -33,8 +33,8 @@ require_once 'navbar.php';
 				</div>
 				<div class="card-body">
 					<form action="atualizarUsuario.php?id=<?= $user['id'] ?>" method="post">
-						<div class="form-group">
-							<label for="cadastroId"><i class="fas fa-id-card mr-1"></i>ID</label>
+						<div class="form-group d-none">
+							<label for="cadastroId">ID</label>
 							<input id="cadastroId" name="id" type="text" class="form-control"
 								   placeholder="id" value="<?= $user['id'] ?>" disabled required>
 						</div>
@@ -80,18 +80,15 @@ require_once 'navbar.php';
 											break;
 									}
 								?>
-<!--								<option value="" disabled>Selecione o grupo</option>-->
-<!--								<option value="admin">Administrador</option>-->
-<!--								<option value="user">Usuário</option>-->
 							</select>
 						</div>
-						<button class="btn btn-lg btn-info btn-block" type="submit">Atualizar</button>
+						<button class="btn btn-primary btn-block" type="submit">Atualizar</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<?php require_once 'rodape.php' ?>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

@@ -43,7 +43,7 @@ if(isset($_SESSION['status'])) {
                             </a>
                         </div>
                         <div class="col-4 d-flex justify-content-center text-center" id="menuManutencoes">
-                            <a href="computadores.php">
+                            <a href="manutencoes.php">
                                 <img src="../img/icons8-computer-support-100.png" width="70px" height="70px" alt="Icone atalho computadores">
                                 <h6 class="text-dark">Manutenções</h6>
                             </a>

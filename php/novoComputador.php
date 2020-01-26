@@ -32,7 +32,7 @@ require_once 'navbar.php';
                 </div>
                 <div class="card-body">
                     <form action="criarComputador.php" method="post">
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label for="id">ID</label>
                             <input class="form-control" type="text" name="id" placeholder="0" value="auto" id="id"
                                    disabled>
@@ -91,6 +91,6 @@ require_once 'navbar.php';
         </div>
     </div>
 </div>
-<?php require_once 'rodape.php' ?>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

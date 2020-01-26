@@ -22,7 +22,7 @@ if (!isset($_POST['nome'], $_POST['usuario'], $_POST['email'], $_POST['senha']))
     // Could not get the data that should have been sent.
     //die ('Please complete the registration form!');
 	$_SESSION['status'] = 'falhaCriarUsuarioSemDados';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 // Make sure the submitted registration values are not empty.
@@ -30,28 +30,28 @@ if (empty($_POST['nome']) || empty($_POST['usuario']) || empty($_POST['email']) 
     // One or more values are empty.
     //die ('Please complete the registration form');
 	$_SESSION['status'] = 'falhaCriarUsuarioIncompleto';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     //die ('Email is not valid!');
 	$_SESSION['status'] = 'falhaCriarUsuarioEmailInvalido';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 
 if (preg_match('/[A-Za-z0-9]+/', $_POST['usuario']) == 0) {
     //die ('Username is not valid!');
 	$_SESSION['status'] = 'falhaCriarUsuarioInvalido';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 
 if (strlen($_POST['senha']) > 20 || strlen($_POST['senha']) < 5) {
     //die ('Password must be between 5 and 20 characters long!');
 	$_SESSION['status'] = 'falhaCriarUsuarioSenhaCurta';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 
@@ -66,7 +66,7 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
         // Username already exists
         //echo 'Username exists, please choose another!';
 		$_SESSION['status'] = 'falhaCriarUsuarioExistente';
-		header('Location: cadastro.php');
+		header('Location: novoUsuario.php');
 		exit();
     } else {
         // Username doesnt exists, insert new account
@@ -78,13 +78,13 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
 
             //echo 'You have successfully registered, you can now login!';
 			$_SESSION['status'] = 'sucessoCriarUsuario';
-			header('Location: cadastro.php');
+			header('Location: novoUsuario.php');
 			exit();
         } else {
             // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
             //echo 'Could not prepare statement!';
 			$_SESSION['status'] = 'falhaCriarUsuarioSQL';
-			header('Location: cadastro.php');
+			header('Location: novoUsuario.php');
 			exit();
         }
     }
@@ -93,7 +93,7 @@ if ($stmt = $con->prepare('SELECT id, senha FROM users WHERE usuario = ?')) {
     // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
     //echo 'Could not prepare statement!';
 	$_SESSION['status'] = 'falhaCriarUsuarioSQL';
-	header('Location: cadastro.php');
+	header('Location: novoUsuario.php');
 	exit();
 }
 $con->close();

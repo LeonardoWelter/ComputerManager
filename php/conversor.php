@@ -17,6 +17,12 @@ function converteTipo($tipo) {
         case 'software':
             $retorno = 'Software';
             break;
+		case 'rede':
+			$retorno = 'Rede';
+			break;
+		case 'outro':
+			$retorno = 'Outro';
+			break;
         default:
             $retorno = 'Desconhecido';
             break;
@@ -27,17 +33,24 @@ function converteTipo($tipo) {
 
 function converteSubTipo($subtipo) {
 
-    switch ($subtipo) {
-        case 'instalacao':
-            $retorno = 'Instalação';
-            break;
-        case 'substituicao':
-            $retorno = 'Substituição';
-            break;
-        default:
-            $retorno = 'Desconhecido';
-            break;
-    }
+	$subtipos = array();
+
+	$subtipos['remoção'] = 'Remoção';
+	$subtipos['adição'] = 'Adição';
+	$subtipos['substituição'] = 'Substituição';
+	$subtipos['instalação'] = 'Instalação';
+	$subtipos['atualização'] = 'Atualização';
+	$subtipos['desinstalação'] = 'Desinstalação';
+	$subtipos['imageação'] = 'Imageação';
+	$subtipos['configuração'] = 'Configuração';
+
+	$retorno = null;
+	foreach ($subtipos as $key => $valor) {
+		if ($key == $subtipo) {
+			$retorno =  $valor;
+			break;
+		}
+	}
 
     return $retorno;
 }
@@ -96,4 +109,8 @@ function switchManutencao($tipo) {
 			echo '<option value="outro">Outro</option>';
 			break;
 	}
+}
+
+function debugConsole($param) {
+	echo "<script>console.log('$param')</script>";
 }
