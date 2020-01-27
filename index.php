@@ -1,25 +1,3 @@
-<!--
-    OK Sistema de Login
-    OK Colocar todos os imports de dependencias em um arquivo PHP
-    OK Sistema interno de cadastro de novos usuários
-    OK Bloqueio de páginas baseado no grupo
-    OK Cadastro de Computadores
-    OK Edição de computadores existentes
-    OK Remoção de computadores
-    OK Listagem de Computadores
-    OK Pesquisa de Computadores
-    TODO Paginação de tabelas
-    TODO Unificação dos códigos de persistência
-    TODO Limpeza do código
-    OK Manutenção de Computadores
-    OK Página individual do Computador
-    OK Registro de Manutenção
-    OK Histórico de Manutenção do Computador
-
-    OK Padronização da estilização da interface - falta as telas de criação de computador / manutenção
-    OK Alterar as Foreign Keys
-    OK Adicionar exit(); após todos os headers
--->
 <?php
     require_once 'php/status.php';
 ?>
@@ -32,7 +10,7 @@
 		$_SESSION['status'] = null;
 	}
 ?>
-<html>
+<html lang="pt">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,7 +45,7 @@ if(isset($_SESSION['status'])) {
 ?>
 
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="menu.php">
+    <a class="navbar-brand" href="../php/menu.php">
         <img src="img/icons8-gestor-de-networking-64.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Computer Manager">
         Computer Manager
     </a>

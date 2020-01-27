@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
 			$stmt->execute([$_GET['id']]);
 			//$msg = 'You have deleted the contact!';
 
-			$_SESSION['status'] = 'sucessoRemoverComputador';
+			$_SESSION['status'] = 'sucessoRemoverUsuario';
 
 			var_dump($_SESSION['status']);
 			header('Location: usuarios.php');

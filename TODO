@@ -1,0 +1,20 @@
+    OK Sistema de Login
+    OK Colocar todos os imports de dependencias em um arquivo PHP
+    OK Sistema interno de cadastro de novos usuários
+    OK Bloqueio de páginas baseado no grupo
+    OK Cadastro de Computadores
+    OK Edição de computadores existentes
+    OK Remoção de computadores
+    OK Listagem de Computadores
+    OK Pesquisa de Computadores
+    TODO Paginação de tabelas
+    TODO Unificação dos códigos de persistência
+    TODO Limpeza do código
+    OK Manutenção de Computadores
+    OK Página individual do Computador
+    OK Registro de Manutenção
+    OK Histórico de Manutenção do Computador
+
+    OK Padronização da estilização da interface - falta as telas de criação de computador / manutenção
+    OK Alterar as Foreign Keys
+    OK Adicionar exit(); após todos os headers

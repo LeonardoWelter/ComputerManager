@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
 		//$msg = 'Updated Successfully!';
 
-		$_SESSION['status'] = 'sucessoAtualizarComputador';
+		$_SESSION['status'] = 'sucessoAtualizarManutencao';
 		header('Location: manutencoes.php');
 		exit();
 	}

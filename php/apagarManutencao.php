@@ -42,7 +42,7 @@ if (isset($_GET['id'])) {
 			$stmt->execute([$_GET['id']]);
 			//$msg = 'You have deleted the contact!';
 
-			$_SESSION['status'] = 'sucessoRemoverComputador';
+			$_SESSION['status'] = 'sucessoRemoverManutencao';
 			header('Location: manutencoes.php');
 			exit();
 		} else {

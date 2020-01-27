@@ -41,7 +41,7 @@ if (!empty($_POST)) {
 
 	// Output message
 	//$msg = 'Created Successfully!';
-	$_SESSION['status'] = 'sucessoAdicionarComputador';
+	$_SESSION['status'] = 'sucessoAdicionarManutencao';
 	header('Location: manutencoes.php');
 	exit();
 }
