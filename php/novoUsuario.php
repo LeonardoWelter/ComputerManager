@@ -1,5 +1,6 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
 require_once 'status.php';
 ?>
 
@@ -13,7 +14,6 @@ require_once 'status.php';
 	require_once 'imports.php';
 	?>
 
-    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>
@@ -29,7 +29,6 @@ if (isset($_SESSION['status'])) {
 
 <div class="container">
     <div class="row">
-
         <div class="card-login">
             <div class="card">
                 <div class="card-header text-center">
@@ -61,15 +60,18 @@ if (isset($_SESSION['status'])) {
                             <label for="cadastroGrupo"><i class="fas fa-users mr-1"></i>Grupo</label>
                             <select id="cadastroGrupo" name="grupo" class="custom-select" required>
                                 <option value="" selected disabled>Selecione o grupo</option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Usuário</option>
+                                <option value="admin">Administrador</option>
+                                <option value="moderador">Moderador</option>
+                                <option value="user">Usuário</option>
                             </select>
                         </div>
-                        <button class="btn btn-lg btn-info btn-block" type="submit">Cadastrar</button>
+                        <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

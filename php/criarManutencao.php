@@ -1,7 +1,7 @@
 <?php
-if(!isset($_SESSION)) {
-	session_start();
-}
+require_once 'validaLogin.php';
+require_once 'acessoModerador.php';
+
 function pdo_connect_mysql()
 {
 	$DATABASE_HOST = 'localhost';
@@ -21,21 +21,23 @@ function pdo_connect_mysql()
 
 // Connect to MySQL database
 $pdo = pdo_connect_mysql();
-$msg = '';
+date_default_timezone_set('America/Sao_Paulo');
 
 if (!empty($_POST)) {
 	// Post data not empty insert a new record
 	// Set-up the variables that are going to be inserted, we must check if the POST variables exist if not we can default them to blank
 	$id = isset($_POST['id']) && !empty($_POST['id']) && $_POST['id'] != 'auto' ? $_POST['id'] : NULL;
 	// Check if POST variable "name" exists, if not default the value to blank, basically the same for all variables
-	$device_id = isset($_POST['device_id']) ? $_POST['device_id'] : '';
+	$device_pat = isset($_POST['device_pat']) ? $_POST['device_pat'] : '';
 	$tipo = isset($_POST['tipo']) ? $_POST['tipo'] : '';
 	$subtipo = isset($_POST['subtipo']) ? $_POST['subtipo'] : '';
 	$descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
 	$comentarios = isset($_POST['comentarios']) ? $_POST['comentarios'] : '';
+	$data = date('d/m/Y');
+	$criador = $_SESSION['usuario'];
 	// Insert new record into the contacts table
-	$stmt = $pdo->prepare('INSERT INTO maintenance VALUES (?, ?, ?, ?, ?, ?)');
-	$stmt->execute([$id, $device_id, $tipo, $subtipo, $descricao, $comentarios]);
+	$stmt = $pdo->prepare('INSERT INTO maintenance (id, device_pat, tipo, subtipo, descricao, comentarios, data, criador) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
+	$stmt->execute([$id, $device_pat, $tipo, $subtipo, $descricao, $comentarios, $data, $criador]);
 
 	// Output message
 	//$msg = 'Created Successfully!';

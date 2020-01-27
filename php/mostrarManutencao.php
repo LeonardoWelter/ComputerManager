@@ -39,3 +39,27 @@ if (isset($_GET['id'])) {
 	header('Location: manutencoes.php');
 	exit();
 }
+
+function selecionaUsuario($usuario_param) {
+
+    global $pdo;
+
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE usuario = ?');
+    $stmt->execute([$usuario_param]);
+
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $usuario;
+}
+
+function selecionaComputador($pat) {
+
+    global $pdo;
+
+    $stmt = $pdo->prepare('SELECT * FROM devices WHERE patrimonial = ?');
+    $stmt->execute([$pat]);
+
+    $computador = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $computador;
+}

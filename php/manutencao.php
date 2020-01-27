@@ -1,7 +1,8 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
 require_once 'mostrarManutencao.php';
 require_once 'status.php';
+require_once 'conversor.php';
 
 if (!isset($_SESSION)) {
 	session_start();
@@ -34,33 +35,36 @@ require_once 'navbar.php';
 	}
 	?>
     <div class="container">
-        <h2 class="mt-3"><?= $maintenance['descricao'] ?></h2>
-        <div class="btn-group d-flex float-right mt-3 mb-2">
+        <h2 class="mt-3 linha"><?= $maintenance['descricao'] ?></h2>
+        <div class="btn-group d-flex float-right mt-1">
+			<?php if ($_SESSION['grupo'] != 'user') { ?>
             <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
+            <?php } ?>
             <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
         </div>
-        <hr>
         <div class="table-responsive">
             <table class="table table-striped table-bordered tabela">
-                <caption>Informações do computador de ID: <?= $maintenance['id'] ?></caption>
+                <caption>Informações da manutenção de ID: <?= $maintenance['id'] ?></caption>
                 <thead class="thead text-center">
-                <th colspan="2">Computador ID: <?= $maintenance['id'] ?></th>
+                <tr>
+                    <th colspan="2">Manutenção ID: <?= $maintenance['id'] ?></th>
+                </tr>
                 </thead>
                 <tr>
                     <td class="font-weight-bold">ID</td>
                     <td><?= $maintenance['id'] ?></td>
                 </tr>
                 <tr>
-                    <td class="font-weight-bold">Computador ID</td>
-                    <td><?= $maintenance['device_id'] ?></td>
+                    <td class="font-weight-bold">Computador</td>
+                    <td><?= converteComputador($maintenance['device_pat']) ?></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">Tipo</td>
-                    <td><?= $maintenance['tipo'] ?></td>
+                    <td><?= converteTipo($maintenance['tipo']) ?></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">Subtipo</td>
-                    <td><?= $maintenance['subtipo'] ?></td>
+                    <td><?= converteSubTipo($maintenance['subtipo']) ?></td>
                 </tr>
                 <tr>
                     <td class="font-weight-bold">Descrição</td>
@@ -70,8 +74,18 @@ require_once 'navbar.php';
                     <td class="font-weight-bold">Comentários</td>
                     <td><?= $maintenance['comentarios'] ?></td>
                 </tr>
+                <tr>
+                    <td class="font-weight-bold">Data</td>
+                    <td><?= $maintenance['data'] ?></td>
+                </tr>
+                <tr>
+                    <td class="font-weight-bold">Criador</td>
+                    <td><?= converteUsuario($maintenance['criador']) ?></td>
+                </tr>
             </table>
         </div>
     </div>
+</div>
+<?php require_once 'rodape.php' ?>
 </body>
 </html>

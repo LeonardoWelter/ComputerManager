@@ -1,5 +1,6 @@
 <?php
-require_once "validaLogin.php";
+require_once 'validaLogin.php';
+require_once 'acessoAdmin.php';
 require_once 'atualizarUsuario.php';
 ?>
 
@@ -8,13 +9,12 @@ require_once 'atualizarUsuario.php';
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Atualizar computador - Computer Manager</title>
+	<title>Atualizar usuário - Computer Manager</title>
 
 	<?php
 	require_once 'imports.php';
 	?>
 
-	<link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>
@@ -33,8 +33,8 @@ require_once 'navbar.php';
 				</div>
 				<div class="card-body">
 					<form action="atualizarUsuario.php?id=<?= $user['id'] ?>" method="post">
-						<div class="form-group">
-							<label for="cadastroId"><i class="fas fa-id-card mr-1"></i>ID</label>
+						<div class="form-group d-none">
+							<label for="cadastroId">ID</label>
 							<input id="cadastroId" name="id" type="text" class="form-control"
 								   placeholder="id" value="<?= $user['id'] ?>" disabled required>
 						</div>
@@ -61,16 +61,34 @@ require_once 'navbar.php';
 						<div class="form-group">
 							<label for="cadastroGrupo"><i class="fas fa-users mr-1"></i>Grupo</label>
 							<select id="cadastroGrupo" name="grupo" class="custom-select" required>
-								<option value="" selected disabled>Selecione o grupo</option>
-								<option value="1">Administrador</option>
-								<option value="2">Usuário</option>
+                                <?php
+									switch ($user['grupo']) {
+										case 'admin':
+											echo '<option value="" disabled>Selecione o grupo</option>
+												  <option value="admin" selected>Administrador</option>
+								 				  <option value="user">Usuário</option>';
+											break;
+										case 'user':
+											echo '<option value="" disabled>Selecione o grupo</option>
+												  <option value="admin">Administrador</option>
+								 				  <option value="user" selected>Usuário</option>';
+											break;
+										default:
+											echo '<option value="" selected disabled>Selecione o grupo</option>
+												  <option value="admin">Administrador</option>
+								 				  <option value="user">Usuário</option>';
+											break;
+									}
+								?>
 							</select>
 						</div>
-						<button class="btn btn-lg btn-info btn-block" type="submit">Atualizar</button>
+						<button class="btn btn-primary btn-block" type="submit">Atualizar</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+<?php //require_once 'rodape.php' ?>
 </body>
 </html>

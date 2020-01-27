@@ -60,7 +60,9 @@ Devices:
  
 Manutenções: 
   - ID;
-  - Device_ID (FK);
+  - Device_Pat (FK);
   - Tipo;
   - Descrição;
-  - Comentários
+  - Comentários;
+  - Criador;
+  - Data;

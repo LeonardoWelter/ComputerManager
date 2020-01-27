@@ -35,8 +35,8 @@ if (isset($_GET['id'])) {
 	$device = $stmt->fetch(PDO::FETCH_ASSOC);
 
 	// Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
-	$stmt2 = $pdo->prepare('SELECT * FROM maintenance WHERE device_id = ? ORDER BY ' .  $coluna . ' ' . $ordem);
-	$stmt2->execute([$_GET['id']]);
+	$stmt2 = $pdo->prepare('SELECT * FROM maintenance WHERE device_pat = ? ORDER BY ' .  $coluna . ' ' . $ordem);
+	$stmt2->execute([$device['patrimonial']]);
 	// Fetch the records so we can display them in our template.
 	$maintenances = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 

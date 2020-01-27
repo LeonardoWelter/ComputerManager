@@ -1,0 +1,8 @@
+body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer {
+    height: 40px; /* Set the fixed height of the footer here */
+    line-height: 40px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+}

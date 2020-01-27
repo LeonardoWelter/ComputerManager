@@ -2,12 +2,12 @@
     OK Sistema de Login
     OK Colocar todos os imports de dependencias em um arquivo PHP
     OK Sistema interno de cadastro de novos usuários
-    TODO Bloqueio de páginas baseado no grupo
+    OK Bloqueio de páginas baseado no grupo
     OK Cadastro de Computadores
     OK Edição de computadores existentes
     OK Remoção de computadores
     OK Listagem de Computadores
-    TODO Pesquisa de Computadores
+    OK Pesquisa de Computadores
     TODO Paginação de tabelas
     TODO Unificação dos códigos de persistência
     TODO Limpeza do código
@@ -16,7 +16,8 @@
     OK Registro de Manutenção
     OK Histórico de Manutenção do Computador
 
-    TODO Padronização da estilização da interface
+    OK Padronização da estilização da interface - falta as telas de criação de computador / manutenção
+    OK Alterar as Foreign Keys
     OK Adicionar exit(); após todos os headers
 -->
 <?php
@@ -45,6 +46,7 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/rodape.css">
 
     <script src="https://kit.fontawesome.com/a98ff00b7e.js" crossorigin="anonymous"></script>
 
@@ -90,12 +92,14 @@ if(isset($_SESSION['status'])) {
                             <input id="loginSenha" name="senha" type="password" class="form-control"
                                                                    placeholder="Senha">
                         </div>
-                        <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<?php require_once 'php/rodape.php' ?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

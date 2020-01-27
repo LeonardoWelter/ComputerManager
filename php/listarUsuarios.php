@@ -26,11 +26,21 @@ $ordem = isset($_GET['ordem']) && strtolower($_GET['ordem']) == 'desc' ? 'DESC' 
 $cima_baixo = str_replace(array('ASC','DESC'), array('up','down'), $ordem);
 $cre_dec = $ordem == 'ASC' ? 'desc' : 'asc';
 
+$busca = isset($_GET['busca']) ? '%'.trim($_GET['busca']).'%' : null;
+
+
 // Connect to MySQL database
-$pdo = pdo_connect_mysql();
+    $pdo = pdo_connect_mysql();
 
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
+if(!isset($_GET['busca'])) {
 $stmt = $pdo->prepare('SELECT * FROM users ORDER BY ' .  $coluna . ' ' . $ordem);
 $stmt->execute();
+} else {
+    $stmt = $pdo->prepare('SELECT * FROM users WHERE 
+                                    id LIKE ? OR nome LIKE ? OR usuario LIKE ? OR email LIKE ? OR grupo LIKE ?
+                                    ORDER BY ' . $coluna . ' ' . $ordem);
+    $stmt->execute([$busca, $busca, $busca, $busca, $busca]);
+}
 // Fetch the records so we can display them in our template.
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

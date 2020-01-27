@@ -1,11 +1,15 @@
 <?php
-require_once "validaLogin.php";
-require_once 'listarManutencao.php';
+require_once 'validaLogin.php';
+require_once 'listarManutencoes.php';
 require_once 'status.php';
+require_once 'manipuladorUrl.php';
+require_once 'conversor.php';
 
 if(!isset($_SESSION)) {
 	session_start();
 }
+
+$urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_URI]";
 ?>
 
 
@@ -58,39 +62,61 @@ if (isset($_GET['apaga'])) {
 ?>
 
 <div class="container">
-	<h2 class="mt-3">Manutenções</h2>
-	<div class="btn-group d-flex float-right mt-3 mb-2">
+	<h2 class="mt-3 linha">Manutenções</h2>
+    <div class="btn-group d-flex float-right mt-1">
+        <form action="manipuladorUrl.php" method="post">
+            <div class="input-group">
+                <input class="form-control d-none" name="url" type="text" value="<?= $urlAtual ?>">
+                <input class="form-control d-none" name="redir" type="text" value="true">
+                <input class="form-control" id="buscar" name="valorBusca" type="text" value="<?= isset($_GET['busca']) ? $_GET['busca'] : null; ?>"
+                       placeholder="Pesquisar">
+                <span class="input-group-append">
+                    <input class="btn btn-sm btn-outline-primary" type="submit" value="Pesquisar">
+                    </span>
+            </div>
+        </form>
+    </div>
+	<?php if ($_SESSION['grupo'] != 'user') { ?>
+    <div class="btn-group d-flex float-right mt-1 mr-2">
 		<a href="novoManutencao.php" class="btn btn-sm btn-outline-primary">Adicionar manutenção</a>
 	</div>
-    <hr>
-	<table class="table table-striped table-bordered table-responsive-sm">
+    <?php } ?>
+    <table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
-			<th><a href="manutencoes.php?coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="manutencoes.php?coluna=device_id&ordem=<?php echo $cre_dec; ?>">Computador<i class="fas fa-sort<?php echo $coluna == 'device_id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="manutencoes.php?coluna=descricao&ordem=<?php echo $cre_dec; ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="manutencoes.php?coluna=tipo&ordem=<?php echo $cre_dec; ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th><a href="manutencoes.php?coluna=subtipo&ordem=<?php echo $cre_dec; ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-			<th>Ações</th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'id', 'ordem' => $cre_dec), null) ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'device_pat', 'ordem' => $cre_dec), null) ?>">Computador<i class="fas fa-sort<?php echo $coluna == 'device_pat' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'descricao', 'ordem' => $cre_dec), null) ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'tipo', 'ordem' => $cre_dec), null) ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+			<th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'subtipo', 'ordem' => $cre_dec), null) ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+            <th><a href="<?= addParamURL($urlAtual, $parametros = array('coluna' => 'data', 'ordem' => $cre_dec), null) ?>">Data<i class="fas fa-sort<?php echo $coluna == 'data' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+
+            <th>Ações</th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php foreach ($maintenances as $maintenance): ?>
 			<tr>
 				<td><?=$maintenance['id']?></td>
-				<td><?=$maintenance['device_id']?></td>
+				<td><?=converteComputadorLista($maintenance['device_pat'])?></td>
 				<td><?=$maintenance['descricao']?></td>
-				<td><?=$maintenance['tipo']?></td>
-				<td><?=$maintenance['subtipo']?></td>
+				<td><?=converteTipo($maintenance['tipo'])?></td>
+				<td><?=converteSubTipo($maintenance['subtipo'])?></td>
+                <td><?=$maintenance['data']?></td>
 				<td class="text-right">
 					<a href="manutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
-					<a href="atualizaManutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
-					<a href="manutencoes.php?apaga=<?=$maintenance['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
-				</td>
+					<?php if ($_SESSION['grupo'] != 'user') { ?>
+                    <a href="atualizaManutencao.php?id=<?=$maintenance['id']?>" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+					<?php } ?>
+                    <?php if($_SESSION['grupo'] == 'admin') {?>
+                    <a href="manutencoes.php?apaga=<?=$maintenance['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+				    <?php } ?>
+                </td>
 			</tr>
 		<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
+<?php require_once 'rodape.php' ?>
 </body>
 </html>
