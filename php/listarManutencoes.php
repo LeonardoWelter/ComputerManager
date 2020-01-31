@@ -36,14 +36,25 @@ if (!isset($pdo)) {
     $pdo = pdo_connect_mysql();
 }
 
+if(!isset($_GET['busca'])) {
+    $totalResultados = $pdo->query('SELECT count(*) from maintenance')->fetchColumn();
+} else {
+    $totalResultados = $pdo->query("SELECT count(*) FROM maintenance WHERE id LIKE '$busca' OR device_pat LIKE '$busca' OR tipo LIKE '$busca' OR subtipo LIKE '$busca' OR descricao LIKE '$busca' OR comentarios LIKE '$busca'")->fetchColumn();
+}
+
+$pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) && $_GET['pagina']>1 ? $_GET['pagina'] : 1;
+$resultadosPagina = 5;
+
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
 if (!isset($_GET['busca'])) {
-    $stmt = $pdo->prepare('SELECT * FROM maintenance ORDER BY ' . $coluna . ' ' . $ordem);
+    $calcPagina = ($pagina - 1) * $resultadosPagina;
+    $stmt = $pdo->prepare("SELECT * FROM maintenance ORDER BY $coluna $ordem LIMIT $calcPagina, $resultadosPagina");
     $stmt->execute();
 } else {
-    $stmt = $pdo->prepare('SELECT * FROM maintenance WHERE 
+    $calcPagina = ($pagina - 1) * $resultadosPagina;
+    $stmt = $pdo->prepare("SELECT * FROM maintenance WHERE 
                                     id LIKE ? OR device_pat LIKE ? OR tipo LIKE ? OR subtipo LIKE ? OR descricao LIKE ? OR comentarios LIKE ?
-                                    ORDER BY ' . $coluna . ' ' . $ordem);
+                                    ORDER BY $coluna $ordem LIMIT $calcPagina, $resultadosPagina");
     $stmt->execute([$busca, $busca, $busca, $busca, $busca, $busca,]);
 }
 

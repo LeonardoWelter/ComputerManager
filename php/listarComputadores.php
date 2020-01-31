@@ -31,11 +31,14 @@ $busca = isset($_GET['busca']) ? '%'.trim($_GET['busca']).'%' : null;
 // Connect to MySQL database
 $pdo = pdo_connect_mysql();
 
-
-$totalResultados = $pdo->query('SELECT count(*) from devices')->fetchColumn();
+if(!isset($_GET['busca'])) {
+    $totalResultados = $pdo->query('SELECT count(*) from devices')->fetchColumn();
+} else {
+    $totalResultados = $pdo->query("SELECT count(*) FROM devices WHERE id LIKE '$busca' OR patrimonial LIKE '$busca' OR marca LIKE '$busca' OR modelo LIKE '$busca' OR cpu LIKE '$busca' OR nome LIKE '$busca' OR os LIKE '$busca'")->fetchColumn();
+}
 
 $pagina = isset($_GET['pagina']) && is_numeric($_GET['pagina']) && $_GET['pagina']>1 ? $_GET['pagina'] : 1;
-$resultadosPagina = 1;
+$resultadosPagina = 5;
 
 // Prepare the SQL statement and get records from our contacts table, LIMIT will determine the page
 if(!isset($_GET['busca'])) {
@@ -49,7 +52,6 @@ if(!isset($_GET['busca'])) {
                                     ORDER BY $coluna $ordem LIMIT $calcPagina, $resultadosPagina");
     $stmt->execute([$busca, $busca, $busca, $busca, $busca, $busca, $busca]);
 }
-//$stmt = $pdo->prepare('SELECT * FROM devices ORDER BY id ');
 
 // Fetch the records so we can display them in our template.
 $devices = $stmt->fetchAll(PDO::FETCH_ASSOC);

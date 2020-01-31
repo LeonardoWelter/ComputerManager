@@ -17,7 +17,6 @@
     
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/a98ff00b7e.js" crossorigin="anonymous"></script>
-
 	<!-- Toastr -->    
 	<link rel="stylesheet" href="../css/toastr.min.css">
 	<script src="../js/toastr.min.js"></script>

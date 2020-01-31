@@ -9,8 +9,6 @@ if (!isset($_SESSION)) {
 }
 
 $urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_URI]";
-
-echo $totalResultados;
 ?>
 
 
@@ -90,10 +88,12 @@ echo $totalResultados;
         <?php } ?>
 
         <?php if (ceil($totalResultados / $resultadosPagina) > 0): ?>
-        <nav>
+        <nav class="mt-2">
             <ul class="pagination">
                 <?php if ($pagina > 1): ?>
                     <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-1), null) ?>">Anterior</a></li>
+                <?php else: ?>
+                    <li class="page-item disabled"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-1), null) ?>">Anterior</a></li>
                 <?php endif; ?>
 
                 <?php if ($pagina > 3): ?>
@@ -116,6 +116,8 @@ echo $totalResultados;
 
                 <?php if ($pagina < ceil($totalResultados / $resultadosPagina)): ?>
                     <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+1), null) ?>">Próxima</a></li>
+                <?php else: ?>
+                    <li class="page-item disabled"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+1), null) ?>">Próxima</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

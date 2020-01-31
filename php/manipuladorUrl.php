@@ -8,7 +8,7 @@ $redir = isset($_POST['redir']) ? $_POST['redir'] : null;
 $novaUrl = null;
 
 if(isset($url) && isset($valorBusca)) {
-	addParamURL($url, array('busca' => $valorBusca), $redir);
+	addParamURL($url, array('busca' => $valorBusca, 'pagina' => 1), $redir);
 }
 
 function addParamURL($url, $arrayParamValor, $redir) {

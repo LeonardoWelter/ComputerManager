@@ -81,6 +81,43 @@ if (isset($_GET['apaga'])) {
 		<a href="novoManutencao.php" class="btn btn-sm btn-outline-primary">Adicionar manutenção</a>
 	</div>
     <?php } ?>
+
+    <?php if (ceil($totalResultados / $resultadosPagina) > 0): ?>
+        <nav class="mt-2">
+            <ul class="pagination">
+                <?php if ($pagina > 1): ?>
+                    <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-1), null) ?>">Anterior</a></li>
+                <?php else: ?>
+                    <li class="page-item disabled"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-1), null) ?>">Anterior</a></li>
+                <?php endif; ?>
+
+                <?php if ($pagina > 3): ?>
+                    <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => 1), null) ?>">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                <?php endif; ?>
+
+                <?php if ($pagina-2 > 0): ?><li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-2), null) ?>"><?php echo $pagina-2 ?></a></li><?php endif; ?>
+                <?php if ($pagina-1 > 0): ?><li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina-1), null) ?>"><?php echo $pagina-1 ?></a></li><?php endif; ?>
+
+                <li class="page-item active"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => ''), null) ?>"><?php echo $pagina ?></a></li>
+
+                <?php if ($pagina+1 < ceil($totalResultados / $resultadosPagina)+1): ?><li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+1), null) ?>"><?php echo $pagina+1 ?></a></li><?php endif; ?>
+                <?php if ($pagina+2 < ceil($totalResultados / $resultadosPagina)+1): ?><li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+2), null) ?>"><?php echo $pagina+2 ?></a></li><?php endif; ?>
+
+                <?php if ($pagina < ceil($totalResultados / $resultadosPagina)-2): ?>
+                    <li class="page-item"><a class="page-link" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => ceil($totalResultados / $resultadosPagina)), null) ?>"><?php echo ceil($totalResultados / $resultadosPagina) ?></a></li>
+                <?php endif; ?>
+
+                <?php if ($pagina < ceil($totalResultados / $resultadosPagina)): ?>
+                    <li class="page-item"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+1), null) ?>">Próxima</a></li>
+                <?php else: ?>
+                    <li class="page-item disabled"><a class="page-link" href="<?= addParamURL($urlAtual, $parametros = array('pagina' => $pagina+1), null) ?>">Próxima</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    <?php endif; ?>
+
     <table class="table table-striped table-bordered table-responsive-sm">
 		<thead>
 		<tr>
