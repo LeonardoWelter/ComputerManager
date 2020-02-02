@@ -1,4 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Require para verificar se o usuário está logado
 require_once 'validaLogin.php';
 require_once 'mostrarManutencao.php';
 require_once 'status.php';
@@ -16,6 +22,7 @@ if (!isset($_SESSION)) {
     <title>Manutenção ID <?= $maintenance['id'] ?> - Computer Manager</title>
 
 	<?php
+	// Imports das dependências
 	require_once 'imports.php';
 	?>
 
@@ -26,11 +33,13 @@ if (!isset($_SESSION)) {
 <body>
 
 <?php
+//Import da NavBar
 require_once 'navbar.php';
 ?>
 <div class="container">
 	<?php
 	if (isset($_SESSION['status'])) {
+		// Função responsável pela chamada do Popup das informações de Status do Sistema
 		echo mostrarToastr($_SESSION['status']);
 	}
 	?>
@@ -38,10 +47,12 @@ require_once 'navbar.php';
         <h2 class="mt-3 linha"><?= $maintenance['descricao'] ?></h2>
         <div class="btn-group d-flex float-right mt-1">
 			<?php if ($_SESSION['grupo'] != 'user') { ?>
-            <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
+                <!-- Renderiza os botões de ação somente se o usuário for Moderador ou Admin -->
+                <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
             <?php } ?>
             <a href="manutencoes.php" class="btn btn-sm btn-outline-primary">Manutenções</a>
         </div>
+        <!-- Tabela preenchida com as informações do banco de dados -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered tabela">
                 <caption>Informações da manutenção de ID: <?= $maintenance['id'] ?></caption>

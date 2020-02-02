@@ -1,5 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
 
+// Converte o Usuário para o Nome do usuário
 function converteUsuario($usuario) {
     require_once 'mostrarManutencao.php';
 
@@ -8,6 +13,7 @@ function converteUsuario($usuario) {
     return $arrayUsuario['nome'];
 }
 
+// Recebe um tipo e retorna ele formatado
 function converteTipo($tipo) {
 
     switch ($tipo) {
@@ -31,6 +37,7 @@ function converteTipo($tipo) {
     return $retorno;
 }
 
+// Recebe um subtipo e retorna ele formatado
 function converteSubTipo($subtipo) {
 
 	$subtipos = array();
@@ -55,6 +62,7 @@ function converteSubTipo($subtipo) {
     return $retorno;
 }
 
+// Converte o Patrimonio de um computador no nome do mesmo
 function converteComputadorLista($pat_computador) {
     require_once 'listarManutencoes.php';
 
@@ -63,6 +71,7 @@ function converteComputadorLista($pat_computador) {
     return $arrayComputador['nome'];
 }
 
+// Converte o Patrimonio de um computador no nome do mesmo
 function converteComputador($pat_computador) {
     require_once 'mostrarManutencao.php';
 
@@ -71,6 +80,7 @@ function converteComputador($pat_computador) {
     return $arrayComputador['nome'];
 }
 
+//Recebe um tipo e faz um Switch para selecionar a opção recebida
 function switchManutencao($tipo) {
 	switch ($tipo) {
 		case 'hardware':
@@ -109,8 +119,4 @@ function switchManutencao($tipo) {
 			echo '<option value="outro">Outro</option>';
 			break;
 	}
-}
-
-function debugConsole($param) {
-	echo "<script>console.log('$param')</script>";
 }

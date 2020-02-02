@@ -1,4 +1,9 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
 require_once 'validaLogin.php';
 require_once 'listarManutencoes.php';
 require_once 'status.php';
@@ -9,7 +14,7 @@ if(!isset($_SESSION)) {
 	session_start();
 }
 
-$urlAtual = "http://$_SERVER[HTTP_HOST]:$_SERVER[SERVER_PORT]$_SERVER[REQUEST_URI]";
+$urlAtual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 
 
@@ -51,7 +56,7 @@ if (isset($_GET['apaga'])) {
                 </div>
                 <div class="modal-footer">
                     <a href="computadores.php" class="btn btn-secondary" >Cancelar</a>
-                    <a href="apagarManutencao.php?id=<?= $_GET['apaga']?>&confirm=yes" class="btn btn-danger">Remover</a>
+                    <a href="apagarManutencao.php?id=<?= $_GET['apaga']?>&confirma=sim" class="btn btn-danger">Remover</a>
                 </div>
             </div>
         </div>

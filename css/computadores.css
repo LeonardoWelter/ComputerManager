@@ -1,11 +1,3 @@
-/*.form-control {*/
-/*    border-color: #007bff !important;*/
-/*}*/
-
-/*.form-control::placeholder {*/
-/*    color: #007bff !important;*/
-/*}*/
-
 .input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;

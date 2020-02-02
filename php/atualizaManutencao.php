@@ -1,4 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Requires para verificar se o usuário está logado e possui o grupo de moderador ou admin
 require_once 'validaLogin.php';
 require_once 'acessoModerador.php';
 require_once 'atualizarManutencao.php';
@@ -13,6 +19,7 @@ require_once 'conversor.php';
     <title>Atualizar manutenção - Computer Manager</title>
 
 	<?php
+	// Imports das dependências do projeto
 	require_once 'imports.php';
 	?>
 
@@ -21,12 +28,16 @@ require_once 'conversor.php';
 <body>
 
 <?php
+// Import da Navbar
 require_once 'navbar.php';
 ?>
 
+<!--
+    Form de atualização de uma manutenção, preenche os valores dos campos com base
+    em um Select no arquivo atualizarManutencao.php
+-->
 <div class="container">
     <div class="row">
-
         <div class="card-login">
             <div class="card">
                 <div class="card-header text-center">
@@ -46,8 +57,10 @@ require_once 'navbar.php';
                         </div>
                         <div class="form-group">
                             <label for="cadastroTipo">Tipo</label>
+                            <!-- Função gerarOptions muda as opções de subtipo conforme o tipo seleciona -->
                             <select id="cadastroTipo" name="tipo" class="custom-select" required
                                     onchange="gerarOptions()">
+                                <!-- Gera e seleciona o tipo da manutenção com base em um Select no BD -->
 								<?php switchManutencao($maintenance['tipo']); ?>
                             </select>
                         </div>
@@ -77,6 +90,5 @@ require_once 'navbar.php';
         </div>
     </div>
 </div>
-<?php //require_once 'rodape.php' ?>
 </body>
 </html>

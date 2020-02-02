@@ -1,4 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Navbar compartilhada pelo projeto;
 
 echo '<nav class="navbar navbar-expand-md navbar-dark bg-dark ">';
 echo '<a class="navbar-brand" href="menu.php">';
@@ -15,6 +21,7 @@ echo '<!-- Links da Navegação -->';
     echo '<ul class="navbar-nav ml-auto">';
     echo '<li class="nav-item"><a href="computadores.php" class="nav-link">Computadores</a></li>';
     echo '<li class="nav-item"><a href="manutencoes.php" class="nav-link">Manutenções</a></li>';
+            // Renderiza o botão usuários caso o usuário seja do grupo Admin
             if($_SESSION['grupo'] == 'admin') {
 				echo '<li class="nav-item"><a href="usuarios.php" class="nav-link">Usuários</a></li>';
 			}

@@ -16,36 +16,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login - Computer Manager</title>
 
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
 
+    <!-- CSS Local -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/rodape.css">
 
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a98ff00b7e.js" crossorigin="anonymous"></script>
 
+    <!-- JavaScript Local -->
     <script src="js/scripts.js"></script>
 
     <!-- Toastr -->
     <link rel="stylesheet" href="css/toastr.min.css">
     <script src="js/toastr.min.js"></script>
-
-    <!-- Tratamento de erros -->
 </head>
 
 <body>
 <?php
+// Função responsável pela chamada do Popup das informações de Status do Sistema
 if(isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
 
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="../php/menu.php">
+    <a class="navbar-brand" href="php/menu.php">
         <img src="img/icons8-gestor-de-networking-64.png" width="30" height="30" class="d-inline-block align-top" alt="Logo Computer Manager">
         Computer Manager
     </a>
@@ -79,7 +83,7 @@ if(isset($_SESSION['status'])) {
 </div>
 <?php require_once 'php/rodape.php' ?>
 
-
+    <!-- PopperJS e BoostrapJS --->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             crossorigin="anonymous"></script>

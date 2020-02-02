@@ -1,5 +1,12 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
 
+// Função responsável pelas mensagens de status do sistema (sucesso ou falhas)
+// Recebe como parametro um código de erro, que é um índice no array $erros;
+// Retorna uma chamada da Biblioteca Toastr que exibe o popup, com os textos inseridos no array;
 function mostrarToastr($erro) {
 	//$erros[CódigoDoErro] = [Texto do erro, Titulo do Erro, Tipo do Toastr];
 	$erros = array();

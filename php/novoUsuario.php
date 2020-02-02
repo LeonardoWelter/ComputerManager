@@ -1,4 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Requires para verificar se o usuário está logado e possui o grupo de moderador ou admin
 require_once 'validaLogin.php';
 require_once 'acessoAdmin.php';
 require_once 'status.php';
@@ -11,6 +17,7 @@ require_once 'status.php';
     <title>Cadastrar usuário - Computer Manager</title>
 
 	<?php
+	// Imports das dependências do projeto
 	require_once 'imports.php';
 	?>
 
@@ -19,14 +26,18 @@ require_once 'status.php';
 <body>
 
 <?php
-require_once 'navbar.php';
+    // Import da Navbar
+    require_once 'navbar.php';
 ?>
 <?php
+// Função responsável pela chamada do Popup das informações de Status do Sistema
 if (isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
-
+<!--
+    Form de criação de um usuário, envia os valores para criarUsuario.php
+-->
 <div class="container">
     <div class="row">
         <div class="card-login">
@@ -72,6 +83,5 @@ if (isset($_SESSION['status'])) {
         </div>
     </div>
 </div>
-<?php //require_once 'rodape.php' ?>
 </body>
 </html>

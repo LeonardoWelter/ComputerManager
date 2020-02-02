@@ -1,11 +1,21 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Require para verificar se o usuário está logado
 require_once 'validaLogin.php';
 require_once 'mostrarComputador.php';
 require_once 'status.php';
+require_once 'manipuladorUrl.php';
 
 if (!isset($_SESSION)) {
 	session_start();
 }
+
+// Define a URL atual para uso na função addParamURL
+$urlAtual = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 
 <html lang="pt">
@@ -15,6 +25,7 @@ if (!isset($_SESSION)) {
     <title>Computador ID <?= $device['id'] ?> - Computer Manager</title>
 
 	<?php
+    // Imports das dependências
 	require_once 'imports.php';
 	?>
 
@@ -26,15 +37,18 @@ if (!isset($_SESSION)) {
 <body>
 
 <?php
+//Import da NavBar
 require_once 'navbar.php';
 ?>
 
 <?php
+// Função responsável pela chamada do Popup das informações de Status do Sistema
 if (isset($_SESSION['status'])) {
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
 <?php
+// Modal que aparece quando tentamos apagar algum registro
 if (isset($_GET['apaga'])) {
 	?>
     <!-- Modal apagar -->
@@ -50,7 +64,7 @@ if (isset($_GET['apaga'])) {
                 </div>
                 <div class="modal-footer">
                     <a href="computador.php?id=<?= $_GET['id'] ?>" class="btn btn-secondary">Cancelar</a>
-                    <a href="apagarManutencao.php?id=<?= $_GET['apaga'] ?>&confirm=yes"
+                    <a href="apagarManutencao.php?id=<?= $_GET['apaga'] ?>&confirma=sim"
                        class="btn btn-danger">Remover</a>
                 </div>
             </div>
@@ -68,11 +82,13 @@ if (isset($_GET['apaga'])) {
         <div class="btn-group d-flex float-right mt-1">
             <a href="computadores.php" class="btn btn-sm btn-outline-primary">Computadores</a>
             <?php if ($_SESSION['grupo'] != 'user') { ?>
+            <!-- Renderiza os botões de ação somente se o usuário for Moderador ou Admin -->
             <a href="atualizaComputador.php?id=<?= $device['id'] ?>" class="btn btn-sm btn-outline-primary">Editar</a>
             <a href="#" class="btn btn-sm btn-outline-primary">Ligar</a>
             <?php } ?>
         </div>
 
+        <!-- Tabela preenchida com as informações do banco de dados -->
         <div class="table-responsive">
             <table class="table table-striped table-bordered tabela">
                 <caption>Informações do computador de ID: <?= $device['id'] ?></caption>
@@ -132,18 +148,20 @@ if (isset($_GET['apaga'])) {
                 </tr>
             </table>
         </div>
+        <!-- Manutenções do computador seleciona -->
         <h2>Manutenções do computador <?= $device['nome'] ?></h2>
         <table class="table table-striped table-bordered table-responsive-sm">
             <thead>
             <tr>
-                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=id&ordem=<?php echo $cre_dec; ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=descricao&ordem=<?php echo $cre_dec; ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=tipo&ordem=<?php echo $cre_dec; ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
-                <th><a href="computador.php?id=<?= $_GET['id'] ?>&coluna=subtipo&ordem=<?php echo $cre_dec; ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="<?= addParamURL($urlAtual, $parametros = array('id' => $_GET['id'],'coluna' => 'id', 'ordem' => $cre_dec), null) ?>">ID<i class="fas fa-sort<?php echo $coluna == 'id' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="<?= addParamURL($urlAtual, $parametros = array('id' => $_GET['id'],'coluna' => 'descricao', 'ordem' => $cre_dec), null) ?>">Descrição<i class="fas fa-sort<?php echo $coluna == 'descricao' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="<?= addParamURL($urlAtual, $parametros = array('id' => $_GET['id'],'coluna' => 'tipo', 'ordem' => $cre_dec), null) ?>">Tipo<i class="fas fa-sort<?php echo $coluna == 'tipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
+                <th><a href="<?= addParamURL($urlAtual, $parametros = array('id' => $_GET['id'],'coluna' => 'subtipo', 'ordem' => $cre_dec), null) ?>">Subtipo<i class="fas fa-sort<?php echo $coluna == 'subtipo' ? '-' . $cima_baixo : ''; ?>"></i></a></th>
                 <th>Ações</th>
             </tr>
             </thead>
             <tbody>
+            <!-- Listagem de manutenções geradas programaticamente, usando os registros do banco de dados -->
 			<?php foreach ($maintenances as $maintenance): ?>
                 <tr>
                     <td><?= $maintenance['id'] ?></td>
@@ -154,14 +172,16 @@ if (isset($_GET['apaga'])) {
                         <a href="manutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-search"></i></a>
 						<?php if ($_SESSION['grupo'] != 'user') { ?>
+                        <!-- Renderiza o botão de edição caso o usuário for moderador ou admin -->
                         <a href="atualizaManutencao.php?id=<?= $maintenance['id'] ?>" class="btn btn-primary btn-sm"><i
                                     class="fas fa-pen"></i></a>
                         <?php } ?>
                         <?php if($_SESSION['grupo'] == 'admin') {?>
+                        <!-- Renderiza o botão de remoção caso o usuário for admin -->
                         <a href="computador.php?id=<?= $_GET['id'] ?>&apaga=<?= $maintenance['id'] ?>"
                            class="btn btn-danger btn-sm"><i
                                     class="fas fa-trash"></i></a>
-                        <?php }?>
+                        <?php } ?>
                     </td>
                 </tr>
 			<?php endforeach; ?>

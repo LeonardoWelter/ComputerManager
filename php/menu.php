@@ -1,4 +1,10 @@
 <?php
+/*
+ * - Copyright (c) Leonardo Welter, 2020.
+ * - https://github.com/LeonardoWelter/
+ */
+
+// Require para verificar se o usuário está logado
 require_once 'validaLogin.php';
 require_once 'status.php';
 ?>
@@ -10,6 +16,7 @@ require_once 'status.php';
     <title>Menu - Computer Manager</title>
 
     <?php
+	// Imports das dependências
 	require_once 'imports.php';
 	?>
 
@@ -19,16 +26,17 @@ require_once 'status.php';
 
 <body>
 <?php
+    //Import da NavBar
     require_once 'navbar.php';
 ?>
 <?php
 if(isset($_SESSION['status'])) {
+	// Função responsável pela chamada do Popup das informações de Status do Sistema
 	echo mostrarToastr($_SESSION['status']);
 }
 ?>
 <div class="container">
     <div class="row">
-
         <div class="card-home">
             <div class="card">
                 <div class="card-header">
@@ -49,6 +57,7 @@ if(isset($_SESSION['status'])) {
                             </a>
                         </div>
                         <?php if($_SESSION['grupo'] == 'admin') { ?>
+                            <!-- Renderiza a lista do usuários somente se o usuário for do grupo Admin -->
                         <div class="col-4 d-flex justify-content-center text-center" id="menuUsuarios">
                             <a href="usuarios.php">
                                 <img src="../img/icons8-pessoa-do-sexo-masculino-90.png" width="70px" height="70px" alt="Icone atalho usuários">
@@ -56,6 +65,7 @@ if(isset($_SESSION['status'])) {
                             </a>
                         </div>
                         <?php } else {
+                            // Caso não seja do grupo Admin, reorganiza o menu para formatação correta
                             echo '<script>arrumaMenu()</script>';
                         } ?>
                     </div>
