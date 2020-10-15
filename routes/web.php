@@ -23,4 +23,12 @@ Route::get('/dashboard', function () {
 
 Route::get('/computer', function () {
     return view('computer');
-})->middleware('auth');
+})->name('computer')->middleware('auth');
+
+Route::get('/maintenance', function () {
+    return view('maintenance');
+})->name('maintenance')->middleware('auth');
+
+Route::get('/users', function () {
+    return view('users');
+})->name('users')->middleware('auth', 'group:1');

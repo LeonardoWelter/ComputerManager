@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Computadores') }}</div>
+                <div class="card-header">{{ __('Manutenções') }}</div>
                 <div class="card-body">
                     <table class="table table-striped table-bordered table-responsive-sm">
                         <thead>

@@ -13,6 +13,10 @@
                         </div>
                     @endif
 
+                    @if (Auth::user()->group == 1)
+                        <h1>Grupo 1</h1>
+                    @endif
+
                     {{ __('You are logged in!') }}
                 </div>
             </div>
