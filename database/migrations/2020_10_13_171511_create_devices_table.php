@@ -38,6 +38,7 @@ class CreateDevicesTable extends Migration
             $table->string('name');
             $table->string('os');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

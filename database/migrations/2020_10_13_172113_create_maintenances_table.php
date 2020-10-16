@@ -30,8 +30,8 @@ class CreateMaintenancesTable extends Migration
             $table->text('description');
             $table->text('comments')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->timestamp('date')->useCurrent();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('device_id')->references('id')->on('devices');
             $table->foreign('user_id')->references('id')->on('users');
