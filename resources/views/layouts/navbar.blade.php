@@ -27,7 +27,7 @@
                 @endif
                 @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('computer') }}">{{ __('Computadores') }}</a>
+                    <a class="nav-link" href="{{ route('device') }}">{{ __('Computadores') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('maintenance') }}">{{ __('Manutenções') }}</a>

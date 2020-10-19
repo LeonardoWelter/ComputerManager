@@ -21,13 +21,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
 
-Route::get('/computer', function () {
-    return view('computer');
-})->name('computer')->middleware('auth');
+Route::get('/device', function () {
+    return view('device');
+})->name('device')->middleware('auth');
 
 Route::get('/maintenance', function () {
     return view('maintenance');
 })->name('maintenance')->middleware('auth');
+
+Route::get('/json', function () {
+    return view('json');
+})->name('json')->middleware('auth');
 
 Route::get('/users', function () {
     return view('users');

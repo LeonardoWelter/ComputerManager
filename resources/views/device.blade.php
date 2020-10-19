@@ -15,6 +15,10 @@
     //     'name' => 'Shintel goes BRR',
     //     'os' => 'Windows 10',
     // ]);
+
+    use App\Http\Controllers\DeviceController;
+
+    $deviceController = new DeviceController();
 ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -33,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach (\App\Models\Device::all() as $device) : ?>
+                            <?php foreach ($deviceController->index() as $device) : ?>
                                 <tr>
                                     <td><?= $device['serial'] ?></td>
                                     <td><?= $device['oem'] ?></td>
