@@ -14,7 +14,7 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::select('serial','oem' ,'model', 'name')->get();
+        $devices = Device::select('id', 'serial','oem' ,'model', 'name')->get();
 
         return $devices;
     }
@@ -37,7 +37,26 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'serial' => 'required',
+            'oem' => 'required',
+            'model' => 'required',
+            'cpu' => 'required',
+            'ram' => 'required',
+            'storage' => 'required',
+            'psu' => 'required',
+            'mac' => 'required',
+            'name' => 'required',
+            'os' => 'required',
+        ]);
+
+        $device = Device::create($request->all());
+
+        return response()->json([
+            'status' => 201,
+            'message' => 'Success, new device created.',
+            'device' => $device,
+        ]);
     }
 
     /**
@@ -48,7 +67,9 @@ class DeviceController extends Controller
      */
     public function show($id)
     {
-        //
+        $device = Device::find($id);
+
+        return $device;
     }
 
     /**
@@ -71,7 +92,28 @@ class DeviceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'serial' => 'required',
+            'oem' => 'required',
+            'model' => 'required',
+            'cpu' => 'required',
+            'ram' => 'required',
+            'storage' => 'required',
+            'psu' => 'required',
+            'mac' => 'required',
+            'name' => 'required',
+            'os' => 'required',
+        ]);
+
+        $device = Device::find($id);
+
+        $device->update($request->all());
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Success, device updated.',
+            'device' => $device,
+        ]);
     }
 
     /**
@@ -82,6 +124,13 @@ class DeviceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $device = Device::find($id);
+
+        $device->delete();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Success, device removed.'
+        ]);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/device', 'App\Http\Controllers\DeviceController@index')->name('device.index');
+Route::get('/device/{device}', 'App\Http\Controllers\DeviceController@show')->name('device.show');
+Route::post('/device', 'App\Http\Controllers\DeviceController@store')->name('device.store');
+Route::put('/device/{device}', 'App\Http\Controllers\DeviceController@update')->name('device.update');
+Route::delete('/device/{device}', 'App\Http\Controllers\DeviceController@delete')->name('device.delete');
