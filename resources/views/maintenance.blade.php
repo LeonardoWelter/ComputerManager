@@ -13,7 +13,7 @@
     // ]);
 ?>
 
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -33,26 +33,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach (\App\Models\Maintenance::all() as $maintenance) : ?>
+                            \App\Models\Maintenance::all() as $maintenance)
                                 <tr>
-                                    <td><?= App\Models\Device::find($maintenance['device_id'])->serial ?></td>
-                                    <td><?= $maintenance['type'] ?></td>
-                                    <td><?= $maintenance['subtype']  ?></td>
-                                    <td><?= $maintenance['description']  ?></td>
-                                    <td><?= $maintenance['comments']  ?></td>
-                                    <td><?= App\Models\User::find($maintenance['user_id'])->name  ?></td>
-                                    <td><?= \Carbon\Carbon::parse($maintenance['created_at'])->format('d/m/Y H:i') ?></td>
+                                    <td>App\Models\Device::find($maintenance['device_id'])->serial ?></td>
+                                    <td>$maintenance['type']</td>
+                                    <td>$maintenance['subtype'] </td>
+                                    <td>$maintenance['description'] </td>
+                                    <td>$maintenance['comments'] </td>
+                                    <td>App\Models\User::find($maintenance['user_id'])->name </td>
+                                    <td>\Carbon\Carbon::parse($maintenance['created_at'])->format('d/m/Y H:i')</td>
                                     <td class="text-right">
                                         <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-pen">Editar</i></a>
                                         <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash">Excluir</i></a>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<x-table type="maintenance" name="Manutenções" :table-data='\App\Models\Maintenance::all()'/>
 @endsection

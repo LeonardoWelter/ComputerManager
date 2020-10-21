@@ -19,41 +19,8 @@
     use App\Http\Controllers\DeviceController;
 
     $deviceController = new DeviceController();
+
 ?>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Computadores') }}</div>
-                <div class="card-body">
-                    <table class="table table-striped table-bordered table-responsive-sm">
-                        <thead>
-                            <tr>
-                                <th>Serial</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Name</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($deviceController->index() as $device) : ?>
-                                <tr>
-                                    <td><?= $device['serial'] ?></td>
-                                    <td><?= $device['oem'] ?></td>
-                                    <td><?= $device['model'] ?></td>
-                                    <td><?= $device['name'] ?></td>
-                                    <td class="text-right">
-                                        <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-pen">Editar</i></a>
-                                        <a href="#" class="btn btn-sm btn-danger"><i class="fas fa-trash">Excluir</i></a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+<x-table type="device" name="Dispositivos" :table-data='$deviceController->index()'/>
 @endsection
