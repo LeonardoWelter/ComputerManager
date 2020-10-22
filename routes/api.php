@@ -24,3 +24,9 @@ Route::get('/device/{device}', 'App\Http\Controllers\DeviceController@show')->na
 Route::post('/device', 'App\Http\Controllers\DeviceController@store')->name('device.store');
 Route::put('/device/{device}', 'App\Http\Controllers\DeviceController@update')->name('device.update');
 Route::delete('/device/{device}', 'App\Http\Controllers\DeviceController@delete')->name('device.delete');
+
+Route::get('/maintenance', 'App\Http\Controllers\MaintenanceController@index')->name('maintenance.index');
+Route::get('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@show')->name('maintenance.show');
+Route::post('/maintenance', 'App\Http\Controllers\MaintenanceController@store')->name('maintenance.store');
+Route::put('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@update')->name('maintenance.update');
+Route::delete('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@delete')->name('maintenance.delete');

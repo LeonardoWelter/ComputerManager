@@ -12,7 +12,7 @@
                                     @if ($type === 'device')
                                         <th>Serial</th>
                                         <th>Modelo</th>
-                                        <th>Name</th>
+                                        <th>Nome</th>
                                     @elseif ($type === 'maintenance')
                                         <th>Tipo</th>
                                         <th>Criador</th>
