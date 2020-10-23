@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('/device', 'App\Http\Controllers\DeviceController@index')->name('device.index');
 Route::get('/device/{device}', 'App\Http\Controllers\DeviceController@show')->name('device.show');
@@ -30,3 +30,9 @@ Route::get('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceContro
 Route::post('/maintenance', 'App\Http\Controllers\MaintenanceController@store')->name('maintenance.store');
 Route::put('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@update')->name('maintenance.update');
 Route::delete('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@delete')->name('maintenance.delete');
+
+Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user.index');
+Route::get('/user/{user}', 'App\Http\Controllers\UserController@show')->name('user.show');
+Route::post('/user', 'App\Http\Controllers\UserController@store')->name('user.store');
+Route::put('/user/{user}', 'App\Http\Controllers\UserController@update')->name('user.update');
+Route::delete('/user/{user}', 'App\Http\Controllers\UserController@delete')->name('user.delete');
