@@ -34,12 +34,12 @@
                                     <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d/m/Y H:i') }}</td>
                                     @endif
                                     <td class="text-right">
-                                        <form action="/api/{{$type}}/{{ $data->id }}" class="d-inline">
+                                        <form action="/api/{{$type}}/{{ $data->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-pen">Editar</i></button>
                                         </form>
-                                        <form action="/api/{{$type}}/{{ $data->id }}" class="d-inline">
+                                        <form action="/api/{{$type}}/{{ $data->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-pen">Excluir</i></button>
