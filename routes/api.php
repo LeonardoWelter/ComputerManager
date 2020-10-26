@@ -23,16 +23,16 @@ Route::get('/device', 'App\Http\Controllers\DeviceController@index')->name('devi
 Route::get('/device/{device}', 'App\Http\Controllers\DeviceController@show')->name('device.show');
 Route::post('/device', 'App\Http\Controllers\DeviceController@store')->name('device.store');
 Route::put('/device/{device}', 'App\Http\Controllers\DeviceController@update')->name('device.update');
-Route::delete('/device/{device}', 'App\Http\Controllers\DeviceController@delete')->name('device.delete');
+Route::delete('/device/{device}', 'App\Http\Controllers\DeviceController@destroy')->name('device.delete');
 
 Route::get('/maintenance', 'App\Http\Controllers\MaintenanceController@index')->name('maintenance.index');
 Route::get('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@show')->name('maintenance.show');
 Route::post('/maintenance', 'App\Http\Controllers\MaintenanceController@store')->name('maintenance.store');
 Route::put('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@update')->name('maintenance.update');
-Route::delete('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@delete')->name('maintenance.delete');
+Route::delete('/maintenance/{maintenance}', 'App\Http\Controllers\MaintenanceController@destroy')->name('maintenance.delete');
 
 Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user.index');
 Route::get('/user/{user}', 'App\Http\Controllers\UserController@show')->name('user.show');
 Route::post('/user', 'App\Http\Controllers\UserController@store')->name('user.store');
 Route::put('/user/{user}', 'App\Http\Controllers\UserController@update')->name('user.update');
-Route::delete('/user/{user}', 'App\Http\Controllers\UserController@delete')->name('user.delete');
+Route::delete('/user/{user}', 'App\Http\Controllers\UserController@destroy')->name('user.delete');
