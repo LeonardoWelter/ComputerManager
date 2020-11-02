@@ -1,60 +1,47 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/dashboard') }}">
+<header class="lg:px-4 px-6 bg-white dark:bg-gray-800 flex flex-wrap items-center lg:py-0 py-2">
+    <div class="flex-1 flex justify-between items-center">
+        <a href="{{ url('/dashboard') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+    <label for="menu-toggle" class="pointer-cursor lg:hidden block"><svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <title>menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg></label>
+    <input class="hidden" type="checkbox" id="menu-toggle" />
 
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
+    <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+        <nav>
+            <ul class="lg:flex items-center justify-between text-base text-gray-700 dark:text-gray-200 pt-4 lg:pt-0">
                 @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
+                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white" href="{{ route('login') }}">Login</a></li>
                 @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
+                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white" href="{{ route('register') }}">Register</a></li>
                 @endif
                 @else
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('device') }}">{{ __('Computadores') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('maintenance') }}">{{ __('Manutenções') }}</a>
-                </li>
+                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white" href="{{ route('device') }}">Devices</a></li>
+                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white" href="{{ route('maintenance') }}">Maintenances</a></li>
                 @if (Auth::user()->group == 1)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users') }}">{{ __('Usuários') }}</a>
-                </li>
+                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white lg:mb-0 mb-2" href="{{ route('users') }}">Users</a></li>
                 @endif
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <div class="relative">
+                    <button class="block h-8 w-8 z-60 rounded-full bg-gray-200 text-gray-700 border-2 focus:outline-none focus:border-blue-900 hover:bg-gray-400 hover:text-white hover:border-blue-900"
+                            onclick="document.getElementById('dropdown').hidden ? document.getElementById('dropdown').hidden = false: document.getElementById('dropdown').hidden = true">
+                        <p class="block">{{ strtoupper(Auth::user()->name[0])}}</p>
+                    </button>
+                    <div id="dropdown" class="absolute z-40 right-0 mt-2 w-32 bg-white dark:bg-gray-300 text-gray-700 rounded-lg py-2 shadow-xl" hidden>
+                        <p class="block text-gray-600 border-b border-gray-200 px-4 py-2">{{Auth::user()->name}}</p>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-400 hover:text-black">Account</a>
+                        <a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-400 hover:text-black" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hover:bg-gray-400 hover:text-black">
                             @csrf
                         </form>
                     </div>
-                </li>
+                </div>
                 @endguest
             </ul>
-        </div>
+        </nav>
     </div>
-</nav>
+
+</header>

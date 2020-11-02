@@ -19,8 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app" class="w-100 h-100">
+<body class="h-screen dark:bg-gray-900">
+    <div id="app" class="text-gray-700 dark:text-gray-200">
         @include('layouts.navbar')
             @yield('content')
     </div>
