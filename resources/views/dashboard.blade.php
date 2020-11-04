@@ -24,6 +24,20 @@
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                 Está buscando algum computador? nessa lista encontram-se todos os computadores cadastrados no sistema.
                             </div>
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                <a href="" class="block mt-1 bg-transparent 
+                                                hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
+                                                border border-blue-500 hover:border-transparent rounded
+                                               dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-list-ul mr-2"></i>Listar dispositivos
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-plus mr-2"></i>Criar dispositivo
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-edit mr-2"></i>Editar dispositivo
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -39,6 +53,20 @@
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                 Quer encontrar uma manutenção realizada em um computador específico? aqui é o lugar certo.
                             </div>
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                <a href="" class="block mt-1 bg-transparent 
+                                                hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
+                                                border border-blue-500 hover:border-transparent rounded
+                                               dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-list-ul mr-2"></i>Listar manutenções
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-plus mr-2"></i>Criar manutenção
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-edit mr-2"></i>Editar manutenção
+                                </a>
+                            </div>
                         </div>
                     </div>
                     @if (Auth::user()->group == 1)
@@ -53,6 +81,20 @@
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                                 Lista dos usuários cadastrados no sistema, somente acessível por usuários Administradores.
+                            </div>
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                <a href="" class="block mt-1 bg-transparent 
+                                                hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
+                                                border border-blue-500 hover:border-transparent rounded
+                                               dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-list-ul mr-2"></i>Listar usuários
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-plus mr-2"></i>Criar usuário
+                                </a>
+                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                    <i class="fas fa-edit mr-2"></i>Editar usuário
+                                </a>
                             </div>
                         </div>
                     </div>
