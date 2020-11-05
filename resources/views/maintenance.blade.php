@@ -3,21 +3,11 @@
 @section('title', 'Maintenances')
 
 @section('content')
-
-<?php
-    // $maintenance = \App\Models\Maintenance::create([
-    //     'device_id' => 2,
-    //     'type' => 'Hardware',
-    //     'subtype' => 'Instalação',
-    //     'description' => 'Instalação de um watercooler 360MM',
-    //     'comments' => 'Instalação do watercooler devido a superaquecimento',
-    //     'user_id' => '2',
-    // ]);
-
-    use App\Http\Controllers\MaintenanceController;
-
-    $maintenanceController = new MaintenanceController();
-?>
-
-<x-table type="maintenance" name="Manutenções" :table-data='$maintenanceController->index()'/>
+<div class="antialiased" onclick="document.getElementById('dropdown').hidden = true">
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <x-table type="maintenance" name="Manutenções" :table-data='App\Http\Controllers\MaintenanceController::index()'/>
+        </div>
+    </div>
+</div>
 @endsection
