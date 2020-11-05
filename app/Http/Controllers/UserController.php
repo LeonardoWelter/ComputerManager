@@ -17,7 +17,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index()
     {
         $users = User::select('id', 'serial','oem' ,'model', 'name')->get();
 

@@ -12,7 +12,7 @@ class MaintenanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public static function index()
     {
         $maintenances = Maintenance::select('id', 'type','subtype' ,'user_id', 'created_at')->get();
 
