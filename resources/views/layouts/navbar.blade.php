@@ -25,8 +25,9 @@
                 @if (Auth::user()->group == 1)
                 <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white lg:mb-0 mb-2" href="{{ route('users') }}">Users</a></li>
                 @endif
+                <li><a class="block lg:hidden lg:p-4 py-3 px-0 border-b-2 border-transparent hover:border-indigo-400 dark:hover:border-white lg:mb-0 mb-2" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
                 <div class="relative">
-                    <button class="block h-8 w-8 z-60 rounded-full bg-gray-200 text-gray-700 border-2 focus:outline-none focus:border-blue-900 hover:bg-gray-400 hover:text-white hover:border-blue-900"
+                    <button class="hidden lg:block h-8 w-8 z-60 rounded-full bg-gray-200 text-gray-700 border-2 focus:outline-none focus:border-blue-900 hover:bg-gray-400 hover:text-white hover:border-blue-900"
                             onclick="document.getElementById('dropdown').hidden ? document.getElementById('dropdown').hidden = false: document.getElementById('dropdown').hidden = true">
                         <p class="block">{{ strtoupper(Auth::user()->name[0])}}</p>
                     </button>
