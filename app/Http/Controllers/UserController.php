@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public static function index()
     {
-        $users = User::select('id', 'serial','oem' ,'model', 'name')->get();
+        $users = User::select('id', 'name','email' ,'group', 'created_at')->get();
 
         return $users;
     }
