@@ -27780,6 +27780,12 @@ video {
 }
 
 @media (min-width: 640px) {
+  .navMobileEnd {
+    text-align: end;
+  }
+}
+
+@media (min-width: 640px) {
   .sm\:container {
     width: 100%;
   }
