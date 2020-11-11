@@ -16,7 +16,7 @@
                         <div class="flex items-center">
                             <i class="h-8 w-8 text-3xl text-gray-500 fas fa-desktop"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="{{ route('device') }}" class="underline text-gray-900 dark:text-white">Devices</a>
+                                <a href="{{ route('devices.index') }}" class="underline text-gray-900 dark:text-white">Devices</a>
                             </div>
                         </div>
 
@@ -45,7 +45,7 @@
                         <div class="flex items-center">
                             <i class="h-8 w-8 text-3xl text-gray-500 fas fa-tools"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="{{ route('maintenance') }}" class="underline text-gray-900 dark:text-white">Maintenances</a>
+                                <a href="{{ route('maintenances.index') }}" class="underline text-gray-900 dark:text-white">Maintenances</a>
                             </div>
                         </div>
 
@@ -74,7 +74,7 @@
                         <div class="flex items-center">
                             <i class="h-8 w-8 text-3xl text-gray-500 far fa-user"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="{{ route('users') }}" class="underline text-gray-900 dark:text-white">Users</a>
+                                <a href="{{ route('users.index') }}" class="underline text-gray-900 dark:text-white">Users</a>
                             </div>
                         </div>
 
