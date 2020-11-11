@@ -16,7 +16,7 @@ class DeviceController extends Controller
     {
         $devices = Device::select('id', 'serial','oem' ,'model', 'name')->get();
 
-        return $devices;
+        return view('devices.index')->with('devices', $devices);
     }
 
     /**

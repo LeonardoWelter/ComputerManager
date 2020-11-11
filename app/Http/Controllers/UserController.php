@@ -13,6 +13,17 @@ class UserController extends Controller
     use PasswordValidationRules;
 
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('group:1');
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,7 +32,7 @@ class UserController extends Controller
     {
         $users = User::select('id', 'name','email' ,'group', 'created_at')->get();
 
-        return $users;
+        return view('users.index')->with('users', $users);
     }
 
     /**

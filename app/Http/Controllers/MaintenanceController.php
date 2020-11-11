@@ -16,7 +16,7 @@ class MaintenanceController extends Controller
     {
         $maintenances = Maintenance::select('id', 'type','subtype' ,'user_id', 'created_at')->get();
 
-        return $maintenances;
+        return view('maintenances.index')->with('maintenances', $maintenances);
     }
 
     /**
