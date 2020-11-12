@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Device;
+use Illuminate\Support\Facades\Session;
 
 class DeviceController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +38,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        return view('devices.create');
     }
 
     /**
@@ -52,11 +64,8 @@ class DeviceController extends Controller
 
         $device = Device::create($request->all());
 
-        return response()->json([
-            'status' => 201,
-            'message' => 'Success, new device created.',
-            'device' => $device,
-        ]);
+        Session::flash('message', 'Device created.');
+        return redirect()->route('devices.index');
     }
 
     /**
@@ -69,7 +78,7 @@ class DeviceController extends Controller
     {
         $device = Device::find($id);
 
-        return $device;
+        return view('devices.show')->with('device', $device);
     }
 
     /**
@@ -80,7 +89,9 @@ class DeviceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $device = Device::find($id);
+
+        return view('devices.edit')->with('device', $device);
     }
 
     /**
@@ -109,11 +120,8 @@ class DeviceController extends Controller
 
         $device->update($request->all());
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Success, device updated.',
-            'device' => $device,
-        ]);
+        Session::flash('message', 'Device updated.');
+        return redirect()->route('devices.show', ['device' => $device->id]);
     }
 
     /**
@@ -128,9 +136,7 @@ class DeviceController extends Controller
 
         $device->delete();
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Success, device removed.'
-        ]);
+        Session::flash('message', 'Device removed.');
+        return redirect()->route('devices.index');
     }
 }
