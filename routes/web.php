@@ -24,6 +24,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
 
-Route::resource('devices', DeviceController::class)->middleware('auth');
-Route::resource('maintenances', MaintenanceController::class)->middleware('auth');
-Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('devices', DeviceController::class);
+Route::resource('maintenances', MaintenanceController::class);
+Route::resource('users', UserController::class);
