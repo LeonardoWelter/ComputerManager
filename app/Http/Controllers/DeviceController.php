@@ -64,7 +64,7 @@ class DeviceController extends Controller
 
         $device = Device::create($request->all());
 
-        Session::flash('message', 'Device created.');
+        Session::flash('alert', array('success', 'Success' ,'Device created.'));
         return redirect()->route('devices.index');
     }
 
@@ -120,7 +120,7 @@ class DeviceController extends Controller
 
         $device->update($request->all());
 
-        Session::flash('message', 'Device updated.');
+        Session::flash('alert', array('success', 'Success' ,'Device updated.'));
         return redirect()->route('devices.show', ['device' => $device->id]);
     }
 
@@ -136,7 +136,7 @@ class DeviceController extends Controller
 
         $device->delete();
 
-        Session::flash('message', 'Device removed.');
+        Session::flash('alert', array('success', 'Success' ,'Device removed.'));
         return redirect()->route('devices.index');
     }
 }

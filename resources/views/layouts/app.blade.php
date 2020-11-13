@@ -24,15 +24,24 @@
     #menu-toggle:checked+#menu {
       display: block;
     }
-    
   </style>
 </head>
 
 <body class="h-screen dark:bg-gray-900">
   <div id="app" class="text-gray-700 dark:text-gray-200">
     @include('layouts.navbar')
+    @if (Session::has('alert'))
+      <x-alert type="{{Session::get('alert')[0]}}" title="{{Session::get('alert')[1]}}" message="{{Session::get('alert')[2]}}" />
+    @endif
     @yield('content')
   </div>
+  <script>
+    if (document.getElementById('alert')) {
+      setTimeout(function () {
+        document.getElementById('alert').hidden = true;
+      }, 5000);
+    }
+  </script>
 </body>
 
 </html>
