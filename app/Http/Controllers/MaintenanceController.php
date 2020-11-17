@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Maintenance;
+use App\Models\Device;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class MaintenanceController extends Controller
 {
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,7 @@ class MaintenanceController extends Controller
      */
     public static function index()
     {
-        $maintenances = Maintenance::select('id', 'type','subtype' ,'user_id', 'created_at')->get();
+        $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')->get();
 
         return view('maintenances.index')->with('maintenances', $maintenances);
     }
@@ -26,7 +40,7 @@ class MaintenanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('maintenances.create');
     }
 
     /**
@@ -37,6 +51,17 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
+        // Retorna qual o ID do dispositivo baseado no serial inserido pelo usuário
+        $device = Device::select('id')->where('serial', $request['device_id'])->get();
+
+        // Separa o tipo e subtipo, inseridos pelo select único
+        $typeArray = explode('/', $request['type']);
+
+        // Sobrescreve as informação corretamente
+        $request['type'] = $typeArray[0];
+        $request['subtype'] = $typeArray[1];
+        $request['device_id'] = strval($device[0]->id);
+
         $request->validate([
             'device_id' => 'required',
             'type' => 'required',
@@ -48,11 +73,8 @@ class MaintenanceController extends Controller
 
         $maintenance = Maintenance::create($request->all());
 
-        return response()->json([
-            'status' => 201,
-            'message' => 'Success, new maintenance created.',
-            'maintenance' => $maintenance,
-        ]);
+        Session::flash('alert', array('success', 'Success', 'Maintenance created.'));
+        return redirect()->route('maintenances.index');
     }
 
     /**
@@ -65,7 +87,11 @@ class MaintenanceController extends Controller
     {
         $maintenance = Maintenance::find($id);
 
-        return $maintenance;
+        $serial = Device::find($maintenance->device_id);
+
+        $user = User::find($maintenance->user_id);
+
+        return view('maintenances.show')->with('maintenance', $maintenance)->with('serial', $serial->serial)->with('user', $user->name);
     }
 
     /**
@@ -76,7 +102,11 @@ class MaintenanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $maintenance = Maintenance::find($id);
+
+        $serial = Device::find($maintenance->device_id);
+
+        return view('maintenances.edit')->with('maintenance', $maintenance)->with('serial', $serial->serial);
     }
 
     /**
@@ -88,6 +118,14 @@ class MaintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        // Separa o tipo e subtipo, inseridos pelo select único
+        $typeArray = explode('/', $request['type']);
+
+        // Sobrescreve as informação corretamente
+        $request['type'] = $typeArray[0];
+        $request['subtype'] = $typeArray[1];
+    
         $request->validate([
             'device_id' => 'required',
             'type' => 'required',
@@ -101,11 +139,8 @@ class MaintenanceController extends Controller
 
         $maintenance->update($request->all());
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Success, maintenance updated.',
-            'maintenance' => $maintenance,
-        ]);
+        Session::flash('alert', array('success', 'Success', 'Maintenance updated.'));
+        return redirect()->route('maintenances.index');
     }
 
     /**
@@ -120,9 +155,7 @@ class MaintenanceController extends Controller
 
         $maintenance->delete();
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Success, maintenance removed.'
-        ]);
+        Session::flash('alert', array('success', 'Success', 'Maintenance removed.'));
+        return redirect()->route('maintenances.index');
     }
 }
