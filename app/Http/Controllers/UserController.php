@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Actions\Fortify\PasswordValidationRules;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -31,7 +33,7 @@ class UserController extends Controller
      */
     public static function index()
     {
-        $users = User::select('id', 'name','email' ,'group', 'created_at')->get();
+        $users = User::select('id', 'name', 'email', 'group')->get();
 
         return view('users.index')->with('users', $users);
     }
@@ -43,7 +45,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -54,17 +56,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request, [
+        $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
-        ])->validate();
+            'group' => ['required', 'string']
+        ]);
 
-        return User::create([
+        $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'group' => $request['group'],
         ]);
+
+        Session::flash('alert', array('success', 'Success', 'User created.'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -77,7 +84,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return $user;
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -88,7 +95,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.edit')->with('user', $user);
     }
 
     /**
@@ -100,21 +109,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'group' => 'required',
-        // ]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'group' => ['required', 'string']
+        ]);
 
-        // $user = User::find($id);
+        $user = User::find($id);
 
-        // $user->update($request->all());
+        $user->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'group' => $request['group'],
+        ]);
 
-        // return response()->json([
-        //     'status' => 200,
-        //     'message' => 'Success, user updated.',
-        //     'user' => $user,
-        // ]);
+        Session::flash('alert', array('success', 'Success', 'User updated.'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -129,9 +139,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return response()->json([
-            'status' => 200,
-            'message' => 'Success, user removed.'
-        ]);
+        Session::flash('alert', array('success', 'Success', 'User removed.'));
+        return redirect()->route('users.index');
     }
 }
