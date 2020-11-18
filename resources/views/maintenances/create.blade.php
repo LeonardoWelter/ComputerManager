@@ -10,7 +10,7 @@
                 <div class="font-black text-center border-b-2 border-gray-200 dark:border-gray-600 py-2">
                     Nova manutenção
                 </div>
-                <form class="w-full max-w-lg p-2" action='/maintenances/' method="post" id="formMaintenance">
+                <form class="w-full max-w-lg p-2" action='/maintenances/' method="post">
                     @csrf
                     <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id }}" required>
                     <div class="flex flex-wrap -mx-3 mb-6">
