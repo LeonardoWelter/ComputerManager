@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,3 +27,5 @@ Route::get('/dashboard', function () {
 Route::resource('devices', DeviceController::class);
 Route::resource('maintenances', MaintenanceController::class);
 Route::resource('users', UserController::class);
+Route::get('users/{id}/edit-password', 'App\Http\Controllers\UserController@editPassword')->name('users.edit-password');
+Route::put('users/{id}/update-password', 'App\Http\Controllers\UserController@updatePassword')->name('users.update-password');
