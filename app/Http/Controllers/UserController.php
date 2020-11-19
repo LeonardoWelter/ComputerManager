@@ -128,6 +128,43 @@ class UserController extends Controller
     }
 
     /**
+     * Show the form for editing the specified password resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editPassword($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit-password')->with('user', $user);
+    }
+
+    /**
+     * Update the specified password in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'password' => $this->passwordRules(),
+        ]);
+
+        $user = User::find($id);
+
+        $user->update([
+            'password' => Hash::make($request['password']),
+        ]);
+
+
+        Session::flash('alert', array('success', 'Success', 'Password updated.'));
+        return redirect()->route('users.index');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
