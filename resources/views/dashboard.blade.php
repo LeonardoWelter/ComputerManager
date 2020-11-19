@@ -6,10 +6,6 @@
 <div class="antialiased" onclick="document.getElementById('dropdown').hidden = true">
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <!-- <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                Logo aqui
-            </div> -->
-            
             <div class="mt-8 lg:mt-0 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 {{ Auth::user()->group == 1 ? 'md:grid-cols-3' : 'md:grid-cols-2' }}">
                     <div class="p-6">
@@ -25,17 +21,14 @@
                                 Está buscando algum computador? nessa lista encontram-se todos os computadores cadastrados no sistema.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <a href="" class="block mt-1 bg-transparent 
+                                <a href="{{ route('devices.index') }}" class="block mt-1 bg-transparent 
                                                 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
                                                 border border-blue-500 hover:border-transparent rounded
                                                dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-list-ul mr-2"></i>Listar dispositivos
                                 </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                <a href="{{ route('devices.create') }}" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-plus mr-2"></i>Criar dispositivo
-                                </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
-                                    <i class="fas fa-edit mr-2"></i>Editar dispositivo
                                 </a>
                             </div>
                         </div>
@@ -54,17 +47,14 @@
                                 Quer encontrar uma manutenção realizada em um computador específico? aqui é o lugar certo.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <a href="" class="block mt-1 bg-transparent 
+                                <a href="{{ route('maintenances.index') }}" class="block mt-1 bg-transparent 
                                                 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
                                                 border border-blue-500 hover:border-transparent rounded
                                                dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-list-ul mr-2"></i>Listar manutenções
                                 </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                <a href="{{ route('maintenances.create') }}" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-plus mr-2"></i>Criar manutenção
-                                </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
-                                    <i class="fas fa-edit mr-2"></i>Editar manutenção
                                 </a>
                             </div>
                         </div>
@@ -83,17 +73,14 @@
                                 Lista dos usuários cadastrados no sistema, somente acessível por usuários Administradores.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <a href="" class="block mt-1 bg-transparent 
+                                <a href="{{ route('users.index') }}" class="block mt-1 bg-transparent 
                                                 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 
                                                 border border-blue-500 hover:border-transparent rounded
                                                dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-list-ul mr-2"></i>Listar usuários
                                 </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
+                                <a href="{{ route('users.create') }}" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
                                     <i class="fas fa-plus mr-2"></i>Criar usuário
-                                </a>
-                                <a href="" class="block mt-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700">
-                                    <i class="fas fa-edit mr-2"></i>Editar usuário
                                 </a>
                             </div>
                         </div>
@@ -103,26 +90,4 @@
             </div>
         </div>
     </div>
-    <!-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    @if (Auth::user()->group == 1)
-                        <h1>Grupo 1</h1>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-    @endsection
+@endsection

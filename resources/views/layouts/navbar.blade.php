@@ -33,7 +33,7 @@
                     </button>
                     <div id="dropdown" class="absolute z-40 right-0 mt-2 w-32 bg-white dark:bg-gray-300 text-gray-700 rounded-lg py-2 shadow-xl" hidden>
                         <p class="block text-gray-600 border-b border-gray-200 px-4 py-2">{{Auth::user()->name}}</p>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-400 hover:text-black">Account</a>
+                        <!-- <a href="#" class="block px-4 py-2 hover:bg-gray-400 hover:text-black">Account</a> -->
                         <a href="{{ route('logout') }}" class="block px-4 py-2 hover:bg-gray-400 hover:text-black" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hover:bg-gray-400 hover:text-black">
                             @csrf
