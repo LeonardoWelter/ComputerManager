@@ -10,14 +10,14 @@
                 <div class="grid grid-cols-1 {{ Auth::user()->group == 1 ? 'md:grid-cols-3' : 'md:grid-cols-2' }}">
                     <div class="p-6">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-500 fas fa-desktop"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 fas fa-desktop"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('devices.index') }}" class="underline text-gray-900 dark:text-white">Devices</a>
                             </div>
                         </div>
 
                         <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 font-semibold text-justify text-sm">
                                 Está buscando algum computador? nessa lista encontram-se todos os computadores cadastrados no sistema.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
@@ -36,14 +36,14 @@
 
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-500 fas fa-tools"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 fas fa-tools"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('maintenances.index') }}" class="underline text-gray-900 dark:text-white">Maintenances</a>
                             </div>
                         </div>
 
                         <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 font-semibold text-justify text-sm">
                                 Quer encontrar uma manutenção realizada em um computador específico? aqui é o lugar certo.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
@@ -62,14 +62,14 @@
                     @if (Auth::user()->group == 1)
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-500 far fa-user"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 far fa-user"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('users.index') }}" class="underline text-gray-900 dark:text-white">Users</a>
                             </div>
                         </div>
 
                         <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                            <div class="mt-2 text-gray-600 dark:text-gray-400 font-semibold text-justify text-sm">
                                 Lista dos usuários cadastrados no sistema, somente acessível por usuários Administradores.
                             </div>
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
