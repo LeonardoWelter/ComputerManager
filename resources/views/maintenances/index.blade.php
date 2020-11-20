@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach ($maintenances as $data)
-                    <tr class="border border-gray-600 rounded"></tr>
+                    <tr class="border border-gray-600 rounded">
                         <td class="px-4 py-2">{{ App\Models\Device::find($data->device_id)->serial }}</td>
                         <td class="px-4 py-2">{{ ucfirst($data->type).' '.ucfirst($data->subtype) }}</td>
                         <td class="px-4 py-2">{{ \Carbon\Carbon::parse($data->created_at)->format('d/m/Y H:i') }}</td>
