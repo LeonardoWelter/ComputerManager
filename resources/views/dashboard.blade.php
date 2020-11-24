@@ -10,7 +10,7 @@
                 <div class="grid grid-cols-1 {{ Auth::user()->group == 1 ? 'md:grid-cols-3' : 'md:grid-cols-2' }}">
                     <div class="p-6">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-800 fas fa-desktop"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 dark:text-gray-300 fas fa-desktop"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('devices.index') }}" class="underline text-gray-900 dark:text-white">Devices</a>
                             </div>
@@ -36,7 +36,7 @@
 
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-800 fas fa-tools"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 dark:text-gray-300 fas fa-tools"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('maintenances.index') }}" class="underline text-gray-900 dark:text-white">Maintenances</a>
                             </div>
@@ -62,7 +62,7 @@
                     @if (Auth::user()->group == 1)
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                         <div class="flex items-center">
-                            <i class="h-8 w-8 text-3xl text-gray-800 far fa-user"></i>
+                            <i class="h-8 w-8 text-3xl text-gray-800 dark:text-gray-300 far fa-user"></i>
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 <a href="{{ route('users.index') }}" class="underline text-gray-900 dark:text-white">Users</a>
                             </div>
