@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public static function index()
     {
-        $users = User::select('id', 'name', 'email', 'group')->get();
+        $users = User::select('id', 'name', 'email', 'group')->paginate(10);
 
         return view('users.index')->with('users', $users);
     }

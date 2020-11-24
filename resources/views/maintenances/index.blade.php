@@ -40,6 +40,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-2">
+                {!! $maintenances->links('layouts.pagination') !!}
+            </div>
         </div>
     </div>
 </div>

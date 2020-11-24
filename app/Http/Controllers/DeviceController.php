@@ -26,7 +26,7 @@ class DeviceController extends Controller
      */
     public static function index()
     {
-        $devices = Device::select('id', 'serial','oem' ,'model', 'name')->get();
+        $devices = Device::select('id', 'serial','oem' ,'model', 'name')->paginate(10);
 
         return view('devices.index')->with('devices', $devices);
     }

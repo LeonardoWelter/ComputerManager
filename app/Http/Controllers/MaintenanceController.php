@@ -28,7 +28,7 @@ class MaintenanceController extends Controller
      */
     public static function index()
     {
-        $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')->get();
+        $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')->paginate(10);;
 
         return view('maintenances.index')->with('maintenances', $maintenances);
     }

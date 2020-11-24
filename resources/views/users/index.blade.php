@@ -42,6 +42,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-2">
+                {!! $users->links('layouts.pagination') !!}
+            </div>
         </div>
     </div>
 </div>
