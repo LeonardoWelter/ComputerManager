@@ -24,11 +24,23 @@ class MaintenanceController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function index()
+    public static function index(Request $request)
     {
-        $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')->paginate(10);;
+        if ($request->query('filter')) {
+            $q = '%'.trim($request->query('filter')).'%';
+
+            $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')
+                            ->where('type', 'like', $q)
+                            ->orWhere('subtype', 'like', $q)
+                            ->orWhere('device_id', 'like', $q)
+                            ->orWhere('created_at', 'like', $q)
+                            ->sortable('device_id')->paginate(10);
+        } else {
+            $maintenances = Maintenance::select('id', 'type','subtype' ,'device_id', 'created_at')->sortable('device_id')->paginate(10);;
+        }
 
         return view('maintenances.index')->with('maintenances', $maintenances);
     }

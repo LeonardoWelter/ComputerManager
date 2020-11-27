@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 
 class Maintenance extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Sortable;
 
     /**
      * The table associated with the model.
@@ -36,5 +37,17 @@ class Maintenance extends Model
         'description',
         'comments',
         'user_id',
+    ];
+
+    /**
+     * The attributes that are sortable.
+     *
+     * @var array
+     */
+    public $sortable = [
+        'device_id',
+        'type',
+        'subtype',
+        'created_at'
     ];
 }

@@ -29,11 +29,35 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function index()
+    public static function index(Request $request)
     {
-        $users = User::select('id', 'name', 'email', 'group')->paginate(10);
+        if ($request->query('filter')) {
+
+            switch (strtolower($request->query('filter'))) {
+                case 'usuário':
+                case 'usuario':
+                case 'user':
+                    $q = '%0%';
+                    break;
+                case 'admin':
+                case 'administrador':
+                    $q = '%1%';
+                    break;
+                default:
+                    $q = '%'.trim($request->query('filter')).'%';
+            }       
+
+            $users = User::select('id', 'name', 'email', 'group')
+                            ->where('name', 'like', $q)
+                            ->orWhere('email', 'like', $q)
+                            ->orWhere('group', 'like', $q)
+                            ->sortable('name')->paginate(10);
+        } else {
+            $users = User::select('id', 'name', 'email', 'group')->sortable('name')->paginate(10);;
+        }
 
         return view('users.index')->with('users', $users);
     }

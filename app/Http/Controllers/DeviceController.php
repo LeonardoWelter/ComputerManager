@@ -22,11 +22,23 @@ class DeviceController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public static function index()
+    public static function index(Request $request)
     {
-        $devices = Device::select('id', 'serial','oem' ,'model', 'name')->paginate(10);
+        if ($request->query('filter')) {
+            $q = '%'.trim($request->query('filter')).'%';
+
+            $devices = Device::select('id', 'serial', 'oem', 'model', 'name')
+                            ->where('name', 'like', $q)
+                            ->orWhere('serial', 'like', $q)
+                            ->orWhere('oem', 'like', $q)
+                            ->orWhere('model', 'like', $q)
+                            ->sortable('serial')->paginate(10);
+        } else {
+            $devices = Device::select('id', 'serial','oem' ,'model', 'name')->sortable('serial')->paginate(10);
+        }
 
         return view('devices.index')->with('devices', $devices);
     }
