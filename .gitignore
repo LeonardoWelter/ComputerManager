@@ -11,6 +11,7 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+public/fonts/vendor
 public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot
 public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg
 public/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf
