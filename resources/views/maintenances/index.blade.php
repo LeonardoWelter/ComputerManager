@@ -35,13 +35,13 @@
                         <td class="px-4 py-4 md:py-2">{{ App\Models\Device::find($data->device_id)->serial }}</td>
                         <td class="px-4 py-4 md:py-2">{{ ucfirst($data->type).' '.ucfirst($data->subtype) }}</td>
                         <td class="px-4 py-4 md:py-2">{{ \Carbon\Carbon::parse($data->created_at)->format('d/m/Y H:i') }}</td>
-                        <td class="hidden md:block text-right px-4 py-4 md:py-2">
-                            <a href="/maintenances/{{$data->id}}" type="submit" class="inline mt-1 text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-plus"></i></a>
-                            <a href="/maintenances/{{$data->id}}/edit" type="submit" class="inline mt-1 text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-pen"></i></a>
-                            <form action="/maintenances/{{ $data->id }}" method="post" class="inline">
+                        <td class="hidden md:flex justify-evenly px-4 py-4 md:py-2">
+                            <a href="/maintenances/{{$data->id}}" type="submit" class="inline ml-1 mt-1 text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-plus"></i></a>
+                            <a href="/maintenances/{{$data->id}}/edit" type="submit" class="inline ml-1 mt-1 text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-pen"></i></a>
+                            <form action="/maintenances/{{ $data->id }}" method="post" class="inline ml-1">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="inline mt-1 text-xs bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-trash"></i></button>
+                                <button type="submit" class="inline mt-1 text-sm bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
