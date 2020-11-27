@@ -10,6 +10,14 @@
                 <div class="font-black text-center border-b-2 border-gray-200 dark:border-gray-600 py-2">
                     Manutenção ID {{$maintenance->id}}
                 </div>
+                <div class="flex justify-evenly">
+                    <a href="/maintenances/{{$maintenance->id}}/edit" type="submit" class="inline mt-1 text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-pen"></i></a>
+                    <form action="/maintenances/{{$maintenance->id}}" method="post" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="inline mt-1 text-sm bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-3 rounded dark:text-gray-400 dark:border-gray-400 dark:hover:bg-gray-300 dark:hover:text-gray-700"><i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
                 <label class="uppercase tracking-wide text-gray-700 dark:text-gray-200 text-xs font-bold" for="serial">Serial</label>
                 <input class="block w-full text-gray-700 bg-gray-100 dark:bg-gray-900 dark:text-gray-200 mb-1 leading-tight" type="text" id="serial" disabled value="{{$serial}}">
 
